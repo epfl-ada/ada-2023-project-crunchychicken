@@ -2,8 +2,9 @@
 
 # Dataset
 
-- Main dataset: [CMU Movie Summary Corpus](https://www.cs.cmu.edu/~ark/personas/)
-- Optional secondary dataset: [Stanford CoreNLP-processed summaries](https://www.cs.cmu.edu/~ark/personas/data/corenlp_plot_summaries.tar)
+- [Official page](https://www.cs.cmu.edu/~ark/personas/)
+- Main dataset: [CMU Movie Summary Corpus](https://www.cs.cmu.edu/~ark/personas/) (46MB)
+- Optional secondary dataset: [Stanford CoreNLP-processed summaries](https://www.cs.cmu.edu/~ark/personas/data/corenlp_plot_summaries.tar) (628MB)
 
 # Authors
 Group: CrunchyChicken
