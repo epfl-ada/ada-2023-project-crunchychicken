@@ -8,7 +8,7 @@
 - Optional secondary dataset: [Stanford CoreNLP-processed summaries](https://www.cs.cmu.edu/~ark/personas/data/corenlp_plot_summaries.tar) (628MB)
 
 ## Data Placement Instructions
-
+Put all the data files inside a subfolder named `Dataset`, like this:
 <pre>
 project_root/
 │
