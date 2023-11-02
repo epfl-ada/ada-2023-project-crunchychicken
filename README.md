@@ -3,6 +3,7 @@
 # Dataset
 
 - [Official page](https://www.cs.cmu.edu/~ark/personas/)
+- [ReadMe](https://github.com/epfl-ada/ada-2023-project-crunchychicken/blob/main/cmu_readme.md)
 - Main dataset: [CMU Movie Summary Corpus](https://www.cs.cmu.edu/~ark/personas/) (46MB)
 - Optional secondary dataset: [Stanford CoreNLP-processed summaries](https://www.cs.cmu.edu/~ark/personas/data/corenlp_plot_summaries.tar) (628MB)
 
