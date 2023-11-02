@@ -3,6 +3,7 @@
 # Dataset
 
 Main dataset: [CMU Movie Summary Corpus](https://www.cs.cmu.edu/~ark/personas/)
+
 Optional secondary dataset: [Stanford CoreNLP-processed summaries](https://www.cs.cmu.edu/~ark/personas/data/corenlp_plot_summaries.tar)
 
 # Authors
