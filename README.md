@@ -9,20 +9,19 @@
 
 ## Data Placement Instructions
 
-project_root/
-│
-├── P2.ipynb
-├── Movie_exploration.ipynb
-├── Character_exploration.ipynb
-│
-└── Dataset/
-    ├── character.metadata.tsv
-    ├── movie.metadata.tsv
-    ├── name.clusters.txt
-    ├── plot_summaries.txt
-    ├── README.txt
-    └── tvtropes.clusters.txt
-
+project_root/  
+│  
+├── P2.ipynb  
+├── Movie_exploration.ipynb  
+├── Character_exploration.ipynb  
+│  
+└── Dataset/  
+    ├── character.metadata.tsv  
+    ├── movie.metadata.tsv  
+    ├── name.clusters.txt  
+    ├── plot_summaries.txt  
+    ├── README.txt  
+    └── tvtropes.clusters.txt  
 
 # Authors
 Group: CrunchyChicken
