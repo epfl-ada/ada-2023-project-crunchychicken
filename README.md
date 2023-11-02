@@ -9,7 +9,6 @@
 
 ## Data Placement Instructions
 
-<pre>
 project_root/
 │
 ├── P2.ipynb
@@ -23,7 +22,6 @@ project_root/
 &nbsp;&nbsp;&nbsp;&nbsp;├── plot_summaries.txt
 &nbsp;&nbsp;&nbsp;&nbsp;├── README.txt
 &nbsp;&nbsp;&nbsp;&nbsp;└── tvtropes.clusters.txt
-</pre>
 
 # Authors
 Group: CrunchyChicken
