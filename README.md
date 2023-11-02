@@ -7,6 +7,23 @@
 - Main dataset: [CMU Movie Summary Corpus](https://www.cs.cmu.edu/~ark/personas/) (46MB)
 - Optional secondary dataset: [Stanford CoreNLP-processed summaries](https://www.cs.cmu.edu/~ark/personas/data/corenlp_plot_summaries.tar) (628MB)
 
+## Data Placement Instructions
+
+project_root/
+│
+├── P2.ipynb
+├── Movie_exploration.ipynb
+├── Character_exploration.ipynb
+│
+└── Dataset/
+    ├── character.metadata.tsv
+    ├── movie.metadata.tsv
+    ├── name.clusters.txt
+    ├── plot_summaries.txt
+    ├── README.txt
+    └── tvtropes.clusters.txt
+
+
 # Authors
 Group: CrunchyChicken
 - [Sepehr Mousavi](mailto:sepehr.mousavi@epfl.ch) (SCIPER 338673)
