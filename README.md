@@ -17,16 +17,18 @@ project_root/
 ├── Character_exploration.ipynb
 │
 ├── Dataset/
-&nbsp;&nbsp;&nbsp;&nbsp;├── character.metadata.tsv
-&nbsp;&nbsp;&nbsp;&nbsp;├── movie.metadata.tsv
-&nbsp;&nbsp;&nbsp;&nbsp;├── name.clusters.txt
-&nbsp;&nbsp;&nbsp;&nbsp;├── plot_summaries.txt
-&nbsp;&nbsp;&nbsp;&nbsp;├── README.txt
-&nbsp;&nbsp;&nbsp;&nbsp;└── tvtropes.clusters.txt
+│   ├── character.metadata.tsv
+│   ├── movie.metadata.tsv
+│   ├── name.clusters.txt
+│   ├── plot_summaries.txt
+│   ├── README.txt
+│   └── tvtropes.clusters.txt
+│
 └── XML_Dataset/
-&nbsp;&nbsp;&nbsp;&nbsp;├── 330.xml.gz
-&nbsp;&nbsp;&nbsp;&nbsp;├── 3271.xml.gz
-&nbsp;&nbsp;&nbsp;&nbsp;└── 37501922.xml.gz
+    ├── 330.xml.gz
+    ├── 3271.xml.gz
+    &nbsp;&nbsp;&nbsp;&nbsp;... (many more files) ...
+    └── 37501922.xml.gz
 </pre>
 
 ## Data size
