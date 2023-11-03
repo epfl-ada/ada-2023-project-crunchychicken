@@ -4,3 +4,7 @@ __pycache__/
 Dataset/*
 XML_Dataset/*
 
+*.csv
+*.pkl
+*.parquet
+*.feather
