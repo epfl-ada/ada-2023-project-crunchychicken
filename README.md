@@ -5,8 +5,8 @@
 - check how to use wiki and freebase id with wikidata
 - check for a scrapper on wikidata + IMDb or other
 - Create a notebook with all the saves, probably move the single file notebook to an exploration branch
-- create a drawboard with all the files and their columns to clearly see the merges
-
+- create a drawboard 1: files and their fields
+- create a drawboard 2: dataframes and their columns
 # Dataset
 
 - [Official page](https://www.cs.cmu.edu/~ark/personas/)
