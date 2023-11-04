@@ -45,7 +45,7 @@ project_root/
 - plot_summaries.txt: plot summaries of 42'306 movies, 42'303 rows (73MB)
 - tvtropes.clusters.txt: 72 character types, 511 rows (57 KB)
 
-### Secondary dataset
+### Secondary dataset after processing
 - dependencies.parquet: 34199068 rows (225 MB) 
 - parses.parquet: 665586 rows (89 MB)
 - tokens.parquet: 14905203 rows (177 MB)
