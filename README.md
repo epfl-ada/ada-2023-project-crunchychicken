@@ -1,14 +1,11 @@
 # ada-2023-project-crunchychicken
 
 # TODO
-- check for unused imports
-- check the saved files and find a way to share them ([*Pre release*](https://uploadnow.io/f/9zNzbbK) will expire in 7 days from 03/11 if nobody downloads)
 - check how to use wiki and freebase id with wikidata
 - check for a scrapper on wikidata + IMDb or other
-- Create a notebook with all the dataframes, probably move the single file notebook files to an exploration branch
-- create a drawboard 1: files and their fields
-- create a drawboard 2: dataframes and their columns
+
 # Dataset
+**[Link to downloadd the parsed XML datasets](https://drive.google.com/file/d/1-vKHQjKUtgpsMt1MzV3lcBp7WIcLA1YO/view?usp=sharing)**
 
 - [Official page](https://www.cs.cmu.edu/~ark/personas/)
 - [Official ReadMe](https://github.com/epfl-ada/ada-2023-project-crunchychicken/blob/main/cmu_readme.md)
