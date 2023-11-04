@@ -2,9 +2,11 @@
 
 # TODO
 - check how to use wiki and freebase id with wikidata
-- check for a scrapper on wikidata + IMDb or other
+- Optional: check for a scrapper on wikidata + IMDb or other
 
 # Dataset
+![dataframes visualization](https://i.postimg.cc/8zVnpKQS/image-2023-11-04-173843862.png)
+
 **[Link to download the parsed XML datasets](https://drive.google.com/file/d/1-vKHQjKUtgpsMt1MzV3lcBp7WIcLA1YO/view?usp=sharing)**
 
 - [Official page](https://www.cs.cmu.edu/~ark/personas/)
