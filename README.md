@@ -1,6 +1,7 @@
 # ada-2023-project-crunchychicken
 
 # TODO
+- read each others ideas and see how we can implement the chosen idea with the dataframes we have
 - check how to use wiki and freebase id with wikidata
 - Optional: check for a scrapper on wikidata + IMDb or other
 
