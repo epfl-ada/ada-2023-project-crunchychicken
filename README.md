@@ -4,6 +4,7 @@
 - read each others ideas and see how we can implement the chosen idea with the dataframes we have
 - check how to use wiki and freebase id with wikidata
 - Optional: check for a scrapper on wikidata + IMDb or other
+- [ADA Instructions for P2](https://github.com/epfl-ada/ada-2023-project-crunchychicken/blob/main/instructions.md)
 
 # Dataset
 ![dataframes visualization](https://i.postimg.cc/8zVnpKQS/image-2023-11-04-173843862.png)
