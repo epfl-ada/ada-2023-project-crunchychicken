@@ -55,7 +55,7 @@ project_root/
 - tokens.parquet: 14905203 rows (177 MB)
 
 ### XML file format
-```
+<pre>
 sentences
 │ sentence id
 │ │ tokens
@@ -79,7 +79,7 @@ sentences
 │ │ │ dep
 │ │ │ │ governor
 │ │ │ │ dependent
-```
+</pre>
 
 # Authors
 Group: CrunchyChicken
