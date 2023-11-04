@@ -54,6 +54,31 @@ project_root/
 - parses.parquet: 665586 rows (89 MB)
 - tokens.parquet: 14905203 rows (177 MB)
 
+### XML file format
+sentences
+│ sentence id
+│ │ tokens
+│ │ │ token id
+│ │ │ │ word
+│ │ │ │ lemma
+│ │ │ │ char offset begin
+│ │ │ │ char offset end
+│ │ │ │ POS
+│ │ │ │ NER
+│ │ parse
+│ │ basic-dependencies
+│ │ │ dep
+│ │ │ │ governor
+│ │ │ │ dependent
+│ │ collapsed-dependencies
+│ │ │ dep
+│ │ │ │ governor
+│ │ │ │ dependent
+│ │ collapsed-ccprocessed-dependencies
+│ │ │ dep
+│ │ │ │ governor
+│ │ │ │ dependent
+
 # Authors
 Group: CrunchyChicken
 - [Sepehr Mousavi](mailto:sepehr.mousavi@epfl.ch) (SCIPER 338673)
