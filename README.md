@@ -18,8 +18,9 @@ Put all the data files inside a subfolder named `Dataset/`, like this:
 project_root/
 │
 ├── P2.ipynb
-├── Movie_exploration.ipynb
-├── Character_exploration.ipynb
+├── dependencies.parquet
+├── parses.parquet
+├── tokens.parquet
 │
 ├── Dataset/
 │   ├── character.metadata.tsv
@@ -37,11 +38,17 @@ project_root/
 </pre>
 
 ## Data size
+### Main dataset
 - character.metadata.tsv: 450,669 characters (40 MB) 
 - movie.metadata.tsv: 81,741 movies (15 MB)
 - name.clusters.txt: 970 unique character names, 2666 rows (64 KB)
 - plot_summaries.txt: plot summaries of 42'306 movies, 42'303 rows (73MB)
 - tvtropes.clusters.txt: 72 character types, 511 rows (57 KB)
+
+### Secondary dataset
+- dependencies.parquet: 34199068 rows (225 MB) 
+- parses.parquet: 665586 rows (89 MB)
+- tokens.parquet: 14905203 rows (177 MB)
 
 # Authors
 Group: CrunchyChicken
