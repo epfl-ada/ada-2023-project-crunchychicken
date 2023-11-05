@@ -82,13 +82,13 @@ sentences
 </pre>
 
 #### Stanford coreNLP
-[website](https://stanfordnlp.github.io/CoreNLP/)
-[NER](https://stanfordnlp.github.io/CoreNLP/ner.html#description)
-[POS](https://stanfordnlp.github.io/CoreNLP/pos.html#description)
-[POS codes](https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html)
-[PARSE](https://stanfordnlp.github.io/CoreNLP/parse.html#description)
-[Dependencies](https://stanfordnlp.github.io/CoreNLP/depparse.html#description)
-[Dependencies manual for dep class and dep types](https://downloads.cs.stanford.edu/nlp/software/dependencies_manual.pdf)
+[website](https://stanfordnlp.github.io/CoreNLP/) <br>
+[NER](https://stanfordnlp.github.io/CoreNLP/ner.html#description) <br>
+[POS](https://stanfordnlp.github.io/CoreNLP/pos.html#description) <br>
+[POS codes](https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html) <br>
+[PARSE](https://stanfordnlp.github.io/CoreNLP/parse.html#description) <br>
+[Dependencies](https://stanfordnlp.github.io/CoreNLP/depparse.html#description) <br>
+[Dependencies manual for dep class and dep types](https://downloads.cs.stanford.edu/nlp/software/dependencies_manual.pdf) <br>
 [Dependencies literature](https://nlp.stanford.edu/software/stanford-dependencies.html)
 
 # Authors
