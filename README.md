@@ -81,6 +81,16 @@ sentences
 │ │ │ │ dependent
 </pre>
 
+#### Stanford coreNLP
+[website](https://stanfordnlp.github.io/CoreNLP/)
+[NER](https://stanfordnlp.github.io/CoreNLP/ner.html#description)
+[POS](https://stanfordnlp.github.io/CoreNLP/pos.html#description)
+[POS codes](https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html)
+[PARSE](https://stanfordnlp.github.io/CoreNLP/parse.html#description)
+[Dependencies](https://stanfordnlp.github.io/CoreNLP/depparse.html#description)
+[Dependencies manual for dep class and dep types](https://downloads.cs.stanford.edu/nlp/software/dependencies_manual.pdf)
+[Dependencies literature](https://nlp.stanford.edu/software/stanford-dependencies.html)
+
 # Authors
 Group: CrunchyChicken
 - [Sepehr Mousavi](mailto:sepehr.mousavi@epfl.ch) (SCIPER 338673)
