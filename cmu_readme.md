@@ -43,7 +43,7 @@ Metadata for 81,741 movies, extracted from the Noverber 4, 2012 dump of Freebase
 
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;4\. character.metadata.tsv.gz [14 M]
+4\. character.metadata.tsv.gz [14 M]
 
 Metadata for 450,669 characters aligned to the movies above, extracted from the Noverber 4, 2012 dump of Freebase.  Tab-separated; columns:
 
