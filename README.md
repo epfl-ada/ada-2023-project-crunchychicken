@@ -6,16 +6,16 @@
 - Optional: check for a scrapper on wikidata + IMDb or other
 - [ADA Instructions for P2](https://github.com/epfl-ada/ada-2023-project-crunchychicken/blob/main/instructions.md)
 
-# Dataset
+# Dataset: CMU Movie Summary Corpus
 ![dataframes visualization](https://i.postimg.cc/8zVnpKQS/image-2023-11-04-173843862.png)
 
 **[Link to download the parsed XML datasets](https://drive.google.com/file/d/1-vKHQjKUtgpsMt1MzV3lcBp7WIcLA1YO/view?usp=sharing)**
 
-- [Official webpage](https://www.cs.cmu.edu/~ark/personas/)
-- [Official ReadMe](https://github.com/epfl-ada/ada-2023-project-crunchychicken/blob/main/cmu_readme.md)
-- [Official paper: Learning Latent Personas of Film Characters by David Bamman, Brendan O'Connor, and Noah A. Smith](https://www.cs.cmu.edu/~dbamman/pubs/pdf/bamman+oconnor+smith.acl13.pdf) 
-- Main dataset: [CMU Movie Summary Corpus](https://www.cs.cmu.edu/~ark/personas/data/MovieSummaries.tar.gz) (46MB)
-- Optional secondary dataset: [Stanford CoreNLP-processed summaries](https://www.cs.cmu.edu/~ark/personas/data/corenlp_plot_summaries.tar) (628MB)
+- [CMU Movie Summary Corpus webpage](https://www.cs.cmu.edu/~ark/personas/)
+- [Corrected version of the CMU Movie Summary Corpus ReadMe](https://github.com/epfl-ada/ada-2023-project-crunchychicken/blob/main/cmu_readme.md)
+- [CMU Movie Summary Corpus paper: Learning Latent Personas of Film Characters by David Bamman, Brendan O'Connor, and Noah A. Smith](https://www.cs.cmu.edu/~dbamman/pubs/pdf/bamman+oconnor+smith.acl13.pdf) 
+- Main dataset: [plot summaries and aligned metadata from Freebase](https://www.cs.cmu.edu/~ark/personas/data/MovieSummaries.tar.gz) (46MB)
+- Secondary dataset: [Stanford CoreNLP-processed summaries](https://www.cs.cmu.edu/~ark/personas/data/corenlp_plot_summaries.tar) (628MB)
 
 ## Data Placement Instructions
 Put all the data files inside a subfolder named `Dataset/`, like this:
