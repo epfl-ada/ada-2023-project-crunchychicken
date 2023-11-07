@@ -23,7 +23,7 @@ project_root/
 │
 ├── P2.ipynb
 │
-├── Dataset/
+├── data/
 │   ├── coref.parquet
 │   ├── dependencies.parquet
 │   ├── parses.parquet
@@ -35,7 +35,7 @@ project_root/
 │   ├── README.txt
 │   └── tvtropes.clusters.txt
 │
-└── XML_Dataset/
+└── XML_data/
     ├── 330.xml.gz
     ├── 3271.xml.gz
     &nbsp;&nbsp;&nbsp;&nbsp;... (many more files) ...
