@@ -1,11 +1,5 @@
 .ipynb_checkpoints/
 .DS_Store
 __pycache__/
-Dataset/*
-XML_Dataset/*
-data/
-
-*.csv
-*.pkl
-*.parquet
-*.feather
+data/*
+XML_data/*
