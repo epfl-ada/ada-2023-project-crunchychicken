@@ -51,6 +51,7 @@ project_root/
 - tvtropes.clusters.txt: 72 character types, 511 rows (57 KB)
 
 ### Secondary dataset after processing
+- coref.parquet: 2921142 rows (11 MB)
 - dependencies.parquet: 34199068 rows (225 MB) 
 - parses.parquet: 665586 rows (89 MB)
 - tokens.parquet: 14905203 rows (177 MB)
@@ -88,6 +89,7 @@ sentences
 [POS](https://stanfordnlp.github.io/CoreNLP/pos.html#description) <br>
 [POS codes](https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html) <br>
 [PARSE](https://stanfordnlp.github.io/CoreNLP/parse.html#description) <br>
+[COREF](https://stanfordnlp.github.io/CoreNLP/coref.html#description)
 [Dependencies](https://stanfordnlp.github.io/CoreNLP/depparse.html#description) <br>
 [Dependencies manual for dep class and dep types](https://downloads.cs.stanford.edu/nlp/software/dependencies_manual.pdf) <br>
 [Dependencies literature](https://nlp.stanford.edu/software/stanford-dependencies.html)
