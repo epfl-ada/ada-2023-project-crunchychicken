@@ -94,8 +94,11 @@ sentences
 - [Dependencies manual for dep class and dep types](https://downloads.cs.stanford.edu/nlp/software/dependencies_manual.pdf) <br>
 - [Dependencies literature](https://nlp.stanford.edu/software/stanford-dependencies.html)
 
-![POS](https://i.postimg.cc/rpNds4Xc/image-2023-11-07-215725380.png)
+![PIPELINE](https://i.postimg.cc/FKCY04Rn/image-2023-11-07-220028298.png)
 ![NER](https://i.postimg.cc/DwVmc67n/image-2023-11-07-215806845.png)
+![POS](https://i.postimg.cc/rpNds4Xc/image-2023-11-07-215725380.png)
+![COREF](https://i.postimg.cc/DwVmc67n/image-2023-11-07-215806845.png)
+![DEP](https://i.postimg.cc/DwVmc67n/image-2023-11-07-215806845.png)
 
 # Authors
 Group: CrunchyChicken
