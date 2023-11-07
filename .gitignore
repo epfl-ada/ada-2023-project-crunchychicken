@@ -3,6 +3,7 @@
 __pycache__/
 Dataset/*
 XML_Dataset/*
+data/
 
 *.csv
 *.pkl
