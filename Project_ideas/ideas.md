@@ -23,3 +23,15 @@ To gauge the impact of global happenings on cinema, we'll delve into the influen
 
 ## Technological Advancements in film production
 The collection of films which information we have been provided with extends from the earliest stages of cinematography (end of the 1880’s) to the end of the 2010’s. Between these two extremes, a large number of technological advancements have drastically changed film production : synchronous sound, colour, green screens, digital lenses, CGI or even the internet can be cited as such. We could thus look how the film industry responds to these technological advancements. Is there a slump or a rise in certain genres following the invention or democratization of some techniques ? When new methods are invented, do films that embrace this new type of cinematography receive different revenue and critical acclaim compared to traditional ones ? Thus, adding some data about critics, methods used in films etc. could greatly enhance the accuracy and relevance of the analysis. We could also look at if certain technological advancements modify the way films uses certain genres or themes using the plot summaries we have been provided with. In science fiction for instance, is there a shift towards space-related fictions after invention of green screens?
+
+# General comments
+* All these ideas can be analyzed for different geographical regions or different movie genres.
+* By collecting a dataset of award winners, it can be used in order to focus on award-winning figures in ideas 2 and 3.
+* The popularity or success of a movie can be quantified by user ratings and box office revenue.
+
+# OTHER DATASETS
+- Box office Mojo Data: ?
+- Letterboxd: People's watchlists, likes, and ratings
+- OpenSubtitles: Transcripts
+- Rotten Tomatoes: ?
+- IMDb datasets: Readily available, cast and crew
