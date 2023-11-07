@@ -25,7 +25,7 @@ project_root/
 ├── P2.ipynb
 │
 ├── Dataset/
-│   ├── coref
+│   ├── coref.parquet
 │   ├── dependencies.parquet
 │   ├── parses.parquet
 │   ├── tokens.parquet
