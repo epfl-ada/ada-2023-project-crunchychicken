@@ -98,7 +98,7 @@ sentences
 ![NER](https://i.postimg.cc/DwVmc67n/image-2023-11-07-215806845.png)
 ![POS](https://i.postimg.cc/rpNds4Xc/image-2023-11-07-215725380.png)
 ![COREF](https://i.postimg.cc/DwVmc67n/image-2023-11-07-215806845.png)
-![DEP](https://i.postimg.cc/DwVmc67n/image-2023-11-07-215806845.png)
+![DEP](https://i.postimg.cc/mkChx1S0/image-2023-11-07-220120459.png)
 
 # Authors
 Group: CrunchyChicken
