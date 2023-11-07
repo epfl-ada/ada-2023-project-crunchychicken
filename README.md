@@ -23,11 +23,12 @@ Put all the data files inside a subfolder named `Dataset/`, like this:
 project_root/
 │
 ├── P2.ipynb
-├── dependencies.parquet
-├── parses.parquet
-├── tokens.parquet
 │
 ├── Dataset/
+│   ├── coref
+│   ├── dependencies.parquet
+│   ├── parses.parquet
+│   ├── tokens.parquet
 │   ├── character.metadata.tsv
 │   ├── movie.metadata.tsv
 │   ├── name.clusters.txt
