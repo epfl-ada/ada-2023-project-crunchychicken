@@ -16,8 +16,7 @@
 - Secondary dataset: [Stanford CoreNLP-processed summaries](https://www.cs.cmu.edu/~ark/personas/data/corenlp_plot_summaries.tar) (628MB)
 
 ## Data Placement Instructions
-⭐Download the parquet files from **[here](https://drive.google.com/file/d/1-vKHQjKUtgpsMt1MzV3lcBp7WIcLA1YO/view?usp=sharing)** (data from the processed XML files)⭐ <br> 
-[Drive data folder](https://drive.google.com/drive/u/2/folders/1xeeJxvuIyu738Bd2ev_Ex49Af8lDv9pw) <br>
+⭐Download the data from **[here]([https://drive.google.com/file/d/1-vKHQjKUtgpsMt1MzV3lcBp7WIcLA1YO/view?usp=sharing](https://drive.google.com/drive/u/2/folders/1xeeJxvuIyu738Bd2ev_Ex49Af8lDv9pw))**⭐ <br> 
 Put all the data files inside a subfolder named `Dataset/`, like this:
 <pre>
 project_root/
