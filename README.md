@@ -16,8 +16,9 @@
 - Secondary dataset: [Stanford CoreNLP-processed summaries](https://www.cs.cmu.edu/~ark/personas/data/corenlp_plot_summaries.tar) (628MB)
 
 ## Data Placement Instructions
-⭐Download the data from [**here**](https://drive.google.com/drive/folders/1xeeJxvuIyu738Bd2ev_Ex49Af8lDv9pw?usp=drive_link)⭐ `CMU data` contains the original CMU data + 4 parquet fils from the XML pipeline. `IMDb data` contains downloaded non commerical datasets from IMDb.  <br> 
-Put all the data files inside a subfolder named `Dataset/`, like this:
+⭐Download the data from [**here**](https://drive.google.com/drive/folders/1xeeJxvuIyu738Bd2ev_Ex49Af8lDv9pw?usp=drive_link)⭐ <br>
+`CMU data` contains the original CMU data + 4 parquet fils from the XML pipeline. `IMDb data` contains downloaded non commerical datasets from IMDb.  <br> 
+Project folder structure:
 <pre>
 project_root/
 │
