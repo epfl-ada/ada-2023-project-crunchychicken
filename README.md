@@ -95,6 +95,7 @@ sentences
 - [Dependencies literature](https://nlp.stanford.edu/software/stanford-dependencies.html)
 
 ![POS](https://i.postimg.cc/rpNds4Xc/image-2023-11-07-215725380.png)
+![NER](https://i.postimg.cc/DwVmc67n/image-2023-11-07-215806845.png)
 
 # Authors
 Group: CrunchyChicken
