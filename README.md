@@ -7,7 +7,7 @@
 - [ADA Instructions for P2](https://github.com/epfl-ada/ada-2023-project-crunchychicken/blob/main/instructions.md)
 
 # Dataset: CMU Movie Summary Corpus
-![dataframes visualization](https://i.postimg.cc/8zVnpKQS/image-2023-11-04-173843862.png)
+![dataframes visualization](https://i.postimg.cc/MKk83KFJ/image-2023-11-07-221045483.png)
 
 - [CMU Movie Summary Corpus webpage](https://www.cs.cmu.edu/~ark/personas/)
 - [Corrected version of the CMU Movie Summary Corpus ReadMe](https://github.com/epfl-ada/ada-2023-project-crunchychicken/blob/main/cmu_readme.md)
@@ -16,14 +16,15 @@
 - Secondary dataset: [Stanford CoreNLP-processed summaries](https://www.cs.cmu.edu/~ark/personas/data/corenlp_plot_summaries.tar) (628MB)
 
 ## Data Placement Instructions
-⭐Download the data from [**here**](https://drive.google.com/drive/folders/1xeeJxvuIyu738Bd2ev_Ex49Af8lDv9pw?usp=drive_link)⭐ <br> 
-Put all the data files inside a subfolder named `Dataset/`, like this:
+⭐Download the data from [**here**](https://drive.google.com/drive/folders/1xeeJxvuIyu738Bd2ev_Ex49Af8lDv9pw?usp=drive_link)⭐ <br>
+`CMU data` contains the original CMU data + 4 parquet fils from the XML pipeline. `IMDb data` contains downloaded non commerical datasets from IMDb.  <br> 
+Project folder structure:
 <pre>
 project_root/
 │
 ├── P2.ipynb
 │
-├── Dataset/
+├── data/
 │   ├── coref.parquet
 │   ├── dependencies.parquet
 │   ├── parses.parquet
@@ -35,7 +36,7 @@ project_root/
 │   ├── README.txt
 │   └── tvtropes.clusters.txt
 │
-└── XML_Dataset/
+└── XML_data/
     ├── 330.xml.gz
     ├── 3271.xml.gz
     &nbsp;&nbsp;&nbsp;&nbsp;... (many more files) ...
