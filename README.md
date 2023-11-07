@@ -97,7 +97,7 @@ sentences
 ![PIPELINE](https://i.postimg.cc/FKCY04Rn/image-2023-11-07-220028298.png)
 ![NER](https://i.postimg.cc/DwVmc67n/image-2023-11-07-215806845.png)
 ![POS](https://i.postimg.cc/rpNds4Xc/image-2023-11-07-215725380.png)
-![COREF](https://i.postimg.cc/DwVmc67n/image-2023-11-07-215806845.png)
+![COREF](https://i.postimg.cc/rsnZkzFN/image-2023-11-07-220211574.png)
 ![DEP](https://i.postimg.cc/mkChx1S0/image-2023-11-07-220120459.png)
 
 # Authors
