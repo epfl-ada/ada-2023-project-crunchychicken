@@ -102,6 +102,8 @@ sentences
 ![COREF](https://i.postimg.cc/rsnZkzFN/image-2023-11-07-220211574.png)
 ![DEP](https://i.postimg.cc/mkChx1S0/image-2023-11-07-220120459.png)
 
+![Stanford 4.5.5 example](https://i.postimg.cc/ZKj50KDL/image-2023-11-08-122301107.png)
+
 # Authors
 Group: CrunchyChicken
 - [Sepehr Mousavi](mailto:sepehr.mousavi@epfl.ch) (SCIPER 338673)
