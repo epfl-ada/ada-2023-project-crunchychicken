@@ -104,6 +104,9 @@ sentences
 
 ![Stanford 4.5.5 example](https://i.postimg.cc/ZKj50KDL/image-2023-11-08-122301107.png)
 
+### Personas regression model
+[Training code](https://github.com/dbamman/ACL2013_Personas/tree/master)
+
 # Authors
 Group: CrunchyChicken
 - [Sepehr Mousavi](mailto:sepehr.mousavi@epfl.ch) (SCIPER 338673)
