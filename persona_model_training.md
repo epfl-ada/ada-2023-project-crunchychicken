@@ -2,7 +2,14 @@
 
 [Training code](https://github.com/dbamman/ACL2013_Personas/tree/master)
 
+### Pre-request
+
+1. java
+
+    ** I use java 8
+
 ## Train
+
 
 ```
 
