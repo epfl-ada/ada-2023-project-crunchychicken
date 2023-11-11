@@ -45,7 +45,7 @@ It will train with all data. In order to save some time, you can train with a sm
 
 ## Output
 
-Below are two output I got now. You can find them in google drive 'Personas Regression Model'
+Below are outputs I got now. You can find them in google drive 'Personas Regression Model'
 
 1. for_test
 
@@ -54,3 +54,11 @@ Below are two output I got now. You can find them in google drive 'Personas Regr
 2. 5k_10000
 
     Training with 5k data with 10000 iteration.
+
+3. all_10000
+    
+    Training with all data with 10000 iteration.
+
+4. 5k_50000
+
+    Training with 5k data with 50000 iteration
