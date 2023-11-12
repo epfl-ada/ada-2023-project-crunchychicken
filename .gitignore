@@ -3,4 +3,6 @@
 __pycache__/
 data/*
 XML_data/*
+nlp_results/*
+stanford-corenlp-4.5.5/*
 !.gitkeep
