@@ -8,12 +8,46 @@ Discussion: first question (+ TA remark) is very close to the paper, we can insp
 - movie and character metadata for the country and gender aspects. 
 Note: the movie revenue has a lot of NA, need to see if we have enough data by only keeping the non NA rows. Worse case, we can use a scraper to complete the missing box office from wiki or IMDb.
 
+
+**Feasibility of the idea** : If we can not extract the personas of if we do not exactly know how to use them immediately, we should drop the idea.
+
+
+
 # Child stars 
 Question: focus on young actors, how long do they stay in the "spotlight" and how much money they make throughout their carrer (at different periods)? What is age period is the peak time for a child star (early stage or later)? Are there children stars who are successful for a long period or is it hard for them to maintain popularity throughtout their carrer.
 
 TA remark: Great question!! How would you characterize ‘being in the spotlight’ or the ‘peak time’?
 
 Discussion: the data we have does not have actor salary, would have to use an external source for it (if there is one + compatible with the characters/actors in the dataset). We could use the movie revenue as a success criteria but there are a lot of nans, can possibly be an issue. Mostly using the movie and character metadata.
+
+
+## Feasibility of the idea :
+In my opinion very feasible if we have enough data to deal with. Could be problematic is if the number of child actors in the dataset is too low. For the CMU, without cleaning anything we have 4086 actors with age < 18 in the dataset which is already ok, but the number of child 'stars' among them will for sure drop.  Can only increase when adding IMDb data, but still.
+
+
+## Research questions (to answer before P2 and after P2?) :
+
+-   TA remarks : How do we characterize 'being in the spotlight' or 'peak time' ?
+
+-   Who are child stars ?
+    - Among the children actors, how many could be effectively counted as child stars? 
+    - Is this a global phenomena or is it more pronounced in some countries ?
+    - In which of their childhood years do they 'shine' the most ?
+    - In what type of films do they tend to play ?
+    This could help to familiarize with them and to start having a clue, maybe, about why they are famous
+
+- We could guess that they must be very 'protected' : are they always surrounded by the same persons throughout their 'child-career' and how does this evolve with time ? (we could include relationships in the mix with that question)
+
+
+- Do Child Stars reach their peak during childhood ? Are they destined to have a drop in popularity and in success as they grow up ?
+
+- Intertwined with the previous question, in a way, is that for the ones for which the peak is reached during childhood : what do they become ? Do they stay in the movie industry and keep trying or just disappear after a while ?
+
+
+
+
+
+
 
 # Decoding Movie Success: What Makes a Film a Hit?
 Question: Why are some films popular? What kind of movie, characters, stories, actors are the most important for a movie's success? Are the keys to sucess different from country to country (show the regional trend and also global trend of movie)?
