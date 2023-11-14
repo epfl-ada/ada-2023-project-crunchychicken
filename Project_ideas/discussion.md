@@ -25,12 +25,6 @@ If we have the personas, we could try several things :
 
 
 
-
-
-
-
-
-
 # Child stars 
 Question: focus on young actors, how long do they stay in the "spotlight" and how much money they make throughout their carrer (at different periods)? What is age period is the peak time for a child star (early stage or later)? Are there children stars who are successful for a long period or is it hard for them to maintain popularity throughtout their carrer.
 
@@ -59,7 +53,11 @@ In my opinion very feasible if we have enough data to deal with. Could be proble
 
 - Do Child Stars reach their peak during childhood ? Are they destined to have a drop in popularity and in success as they grow up ?
 
-- Intertwined with the previous question, in a way, is that for the ones for which the peak is reached during childhood : what do they become ? Do they stay in the movie industry and keep trying or just disappear after a while ?
+- Intertwined with the previous question, in a way, is that for the ones for which the peak is reached during childhood : what do they become ? Do they stay in the movie industry and keep trying or just disappear after a while ? Do child stars from certain cultures have more sustained careers?
+
+- How do child stars' careers compare to those who start their careers in acting later in life? Are there significant differences in terms of success, longevity, and the types of roles they secure?
+
+- How have trends in the entertainment industry impacted the opportunities available to child stars? Are there certain periods in the entertainment industry where child stars were more prevalent or faced more challenges?
 
 
 
