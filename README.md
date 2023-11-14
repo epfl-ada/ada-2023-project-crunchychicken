@@ -7,7 +7,7 @@
 - [ADA Instructions for P2](https://github.com/epfl-ada/ada-2023-project-crunchychicken/blob/main/instructions.md)
 
 # Dataset: CMU Movie Summary Corpus
-![dataframes visualization](https://i.postimg.cc/MKk83KFJ/image-2023-11-07-221045483.png)
+![dataframes visualization](https://i.postimg.cc/NMqMjwRN/image-2023-11-13-214735878.png)
 
 - [CMU Movie Summary Corpus webpage](https://www.cs.cmu.edu/~ark/personas/)
 - [Corrected version of the CMU Movie Summary Corpus ReadMe](https://github.com/epfl-ada/ada-2023-project-crunchychicken/blob/main/cmu_readme.md)
