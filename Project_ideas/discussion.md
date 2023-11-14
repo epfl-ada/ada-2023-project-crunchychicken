@@ -45,10 +45,6 @@ In my opinion very feasible if we have enough data to deal with. Could be proble
 
 
 
-
-
-
-
 # Decoding Movie Success: What Makes a Film a Hit?
 Question: Why are some films popular? What kind of movie, characters, stories, actors are the most important for a movie's success? Are the keys to sucess different from country to country (show the regional trend and also global trend of movie)?
 
@@ -63,6 +59,9 @@ TA remark: great idea, really liked the idea of adding the methods used in each 
 
 Discussion: the data we have is missing the technological advancements and methods used by films. For technological advancements with Google, we could possibly find the technological advancements and when they their created, but unsure if we can easily find info about the technology used for the movies in the dataset.
 
+## Feasibility of the idea :
+We most likely won't be able to retrieve all techniques used by a film (CGI etc. etc.) Some of them would be easy to find (no sound --> sound, black&white --> color) but for the most recent techniques, that's too complicated imo.
+
 # How does the relationship of people shape the movie industry?
 Question: how does the relationship of a team of directors, producers, writers, cinematographers influence the movie industry? By using a network graph and CMU IMDb DBpedia datasets, who are the most influential figures? s there any pattern in the success of a movie and the relationship of people among the production team? Is there any pattern in the emergence of a new star or the disappearance of a popular figure?
 
@@ -76,7 +75,18 @@ Discussion: actor popularity not directly available. Finding character types sim
 # How does the directorial style of directors evolve throughout their career?
 Stanley Kubrick is known to have at least one great movie in every major movie genre. On the other hand, when you see David Fincher's name as the director of a new movie, you are almost sure that there is going to be one or more serial killers involved. But how is it for less-known directors? The directorial style of an average director evolves over time. Their experiences, their personal life, their emotional state, and many other factors might influence their style. It is not easy to put together all these factors, but we can analyze the types of movies that they have directed throughout their career and see if there are patterns in the career of a director. Several aspects such as the movie genre, the character types, the activity rate (e.g., movies per 5 years) of the director, the popularity of the movie cast, the budget of the movie, and the success of the movie can be analyzed.
 
-Discussion: don't have info about directors, fix with IMDb/wiki scrapper?
+## Feasibility of the idea : 
+Now that we have the IMDb dataset, information about directors is available to use so data is not a problem anymore.
+I would say that treating 'directorial style' might be a bit complicated : we have to really define that but it can be really interesting :
+
+- We know that many directors have their favorite actors and that goes the other way around as well : how frequent is that ? Does that only concerns some specific type of films or some directors in particular industries (Bollwood,Hollwwood, etc.)
+
+- How active are the directors in terms of movie production ? Does that correlate or is linked in some way with the success of the movies ?
+
+- Are some directors 'opportunists' ? Can we find some directors that decided to cast, for their next film, only very popular actors at the time being ?
+
+- Any others ?
+
 
 # Gender equality in cinematography
 Historically, cinema's portrayal of women was often confined within stereotypical boundaries. Females were restricted to roles that showcased them as housewives or love interests. However, as society progressed and the fight for gender equality gathered momentum and the cinematic universe began to reflect these shifts. Recent decades have witnessed an evident transformation in the roles assigned to women. No longer confined to the sidelines, females are now at the forefront, occupying central narratives, and frequently being portrayed as strong, independent, and intellectual characters. By analyzing the CMU corpus, we'll trace this evolution, marking gradual progression from peripheral roles to dominant narratives for women. We'll further evaluate the depth and diversity of these roles, ensuring that modern representations are not just quantitatively more but also qualitatively richer. Using external data sources like IMDb, we'll also assess the recognition of these roles in terms of awards, nominations, and critical acclaims. The goal is to highlight the cinematic journey of female characters from mere caricatures to comprehensive, multifaceted personalities that mirror the real-world evolution of women's roles in society.
@@ -84,6 +94,11 @@ Historically, cinema's portrayal of women was often confined within stereotypica
 TA remark: Great and complete idea, interesting to add the IMDb dataset! Minor comment: it could have been nice to be more precise on how you want to measure the depth and diversity of a role.
 
 Discussion: similar to paper, would need to use the nlp data to find the types of female character (housewive, wonderwoman, ...)
+
+## Feasibility of the idea : 
+
+Same thing as for the very first idea, if we can not extract the personas then we can not do this idea
+
 
 # Second idea: Influence of global events on movie plots
 To gauge the impact of global happenings on cinema, we'll delve into the influences of wars, technological innovations, economic downturns, and even subtle governmental nudges. Historical events like the Cold War didn't just shape global politics but also cinematic narratives. Was there a spike in war-centric movies during such times or narratives where American protagonists found themselves fighting against foreign threats, suggesting possible governmental influence or propaganda? Moreover, with the advent of groundbreaking technology like CGI, did the film industry lean more towards alien invasions or space odysseys? And in times of economic crises, did cinema try to uplift spirits by churning out more comedies, offering a respite from real-world struggles? We could explore patterns in movie genres, plots, and even the nationalities of lead actors. Did certain global events lead to a particular nationality being more represented, or possibly even typecast, in specific roles? Were certain genres more predominant in specific decades due to overarching global sentiments?
