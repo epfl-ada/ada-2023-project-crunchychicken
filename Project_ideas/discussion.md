@@ -9,7 +9,25 @@ Discussion: first question (+ TA remark) is very close to the paper, we can insp
 Note: the movie revenue has a lot of NA, need to see if we have enough data by only keeping the non NA rows. Worse case, we can use a scraper to complete the missing box office from wiki or IMDb.
 
 
-**Feasibility of the idea** : If we can not extract the personas of if we do not exactly know how to use them immediately, we should drop the idea.
+## Feasibility of the idea : 
+If we can not extract the personas of if we do not exactly know how to use them immediately, we should drop the idea.
+
+## Research questions :
+If we have the personas, we could try several things :
+
+- Are the actors 'confined' in a certain type of role and /or character ? How different is depending on gender and ethnicity ? Is there biases or stereotypes reinforced on this basis ?
+
+- How does the actor's choices relate to the movie success ? More generally, for the actor him/herself, how does this change throughout his/her career ? For some actors, is there a shift in roles played ? If it's the case, how long does it take an actor to 'find his/her way' ?
+
+- Can we find some preferences that go well together ? Nothing as strong as a 'recipe' to success, but actor's preferences that match well ?
+
+- What are the factor's that could lead to changes in actor's prefences ? Evolving under a new director ? Simply with age ? With the other actors that they work with ?
+
+
+
+
+
+
 
 
 
