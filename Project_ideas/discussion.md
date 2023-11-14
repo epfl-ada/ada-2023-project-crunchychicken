@@ -95,7 +95,11 @@ Stanley Kubrick is known to have at least one great movie in every major movie g
 Now that we have the IMDb dataset, information about directors is available to use so data is not a problem anymore.
 I would say that treating 'directorial style' might be a bit complicated : we have to really define that but it can be really interesting :
 
-- We know that many directors have their favorite actors and that goes the other way around as well : how frequent is that ? Does that only concerns some specific type of films or some directors in particular industries (Bollwood,Hollwwood, etc.)
+- We know that many directors have their favorite actors and that goes the other way around as well : how frequent is that ? Does that only concerns some specific type of films or some directors in particular industries (Bollwood,Hollwwood, etc.) Do directors who work in multiple countries exhibit different styles in each context? How do cultural differences and international experiences shape a director's creative choices?
+
+- Is there a correlation between a director's critical success and the evolution of their style? Do directors tend to stick to a certain style if it has been well-received, or do they actively seek to diversify their approach regardless of critical acclaim?
+
+- To what extent do directors experiment with their style over the course of their career, and are there periods of experimentation followed by periods of consistency?
 
 - How active are the directors in terms of movie production ? Does that correlate or is linked in some way with the success of the movies ?
 
