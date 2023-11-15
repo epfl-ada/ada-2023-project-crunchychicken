@@ -31,7 +31,7 @@ def crawl_wikipedia(pageid: Union[int, str]) -> dict:
 
     # Check external URLs
     imdb = None
-    for url in wikipedia_page.references:
+    for url in wikipedia_page.references[::-1]:
         # IMDb ID
         if imdb is None and 'imdb.com/title' in url:
             imdb = url.split('imdb.com/title/')[1].split('/')[0]
