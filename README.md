@@ -27,7 +27,8 @@ Group: CrunchyChicken
 
 ## Proposed additional datasets
 
-## Methods 
+## Methods
+Explain the cleaning and the pipelines used (how merge imdb was done / nlp) 
 
 ## Proposed timeline
 
