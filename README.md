@@ -35,6 +35,7 @@ The power of directing choices on film success
 7) Can we find some directors that decided to cast, for their next film, only very popular actors at the time being ?
 8) How active are the directors in terms of movie production ?
 9) To what extent do directors experiment with their style over the course of their career, and are there periods of experimentation followed by periods of consistency?
+10) Are the director always worked with same crew or not? Do it effect the success of movie(by ratings)?
 
 ## Proposed additional datasets
 - [IMDb Non commercial datasets](https://developer.imdb.com/non-commercial-datasets/)
