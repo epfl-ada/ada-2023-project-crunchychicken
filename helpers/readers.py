@@ -2,6 +2,7 @@
 
 import pandas as pd
 from pathlib import Path
+import json
 
 DATA_PATH = Path(__file__).resolve().parent.parent / 'data'
 
@@ -16,7 +17,16 @@ FILES = {
     # IMDb tables
     'imdb/names': DATA_PATH / 'IMDb/name.basics.tsv',
     'imdb/movies': DATA_PATH / 'IMDb/title.basics.tsv',
-    # ...
+    
+    # NLP old annotations dataframes
+    'cmu/annotations_2013/tokens' : DATA_PATH / 'CMU/annotations_2013/tokens.parquet',
+    'cmu/annotations_2013/dependencies' : DATA_PATH / 'CMU/annotations_2013/dependencies.parquet',
+
+    # NLP new annotations dataframes
+    'cmu/annotations_2023/tokens': DATA_PATH / 'CMU/annotations_2023/tokens.parquet'
+    'cmu/annotations_2023/dependencies': DATA_PATH / 'CMU/annotations_2023/dependencies.parquet'
+    'cmu/annotations_2023/entities': DATA_PATH / 'CMU/annotations_2023/entities.parquet'
+    
 }
 
 def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
@@ -52,6 +62,28 @@ def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
                     sep= '\t')
         return plot_summaries
 
+    if name == 'cmu/nameclusters':
+        names_clusters = pd.read_csv(filepath,
+                    usecols=usecols,
+                    sep= '\t')
+        return names_clusters
+
+    if name == 'cmu/tvtropes':
+        rows = []
+        with open(filepath, 'r') as file:
+            for line in file:
+                char_type, json_string = line.strip().split('\t', 1)
+                char_info = json.loads(json_string)
+                row = {
+                    'Character type': char_type,
+                    'Character name': char_info['char'],
+                    'Movie name': char_info['movie'],
+                    'Freebase character/actor map ID': char_info['id'],
+                    'Actor name': char_info['actor']
+                }
+                rows.append(row)
+        tvtropes_clusters = pd.DataFrame(rows, usecols=usecols) # need to verify this
+
     if name == 'imdb/movies':
         df = pd.read_csv(filepath,
             names=usecols,
@@ -59,6 +91,8 @@ def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
             na_values=['\\N'],
             dtype={'runtimeMinutes': object},  # Has some strings
         )
+
+    # add nlp loading
 
     return df
 
