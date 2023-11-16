@@ -19,13 +19,13 @@ FILES = {
     'imdb/movies': DATA_PATH / 'IMDb/title.basics.tsv',
     
     # NLP old annotations dataframes
-    'cmu/annotations_2013/tokens' : DATA_PATH / 'CMU/annotations_2013/tokens.parquet',
-    'cmu/annotations_2013/dependencies' : DATA_PATH / 'CMU/annotations_2013/dependencies.parquet',
+    'cmu/tokens_2013' : DATA_PATH / 'CMU/annotations_2013/tokens.parquet',
+    'cmu/dependencies_2013' : DATA_PATH / 'CMU/annotations_2013/dependencies.parquet',
 
     # NLP new annotations dataframes
-    'cmu/annotations_2023/tokens': DATA_PATH / 'CMU/annotations_2023/tokens.parquet'
-    'cmu/annotations_2023/dependencies': DATA_PATH / 'CMU/annotations_2023/dependencies.parquet'
-    'cmu/annotations_2023/entities': DATA_PATH / 'CMU/annotations_2023/entities.parquet'
+    'cmu/tokens_2023': DATA_PATH / 'CMU/annotations_2023/tokens.parquet'
+    'cmu/dependencies_2023': DATA_PATH / 'CMU/annotations_2023/dependencies.parquet'
+    'cmu/entities_2023': DATA_PATH / 'CMU/annotations_2023/entities.parquet'
     
 }
 
@@ -82,18 +82,27 @@ def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
                     'Actor name': char_info['actor']
                 }
                 rows.append(row)
-        tvtropes_clusters = pd.DataFrame(rows, usecols=usecols) # need to verify this
+        tvtropes_clusters = pd.DataFrame(rows, usecols=usecols)
+        return tvtropes_clusters # to check
 
     if name == 'imdb/movies':
-        df = pd.read_csv(filepath,
+        movies = pd.read_csv(filepath,
             names=usecols,
             sep='\t',
             na_values=['\\N'],
             dtype={'runtimeMinutes': object},  # Has some strings
         )
+        return movies
 
-    # add nlp loading
+    if name == 'imdb/names': # to correct / modify (reused code from above imdb/movies)
+        names = pd.read_csv(filepath,
+            names=usecols,
+            sep='\t',
+            na_values=['\\N'], # probably wrong
+            dtype={'runtimeMinutes': object},  # probably wrong
+        )
+        return names
 
-    return df
+    #if name == 'tokens_2013:
 
     
