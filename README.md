@@ -21,7 +21,10 @@
 ## Research Questions (*goal is to convince TA idea has value and is feasible*)
 *A list of research questions you would like to address during the project.*
 
-1) Do directors who work in multiple countries exhibit different styles in each context? 
+*SEPEHR: I think in this part we need to list fewer questions with more description on each of them. We can combine the questions below or only keep the most interesting ones.*
+
+
+1) Do directors who work in multiple countries exhibit different styles in each context?
 2) Is there a correlation between a director's critical success and the evolution of their style?
 3) Are more successfull directors more often specialized in a particular genre, using particular characters, or there is a lot of diversity in their work.
 4) Are directors successfull because they cast popular actors?
@@ -36,12 +39,10 @@
 ## Proposed additional datasets
 ### Stanford CoreNLP-processed summaries
 The dataset is available online [here](https://www.cs.cmu.edu/~ark/personas/data/corenlp_plot_summaries.tar).
-*Explain what we can get from this dataset and why we are using it*
+*Explain what we can get from this dataset and why we are using it.*
 
-### [IMDb Non commercial datasets]()
-The dataset is available online [here](https://developer.imdb.com/non-commercial-datasets/).
-Using this dataset, we can enrich the metadata about the movies in the CMU dataset, as well as the cast and crew of a movie.
-The major challenge for using this dataset is merging it with the CMU dataset. We have been able to merge them successfully by crawling Wikipedia and querying Wikidata to get the corresponding IMDb movie ID for each movie present in the CMU dataset. Next step is to also find such a mapping between the actors and actresses in the CMU dataset and their corresponding ID in the IMDb dataset, which is less critical.
+### IMDb Non commercial datasets
+The dataset is available online [here](https://developer.imdb.com/non-commercial-datasets/). Using this dataset, we can enrich the metadata about the movies in the CMU dataset, as well as the cast and crew of a movie. The major challenge for using this dataset is merging it with the CMU dataset. We have been able to merge them successfully by crawling Wikipedia and querying Wikidata to get the corresponding IMDb movie ID for each movie present in the CMU dataset. Next step is to also find such a mapping between the actors and actresses in the CMU dataset and their corresponding ID in the IMDb dataset, which is less critical.
 
 ## Methods
 
@@ -67,6 +68,8 @@ The most basic idea would be to calculate the average success and popularity sco
 
 ## Organization within the team
 *A list of internal milestones up until project Milestone P3.*
+
+*Sepehr: I think here they mean how we plan to split the work for P3, not what we did for P2. So we need to change this part.*
 
 - Sepehr: IMDb
 - Romain: IMDb
