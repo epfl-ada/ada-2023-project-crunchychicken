@@ -103,6 +103,16 @@ def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
         )
         return names
 
-    #if name == 'tokens_2013:
+    #if name == 'cmu/tokens_2013:
+    #    return tokens
+    #if name == 'cmu/dependencies_2013:
+    #    return dependencies
 
+    #if name == 'cmu/tokens_2013:
+    #    return tokens
+    #if name == 'cmu/dependencies_2013:
+    #    return dependencies
+    #if name == 'cmu/entities_2013:
+    #    return entites
+    
     
