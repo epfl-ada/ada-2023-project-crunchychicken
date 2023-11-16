@@ -25,29 +25,41 @@ def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
     filepath = FILES[name]
 
     if name == 'cmu/movies':
-        df = pd.read_csv(filepath,
-            usecols=usecols,
+        movies = pd.read_csv(filepath,
+            names=usecols,
             sep='\t',
-            names=['wikipedia', 'freebase', 'title', 'release', 'borevenue', 'runtime', 'languages', 'countries', 'genres'],
         )
-        if 'release' in df:
-            df.release = pd.to_datetime(df.release, format='mixed', errors='coerce')
-        if 'languages' in df:
-            df.languages = df.languages.apply(eval)
-        if 'countries' in df:
-            df.countries = df.countries.apply(eval)
-        if 'genres' in df:
-            df.genres = df.genres.apply(eval)
+        #if 'release' in df:
+        #    df.release = pd.to_datetime(df.release, format='mixed', errors='coerce')
+        #if 'languages' in df:
+        #    df.languages = df.languages.apply(eval)
+        #if 'countries' in df:
+        #    df.countries = df.countries.apply(eval)
+        #if 'genres' in df:
+        #    df.genres = df.genres.apply(eval)
+        return movies  
 
     if name == 'cmu/characters':
-        ...
+        characters = pd.read_csv(filepath,
+            names =usecols,
+            sep='\t',
+        )
+        return characters
+    
+    if name == 'cmu/plot_summaries':
+        plot_summaries = pd.read_csv(filepath,
+                    usecols=usecols,
+                    sep= '\t')
+        return plot_summaries
 
     if name == 'imdb/movies':
         df = pd.read_csv(filepath,
-            usecols=usecols,
+            names=usecols,
             sep='\t',
             na_values=['\\N'],
             dtype={'runtimeMinutes': object},  # Has some strings
         )
 
     return df
+
+    
