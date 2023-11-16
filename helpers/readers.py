@@ -3,6 +3,7 @@
 import pandas as pd
 from pathlib import Path
 import json
+from helpers.utils import convert_and_downcast # adding helpers. so notebook can resolve path 
 
 DATA_PATH = Path(__file__).resolve().parent.parent / 'data'
 
@@ -34,40 +35,32 @@ def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
 
     filepath = FILES[name]
 
+    if name == 'cmu/summaries':
+        summaries = pd.read_csv(filepath,
+                    names=usecols,
+                    sep= '\t',
+                    )
+        return convert_and_downcast(summaries)
+    
     if name == 'cmu/movies':
         movies = pd.read_csv(filepath,
             names=usecols,
             sep='\t',
         )
-        #if 'release' in df:
-        #    df.release = pd.to_datetime(df.release, format='mixed', errors='coerce')
-        #if 'languages' in df:
-        #    df.languages = df.languages.apply(eval)
-        #if 'countries' in df:
-        #    df.countries = df.countries.apply(eval)
-        #if 'genres' in df:
-        #    df.genres = df.genres.apply(eval)
-        return movies  
+        return convert_and_downcast(movies)  
 
     if name == 'cmu/characters':
         characters = pd.read_csv(filepath,
             names =usecols,
             sep='\t',
         )
-        return characters
-    
-    if name == 'cmu/summaries':
-        summaries = pd.read_csv(filepath,
-                    names=usecols,
-                    sep= '\t',
-                    )
-        return summaries
+        return convert_and_downcast(characters)
 
     if name == 'cmu/nameclusters':
         names_clusters = pd.read_csv(filepath,
                     names=usecols,
                     sep= '\t')
-        return names_clusters
+        return convert_and_downcast(names_clusters)
 
     if name == 'cmu/tvtropes':
         rows = []
@@ -83,8 +76,8 @@ def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
                     'Actor name': char_info['actor']
                 }
                 rows.append(row)
-        tvtropes_clusters = pd.DataFrame(rows, usecols=usecols)
-        return tvtropes_clusters # to check
+        tvtropes_clusters = pd.DataFrame(rows, names=usecols)
+        return convert_and_downcast(tvtropes_clusters)
 
     if name == 'imdb/movies':
         movies = pd.read_csv(filepath,
@@ -93,16 +86,16 @@ def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
             na_values=['\\N'],
             dtype={'runtimeMinutes': object},  # Has some strings
         )
-        return movies
+        return convert_and_downcast(movies)
 
     if name == 'imdb/names': # to correct / modify (reused code from above imdb/movies)
         names = pd.read_csv(filepath,
             names=usecols,
             sep='\t',
-            na_values=['\\N'], # probably wrong
+            na_values=['\\N'],
             dtype={'runtimeMinutes': object},  # probably wrong
         )
-        return names
+        return convert_and_downcast(names)
 
     #if name == 'cmu/tokens_2013:
     #    return tokens
