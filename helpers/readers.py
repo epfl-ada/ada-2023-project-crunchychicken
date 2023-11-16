@@ -3,7 +3,7 @@
 import pandas as pd
 from pathlib import Path
 import json
-from helpers.utils import convert_and_downcast # adding helpers. so notebook can resolve path 
+from helpers.utils import convert_and_downcast # helpers. so notebook can resolve path 
 
 DATA_PATH = Path(__file__).resolve().parent.parent / 'data'
 
@@ -18,6 +18,11 @@ FILES = {
     # IMDb tables
     'imdb/names': DATA_PATH / 'IMDb/name.basics.tsv',
     'imdb/movies': DATA_PATH / 'IMDb/title.basics.tsv',
+    'imdb/principals': DATA_PATH / 'IMDb/title.principals.tsv', # rename if needed
+    'imdb/ratings': DATA_PATH / 'IMDb/title.ratings.tsv',
+    'imdb/akas': DATA_PATH / 'IMDb/title.akas.tsv', # unused for now
+    'imdb/crew': DATA_PATH / 'IMDb/title.crew.tsv', # unused for now
+    'imdb/episode': DATA_PATH / 'IMDb/title.episode.tsv', # unused for now
     
     # NLP old annotations dataframes
     'cmu/tokens_2013' : DATA_PATH / 'CMU/annotations_2013/tokens.parquet',
@@ -79,6 +84,15 @@ def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
         tvtropes_clusters = pd.DataFrame(rows, names=usecols)
         return convert_and_downcast(tvtropes_clusters)
 
+    if name == 'imdb/names': # to correct / modify (reused code from imdb/movies)
+        names = pd.read_csv(filepath,
+            names=usecols,
+            sep='\t',
+            na_values=['\\N'],
+            dtype={'runtimeMinutes': object},  # probably wrong
+        )
+        return convert_and_downcast(names)
+    
     if name == 'imdb/movies':
         movies = pd.read_csv(filepath,
             names=usecols,
@@ -88,14 +102,23 @@ def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
         )
         return convert_and_downcast(movies)
 
-    if name == 'imdb/names': # to correct / modify (reused code from above imdb/movies)
-        names = pd.read_csv(filepath,
+    if name == 'imdb/principals': # (reused code from imdb/movies)
+        principals = pd.read_csv(filepath,
             names=usecols,
             sep='\t',
             na_values=['\\N'],
             dtype={'runtimeMinutes': object},  # probably wrong
         )
-        return convert_and_downcast(names)
+        return convert_and_downcast(principals) 
+    
+    if name == 'imdb/ratings':
+        ratings = pd.read_csv(filepath,
+            names=usecols,
+            sep='\t',
+            na_values=['\\N'],
+            dtype={'runtimeMinutes': object},  # probably wrong
+        )
+        return convert_and_downcast(ratings) 
 
     #if name == 'cmu/tokens_2013:
     #    return tokens
