@@ -23,9 +23,9 @@ FILES = {
     'cmu/dependencies_2013' : DATA_PATH / 'CMU/annotations_2013/dependencies.parquet',
 
     # NLP new annotations dataframes
-    'cmu/tokens_2023': DATA_PATH / 'CMU/annotations_2023/tokens.parquet'
-    'cmu/dependencies_2023': DATA_PATH / 'CMU/annotations_2023/dependencies.parquet'
-    'cmu/entities_2023': DATA_PATH / 'CMU/annotations_2023/entities.parquet'
+    'cmu/tokens_2023': DATA_PATH / 'CMU/annotations_2023/tokens.parquet',
+    'cmu/dependencies_2023': DATA_PATH / 'CMU/annotations_2023/dependencies.parquet',
+    'cmu/entities_2023': DATA_PATH / 'CMU/annotations_2023/entities.parquet',
     
 }
 
@@ -56,15 +56,16 @@ def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
         )
         return characters
     
-    if name == 'cmu/plot_summaries':
-        plot_summaries = pd.read_csv(filepath,
-                    usecols=usecols,
-                    sep= '\t')
-        return plot_summaries
+    if name == 'cmu/summaries':
+        summaries = pd.read_csv(filepath,
+                    names=usecols,
+                    sep= '\t',
+                    )
+        return summaries
 
     if name == 'cmu/nameclusters':
         names_clusters = pd.read_csv(filepath,
-                    usecols=usecols,
+                    names=usecols,
                     sep= '\t')
         return names_clusters
 
