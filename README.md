@@ -20,12 +20,21 @@ Group: CrunchyChicken
 
 # TODO: Complete the final readme for P2 
 ## Title
+Director's choices on the destiny of a film
+The power of directing choices on film success
 
 ## Abstract
 
 ## Research Questions
+1) Do directors who work in multiple countries exhibit different styles in each context? 
+2) Is there a correlation between a director's critical success and the evolution of their style?
+3)  Is there a correlation between a director's critical success and the evolution of their style? 
+4) Can we find some directors that decided to cast, for their next film, only very popular actors at the time being ?
+5) How active are the directors in terms of movie production ?
+6) To what extent do directors experiment with their style over the course of their career, and are there periods of experimentation followed by periods of consistency?
 
 ## Proposed additional datasets
+IMDb movies: 
 
 ## Methods
 Explain the cleaning and the pipelines used (how merge imdb was done / nlp) 
