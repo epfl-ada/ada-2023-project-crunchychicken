@@ -47,6 +47,9 @@ We measure the success of a movie by one or a combination of the IMDb ratings, t
 ### Success and popularity of a director
 The most basic idea would be to calculate the average success and popularity scores of the movies of a director. A more elegant approach can be to count the number of successful or popular movies of the director, by applying a threshold on the scores. This way, we will take into account that for a director to be successful, only a couple of successful movies is enough. Taking Martin Scorcese for instance, movies like Casino, Goodfellas, and Taxi Driver are enough to make him a successful director, and for such directors, we should get a *success score* close to maximum, so why impinging his score with taking into account the success of movies like Made in Milan or The Family which nobody knows about?
 
+### Natural Language Processing
+Following [*Learning Latent Personas of Film Characters*](https://www.cs.cmu.edu/~dbamman/pubs/pdf/bamman+oconnor+smith.acl13.pdf), from the NLP data of movie summaries, we extract characters. For each character, we find the associated dependency of type: agent, patient, attribute. Then, we generate bags of words and do LDA to get the latent personas.
+
 ## Proposed timeline for P3
 
 
