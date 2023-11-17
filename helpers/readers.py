@@ -120,16 +120,13 @@ def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
         )
         return convert_and_downcast(ratings) 
 
-    #if name == 'cmu/tokens_2013:
-    #    return tokens
-    #if name == 'cmu/dependencies_2013:
-    #    return dependencies
-
-    #if name == 'cmu/tokens_2013:
-    #    return tokens
-    #if name == 'cmu/dependencies_2013:
-    #    return dependencies
-    #if name == 'cmu/entities_2013:
-    #    return entites
-    
-    
+    if name == 'cmu/tokens_2013:
+        return pd.read_parquet(filepath)
+    if name == 'cmu/dependencies_2013:
+        return pd.read_parquet(filepath)
+    if name == 'cmu/tokens_2023:
+        return pd.read_parquet(filepath)
+    if name == 'cmu/dependencies_2023:
+        return pd.read_parquet(filepath)
+    if name == 'cmu/entities_2023:
+        return pd.read_parquet(filepath)
