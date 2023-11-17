@@ -1,4 +1,4 @@
-# Data
+# How to get the data
 All the raw data should go in `./data/`.
 
 To get the data:
@@ -7,6 +7,7 @@ To get the data:
     2. Put the compressed file in the root directory.
     2. Decompress the file using `$ tar -xvf data.tar.gz data/`
 
+# How to update the data
 To change the data folder:
     1. Do the changes on your local folder
     2. Compress the folder using `$ tar -cvf data.tar.gz data/`
