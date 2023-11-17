@@ -44,15 +44,16 @@ Stanley Kubrick is known to have at least one great movie in every major movie g
 
 1. How impactful is the team surrounding the director on the movie's success?
 
-    Are directors always working with same crew more successful or are directors maybe successful only because they cast popular actors? Can we find some directors that decided to cast, for their next film, only very popular actors at the time being to evaluate this ?
+    Are directors always working with the same technical crew more successful or are directors maybe successful only because they cast popular actors? Can we find some directors that decided to cast, for their next film, only very popular actors at the time being to evaluate this ? Successful directors built up their renown across the industry thanks to now very popular movies, but can it also be thanks to certain individuals in their team and how frequently are they collaborating with each other ? 
   
-2. How impact is the director's choice of movie genre on the movie's success?
-  
-    Is there a correlation between a director's critical success and the evolution of their style? To what extent do directors experiment with their style over the course of their career, and are there periods of experimentation followed by periods of consistency? Are more successful directors more often specialized in a particular genre, or there is a lot of diversity in their work? 
 
-3. How impact is the director's character choices on the movie's success?
+2. To what extent does the director's choice of movie genre affects the movie's success ?
   
-    What types of characters does the director consistently choose? How diverse the directors are in their character choices? How does it affect the success of the movie? 
+    Are more successful directors more often specialized in a particular genre or genre's combination, or there is a lot of diversity in their work? Is there a correlation between a director's critical success and the evolution of their style, regarding the genre's choice? To what extent do directors experiment with new genres and thematics over the course of their career, and are there periods of experimentation followed by periods of consistency? 
+
+3. What is the impact of the director's character choices on the movie's success?
+  
+    What types of characters do successful directors choose? How diverse the directors are in their character choices? Can we find very successful directors that always use the same type of characters or others that vary a lot in their personas choices ? In definitive, how does this impact the movie's success ?
 
 
 
@@ -62,7 +63,11 @@ The dataset is available online [here](https://www.cs.cmu.edu/~ark/personas/data
 *Explain what we can get from this dataset and why we are using it.*
 
 ### IMDb Non commercial datasets
-The dataset is available online [here](https://developer.imdb.com/non-commercial-datasets/). Using this dataset, we can enrich the metadata about the movies in the CMU dataset, as well as the cast and crew of a movie. The major challenge for using this dataset is merging it with the CMU dataset. We have been able to merge them successfully by crawling Wikipedia and querying Wikidata to get the corresponding IMDb movie ID for each movie present in the CMU dataset. Next step is to also find such a mapping between the actors and actresses in the CMU dataset and their corresponding ID in the IMDb dataset, which is less critical.
+The dataset is available online [here](https://developer.imdb.com/non-commercial-datasets/). Using this dataset, we can enrich the metadata about the movies in the CMU dataset, as well as the cast and crew of a movie. The major challenge for using this dataset is merging it with the CMU dataset. We have been able to merge them successfully by crawling Wikipedia and querying Wikidata to get the corresponding IMDb movie ID for each movie present in the CMU dataset. Next step is to also find such a mapping between the actors and actresses in the CMU dataset and their corresponding ID in the IMDb dataset, which is less critical. 
+
+### 'TheMovies' Dataset
+
+The dataset is available on [Kaggle](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset?select=movies_metadata.csv). This dataset contains metadata for all 45,000 movies listed in the Full MovieLens Dataset. In it, we can retrieve some interesting information to cure as well as enrich our CMU concerning the movie runtimes, release years, production companies, as well as precious information regarding the movie's success, with some ratings and the revenue. In the dataset, 27 500~ movies are also part of our CMU Movie Corpus.
 
 ## Methods
 
