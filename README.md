@@ -29,7 +29,8 @@ Stanley Kubrick is known to have at least one great movie in every major movie g
 
 ### Stanford CoreNLP-processed summaries
 The dataset is available online [here](https://www.cs.cmu.edu/~ark/personas/data/corenlp_plot_summaries.tar).
-*Explain what we can get from this dataset and why we are using it.*
+By using this dataset access to structured and rich data, which will help to understand the nuances of movies, characters and directorial style. We can accuratly identify the characters, their actions and attributes, allowing to categorize them based on their traits. The type of characters and their dynamic will give key insights on directors narritive styles. 
+
 
 ### IMDb Non commercial datasets
 The dataset is available online [here](https://developer.imdb.com/non-commercial-datasets/). Using this dataset, we can enrich the metadata about the movies in the CMU dataset, as well as the cast and crew of a movie. The major challenge for using this dataset is merging it with the CMU dataset. We have been able to merge them successfully by crawling Wikipedia and querying Wikidata to get the corresponding IMDb movie ID for each movie present in the CMU dataset. Next step is to also find such a mapping between the actors and actresses in the CMU dataset and their corresponding ID in the IMDb dataset, which is less critical.
@@ -45,11 +46,6 @@ We measure the success of a movie by one or a combination of the IMDb ratings, t
 
 ### Success and popularity of a director
 The most basic idea would be to calculate the average success and popularity scores of the movies of a director. A more elegant approach can be to count the number of successful or popular movies of the director, by applying a threshold on the scores. This way, we will take into account that for a director to be successful, only a couple of successful movies is enough. Taking Martin Scorcese for instance, movies like Casino, Goodfellas, and Taxi Driver are enough to make him a successful director, and for such directors, we should get a *success score* close to maximum, so why impinging his score with taking into account the success of movies like Made in Milan or The Family which nobody knows about?
-
-
-### Natural Language Processing
-Following [*Learning Latent Personas of Film Characters* from David Bamman Brendan O’Connor Noah A. Smith](https://www.cs.cmu.edu/~dbamman/pubs/pdf/bamman+oconnor+smith.acl13.pdf), we first parsed all the XML files using *insert link to notebook* to obtain 4 dataframes: tokens, dependencies, coreference, parses. Using tokens and dependencies we can extract for characters present in movie plot summaries the agent actions, patient actions and their attributes, then we generated bags of words and used a [LDA](https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation) to find the typical personas *link notebook*. Since 2013, Stanford's coreNLP annotation pipeline has evolved, we decided to annoate the plots using the latest version of [Stanford coreNLP](https://stanfordnlp.github.io/CoreNLP/) to obtain better NER (Named Entity Recognition), allowing a more accurate identification of characters inside each movie plot. The coreNLP 4.5.5 pipeline code can be found here *insert link*. We use tokens, dependencies and an additional dataframe: Entity Mentions, that has the identified character per sentence of movie plot, this allows to have well defined characters and get more accurate typical personas using LDA.
-
 
 ## Proposed timeline for P3
 
