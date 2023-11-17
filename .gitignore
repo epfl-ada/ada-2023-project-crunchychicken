@@ -7,5 +7,6 @@ nlp_results/*
 stanford-corenlp-4.5.5/*
 plots/*
 generated/annotations_2013/*
+generated/annotations_2023/*
 !.gitkeep
 *.tar.gz
