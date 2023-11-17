@@ -36,6 +36,9 @@ FILES = {
     'cmu/tokens_2023': GENERATED_PATH / 'annotations_2023/tokens.parquet',
     'cmu/dependencies_2023': GENERATED_PATH / 'annotations_2023/dependencies.parquet',
     'cmu/entities_2023': GENERATED_PATH / 'annotations_2023/entities.parquet',
+    'cmu/bags_2023': GENERATED_PATH / 'annotations_2023/bags.parquet',
+    'cmu/characters_2023': GENERATED_PATH / 'annotations_2023/characters.parquet',
+    'cmu/character_classification_2023': GENERATED_PATH / 'annotations_2023/character_classification.parquet',
     
 }
 
@@ -134,9 +137,16 @@ def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
         return pd.read_parquet(filepath)
     if name == 'cmu/character_classification_2013':
         return pd.read_parquet(filepath)
+    
     if name == 'cmu/tokens_2023':
         return pd.read_parquet(filepath)
     if name == 'cmu/dependencies_2023':
         return pd.read_parquet(filepath)
     if name == 'cmu/entities_2023':
+        return pd.read_parquet(filepath)
+    if name == 'cmu/bags_2023':
+        return pd.read_parquet(filepath)
+    if name == 'cmu/characters_2023':
+        return pd.read_parquet(filepath)
+    if name == 'cmu/character_classification_2023':
         return pd.read_parquet(filepath)
