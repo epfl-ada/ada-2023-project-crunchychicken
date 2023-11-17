@@ -18,6 +18,8 @@
 ## Abstract
 *A 150 word description of the project idea and goals. What’s the motivation behind your project? What story would you like to tell, and why?*
 
+
+
 ## Research Questions (*goal is to convince TA idea has value and is feasible*)
 *A list of research questions you would like to address during the project.*
 
@@ -36,6 +38,7 @@
 10) Are the director always worked with same crew or not? Do it effect the success of movie(by ratings)?
 11) Can we spot bright underrated directors who are in the early stages of their career? We will try to do that by analyzing the movie genre, the plot summary, the movie characters, the profile of the director (e.g., age, gender, country of origin) and the profile of the cast and crew of their movies.
 
+*Jessica
 Combine 4, 6: related to team surrounding the director
 - How impactful is the team surrounding the director on the movie's success? Are directors always working with same crew more successful or are directors maybe successful only because they cast popular actors? Can we find some directors that decided to cast, for their next film, only very popular actors at the time being to evaluate this ?
   
@@ -45,6 +48,8 @@ Combine 2, 3, 9: related to movie genre
 Combine 3, 6: related to character personas
 - How impact is the director's character choices on the movie's success? How diverse the directors are in their character choices? How does it affect the success of the movie? 
 
+???And Maybe add one which kind of realted to  all the thing above:
+11) Can we spot bright underrated directors who are in the early stages of their career? We will try to do that by analyzing the movie genre, the plot summary, the movie characters, the profile of the director (e.g., age, gender, country of origin) and the profile of the cast and crew of their movies.*
 
 
 ## Proposed additional datasets
