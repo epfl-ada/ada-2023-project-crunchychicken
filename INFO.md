@@ -1,8 +1,4 @@
-# [TITLE OF THE PROJECT]
-
-This can be the readme of P3.
-
-## Data
+# Data
 All the raw data should go in `./data/`.
 
 To get the data:
@@ -17,9 +13,3 @@ To change the data folder:
     3. Delete the old compressed file from the drive
     4. Upload the compressed file to the drive
     5. Notify the others
-
-To read a dataframe: Let's all use `./helpers/readers.py` and collectively improve it. I added readers for two dataframes.
-
-## Collaboration
-1. Let's write functions in `.py` files and extract from them.
-2. Let's each have a separate branch and work there.
