@@ -19,12 +19,10 @@ Stanley Kubrick is known to have at least one great movie in every major movie g
 
     What types of characters do successful directors choose? How diverse the directors are in their character choices? Can we find very successful directors that always use the same type of characters or others that vary a lot in their personas choices? In definitive, how does this impact the movie's success?
 
-- Additional question :
+- Additional question:
  
     Can we spot bright underrated directors who are in the early stages of their career?
-
-
-We will try to do that by analyzing the movie genre, the plot summary, the movie characters, the profile of the director (e.g., age, gender, country of origin) and the profile of the cast and crew of their movies.
+    We will try to do that by analyzing the movie genre, the plot summary, the movie characters, the profile of the director (e.g., age, gender, country of origin) and the profile of the cast and crew of their movies.
 
 
 ## Proposed additional datasets
