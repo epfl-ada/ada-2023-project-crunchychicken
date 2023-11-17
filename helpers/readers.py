@@ -6,6 +6,7 @@ import json
 from helpers.utils import convert_and_downcast # helpers. so notebook can resolve path 
 
 DATA_PATH = Path(__file__).resolve().parent.parent / 'data'
+GENERATED_PATH = Path(__file__).resolve().parent.parent / 'generated'
 
 FILES = {
     # CMU tables
@@ -25,13 +26,13 @@ FILES = {
     'imdb/episode': DATA_PATH / 'IMDb/title.episode.tsv', # unused for now
     
     # NLP old annotations dataframes
-    'cmu/tokens_2013' : DATA_PATH / 'CMU/annotations_2013/tokens.parquet',
-    'cmu/dependencies_2013' : DATA_PATH / 'CMU/annotations_2013/dependencies.parquet',
+    'cmu/tokens_2013' : GENERATED_PATH / 'annotations_2013/tokens.parquet',
+    'cmu/dependencies_2013' : GENERATED_PATH / 'annotations_2013/dependencies.parquet',
 
     # NLP new annotations dataframes
-    'cmu/tokens_2023': DATA_PATH / 'CMU/annotations_2023/tokens.parquet',
-    'cmu/dependencies_2023': DATA_PATH / 'CMU/annotations_2023/dependencies.parquet',
-    'cmu/entities_2023': DATA_PATH / 'CMU/annotations_2023/entities.parquet',
+    'cmu/tokens_2023': GENERATED_PATH / 'annotations_2023/tokens.parquet',
+    'cmu/dependencies_2023': GENERATED_PATH / 'annotations_2023/dependencies.parquet',
+    'cmu/entities_2023': GENERATED_PATH / 'annotations_2023/entities.parquet',
     
 }
 
@@ -120,16 +121,13 @@ def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
         )
         return convert_and_downcast(ratings) 
 
-    #if name == 'cmu/tokens_2013:
-    #    return tokens
-    #if name == 'cmu/dependencies_2013:
-    #    return dependencies
-
-    #if name == 'cmu/tokens_2013:
-    #    return tokens
-    #if name == 'cmu/dependencies_2013:
-    #    return dependencies
-    #if name == 'cmu/entities_2013:
-    #    return entites
-    
-    
+    if name == 'cmu/tokens_2013:
+        return pd.read_parquet(filepath)
+    if name == 'cmu/dependencies_2013:
+        return pd.read_parquet(filepath)
+    if name == 'cmu/tokens_2023:
+        return pd.read_parquet(filepath)
+    if name == 'cmu/dependencies_2023:
+        return pd.read_parquet(filepath)
+    if name == 'cmu/entities_2023:
+        return pd.read_parquet(filepath)
