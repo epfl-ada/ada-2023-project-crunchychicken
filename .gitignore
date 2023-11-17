@@ -6,7 +6,6 @@ XML_data/*
 nlp_results/*
 stanford-corenlp-4.5.5/*
 plots/*
-generated/annotations_2013/tokens.parquet
-generated/annotations_2013/dependencies.parquet
+generated/annotations_2013/*
 !.gitkeep
 *.tar.gz

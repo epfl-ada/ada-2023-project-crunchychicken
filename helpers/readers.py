@@ -28,6 +28,9 @@ FILES = {
     # NLP old annotations dataframes
     'cmu/tokens_2013' : GENERATED_PATH / 'annotations_2013/tokens.parquet',
     'cmu/dependencies_2013' : GENERATED_PATH / 'annotations_2013/dependencies.parquet',
+    'cmu/bags_2013': GENERATED_PATH / 'annotations_2013/bags.parquet',
+    'cmu/characters_2013': GENERATED_PATH / 'annotations_2013/characters.parquet',
+    'cmu/character_classification_2013': GENERATED_PATH / 'annotations_2013/character_classification.parquet',
 
     # NLP new annotations dataframes
     'cmu/tokens_2023': GENERATED_PATH / 'annotations_2023/tokens.parquet',
@@ -124,6 +127,12 @@ def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
     if name == 'cmu/tokens_2013':
         return pd.read_parquet(filepath)
     if name == 'cmu/dependencies_2013':
+        return pd.read_parquet(filepath)
+    if name == 'cmu/bags_2013':
+        return pd.read_parquet(filepath)
+    if name == 'cmu/characters_2013':
+        return pd.read_parquet(filepath)
+    if name == 'cmu/character_classification_2013':
         return pd.read_parquet(filepath)
     if name == 'cmu/tokens_2023':
         return pd.read_parquet(filepath)
