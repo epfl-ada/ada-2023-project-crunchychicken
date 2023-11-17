@@ -41,18 +41,16 @@ Stanley Kubrick is known to have at least one great movie in every major movie g
 10) Are the director always worked with same crew or not? Do it effect the success of movie(by ratings)?
 11) Can we spot bright underrated directors who are in the early stages of their career? We will try to do that by analyzing the movie genre, the plot summary, the movie characters, the profile of the director (e.g., age, gender, country of origin) and the profile of the cast and crew of their movies.
 
-*Jessica
-Combine 4, 6: related to team surrounding the director
-- How impactful is the team surrounding the director on the movie's success? Are directors always working with same crew more successful or are directors maybe successful only because they cast popular actors? Can we find some directors that decided to cast, for their next film, only very popular actors at the time being to evaluate this ?
+
+1. How impactful is the team surrounding the director on the movie's success?
+-  Are directors always working with same crew more successful or are directors maybe successful only because they cast popular actors? Can we find some directors that decided to cast, for their next film, only very popular actors at the time being to evaluate this ?
   
-Combine 2, 3, 9: related to movie genre
-- How impact is the director's style on the movie's success? Is there a correlation between a director's critical success and the evolution of their style? To what extent do directors experiment with their style over the course of their career, and are there periods of experimentation followed by periods of consistency? Are more successful directors more often specialized in a particular genre, or there is a lot of diversity in their work? 
+2. How impact is the director's style on the movie's success?
+-  Is there a correlation between a director's critical success and the evolution of their style? To what extent do directors experiment with their style over the course of their career, and are there periods of experimentation followed by periods of consistency? Are more successful directors more often specialized in a particular genre, or there is a lot of diversity in their work? 
 
-Combine 3, 6: related to character personas
-- How impact is the director's character choices on the movie's success? How diverse the directors are in their character choices? How does it affect the success of the movie? 
+3. How impact is the director's character choices on the movie's success?
+-  What types of characters does the director consistently choose? How diverse the directors are in their character choices? How does it affect the success of the movie? 
 
-???And Maybe add one which kind of realted to  all the thing above:
-11) Can we spot bright underrated directors who are in the early stages of their career? We will try to do that by analyzing the movie genre, the plot summary, the movie characters, the profile of the director (e.g., age, gender, country of origin) and the profile of the cast and crew of their movies.*
 
 
 ## Proposed additional datasets
