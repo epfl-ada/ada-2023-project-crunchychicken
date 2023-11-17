@@ -45,7 +45,7 @@ Stanley Kubrick is known to have at least one great movie in every major movie g
 1. How impactful is the team surrounding the director on the movie's success?
 -  Are directors always working with same crew more successful or are directors maybe successful only because they cast popular actors? Can we find some directors that decided to cast, for their next film, only very popular actors at the time being to evaluate this ?
   
-2. How impact is the director's style on the movie's success?
+2. How impact is the director's choice of movie genre on the movie's success?
 -  Is there a correlation between a director's critical success and the evolution of their style? To what extent do directors experiment with their style over the course of their career, and are there periods of experimentation followed by periods of consistency? Are more successful directors more often specialized in a particular genre, or there is a lot of diversity in their work? 
 
 3. How impact is the director's character choices on the movie's success?
