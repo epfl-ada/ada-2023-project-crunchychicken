@@ -18,7 +18,7 @@
 ## Abstract
 *A 150 word description of the project idea and goals. What’s the motivation behind your project? What story would you like to tell, and why?*
 
-Stanley Kubrick is known to have at least one great movie in every major movie genre. On the other hand, when you see David Fincher's name as the director of a new movie, you are almost sure that there is going to be one or more serial killers involved. The directorial style of an average director evolves over time. Their experiences, their personal life, their emotional state, and many other factors might influence their style. Discovering the right directorial approach can also lead a director to achieve significant success in their career. In this data analysis project, 
+Stanley Kubrick is known to have at least one great movie in every major movie genre. On the other hand, when you see David Fincher's name as the director of a new movie, you are almost sure that there is going to be one or more serial killers involved. The directorial style of an average director evolves over time. Their experiences, their personal life, their emotional state, and many other factors might influence their style. Discovering the right directorial approach can also lead a director to achieve significant success in their career. In this data analysis project, we will utilize the CMU Movie Summary Corpus, along with supplementary datasets, to examine directorial styles from three angles: the movie genre of the director's films, the team surrounding the director, and the character personas in the director's movies. Through analysis, we aim to gain a clear insight into how a directorial style influences the success of a movie.
 
 
 
