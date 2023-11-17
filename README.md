@@ -1,4 +1,4 @@
-# Frames of success :  Diving into the brains of movie wizards
+# Frames of success :  Diving into the minds of movie wizards
 
 ## Abstract
 
@@ -15,7 +15,7 @@ Stanley Kubrick is known to have at least one great movie in every major movie g
 
     Are more successful directors more often specialized in a certain combination of genres? Are directors who tend to work on more diverse projects less successful? Is there a correlation between a director's critical success and the evolution of their style, regarding the choices of movie genres? To what extent do directors experiment with new genres and thematics over the course of their career, and is there a pattern of periods of experimentation followed by periods of consistency?
 
-3. **What is the impact of the director's character choices on the sucess of the movie?**
+3. **What is the impact of the director's character choices on the success of the movie?**
 
     What types of characters do successful directors choose? How diverse the directors are in their character choices? Can we find very successful directors that always use the same type of characters or others that vary a lot in their personas choices? In definitive, how does this impact the movie's success?
 
@@ -29,7 +29,7 @@ Stanley Kubrick is known to have at least one great movie in every major movie g
 
 ### Stanford CoreNLP-processed summaries
 The dataset is available online [here](https://www.cs.cmu.edu/~ark/personas/data/corenlp_plot_summaries.tar).
-By using this dataset access to structured and rich data, which will help to understand the nuances of movies, characters and directorial style. We can accuratly identify the characters, their actions and attributes, allowing to categorize them based on their traits. The type of characters and their dynamic will give key insights on directors narritive styles. 
+By using this dataset access to structured and rich data, which will help to understand the nuances of movies, characters and directorial style. We can accurately identify the characters, their actions and attributes, allowing to categorize them based on their traits. The type of characters and their dynamic will give key insights on directors narrative styles. 
 
 
 ### IMDb Non commercial datasets
@@ -45,7 +45,7 @@ The dataset is available on [Kaggle](https://www.kaggle.com/datasets/rounakbanik
 We measure the success of a movie by one or a combination of the IMDb ratings, the number of rates, the Box Office revenue, and possibly the awards and nominations of the movie. Will create a *success score* and a *popularity score* for each movie. We will decide on the exact definition of these scores based on their distribution and their representativeness of what we intend to measure.
 
 ### Success and popularity of a director
-The most basic idea would be to calculate the average success and popularity scores of the movies of a director. A more elegant approach can be to count the number of successful or popular movies of the director, by applying a threshold on the scores. This way, we will take into account that for a director to be successful, only a couple of successful movies is enough. Taking Martin Scorcese for instance, movies like Casino, Goodfellas, and Taxi Driver are enough to make him a successful director, and for such directors, we should get a *success score* close to maximum, so why impinging his score with taking into account the success of movies like Made in Milan or The Family which nobody knows about?
+The most basic idea would be to calculate the average success and popularity scores of the movies of a director. A more elegant approach can be to count the number of successful or popular movies of the director, by applying a threshold on the scores. This way, we will take into account that for a director to be successful, only a couple of successful movies is enough. Taking Martin Scorsese for instance, movies like Casino, Goodfellas, and Taxi Driver are enough to make him a successful director, and for such directors, we should get a *success score* close to maximum, so why impinging his score with taking into account the success of movies like Made in Milan or The Family which nobody knows about?
 
 ### Natural Language Processing
 Following [*Learning Latent Personas of Film Characters*](https://www.cs.cmu.edu/~dbamman/pubs/pdf/bamman+oconnor+smith.acl13.pdf), from the NLP data of movie summaries, we extract characters. For each character, we find the associated dependency of type: agent, patient, attribute. Then, we generate bags of words and do LDA to get the latent personas.
