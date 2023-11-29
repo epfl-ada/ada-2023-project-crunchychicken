@@ -1,8 +1,12 @@
+# TODO:
+- look how to use Jekyll unless other propositions
+- clear work place and tasks repartition
+
 # P3: Final project and the datastory
 
 When you are done with Homework H2, in Milestone P3 you will execute the project you proposed. For the final milestone, you will be expected to execute your project proposal and describe your project in a data story.
 
-Data stories are a blog post or short article, with an important visual component, using data to tell a story and illustrate it effectively. You can be less formal here (although methods and math should then appear in the notebook), but more visual. Please look at the top-k projects from 2022, 2021, 2020, and 2019 as a reference for designing good data stories. You can pick your preferred platform option, but we encourage you to use Jekyll. We prepared a short tutorial for creating a website with GitHub pages outlining how you can host the datastory. You submit the story by providing a URL to it in your README file.
+Data stories are a blog post or short article, with an important visual component, using data to tell a story and illustrate it effectively. You can be less formal here (although methods and math should then appear in the notebook), but more visual. Please look at the top-k projects from [2022](https://epfl-ada.github.io/teaching/fall2022/cs401/reports/), [2021](https://epfl-ada.github.io/teaching/fall2021/cs401/reports/), [2020](https://epfl-ada.github.io/teaching/fall2020/cs401/reports/), and [2019](https://epfl-ada.github.io/teaching/fall2019/cs401/reports/) as a reference for designing good data stories. You can pick your preferred platform option, but we encourage you to use Jekyll. We prepared a short tutorial for [creating a website with GitHub pages](https://epfl-ada.github.io/teaching/fall2023/cs401/projects/github_pages_tutorial/) outlining how you can host the datastory. You submit the story by providing a URL to it in your README file.
 
 A Jupyter notebook extending the one delivered for Milestone P2 is also expected and will be graded. The README in Milestone P3 shall be updated. It should also detail the contributions of all group members.
 
