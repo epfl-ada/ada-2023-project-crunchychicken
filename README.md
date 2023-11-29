@@ -2,6 +2,9 @@
 - look how to use Jekyll unless other propositions
 - clear work plan and tasks repartition
 
+- Doc to update as we are working on P3 : 
+[Here](https://docs.google.com/document/d/1I8oTcdz1QQ-hEw_nMJjvXaWbeH089go-Vf3_V0yVUfc/edit)
+
 # P3: Final project and the datastory
 
 When you are done with Homework H2, in Milestone P3 you will execute the project you proposed. For the final milestone, you will be expected to execute your project proposal and describe your project in a data story.
