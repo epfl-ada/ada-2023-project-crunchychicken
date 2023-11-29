@@ -1,6 +1,6 @@
 # TODO:
 - look how to use Jekyll unless other propositions
-- clear work place and tasks repartition
+- clear work plan and tasks repartition
 
 # P3: Final project and the datastory
 
