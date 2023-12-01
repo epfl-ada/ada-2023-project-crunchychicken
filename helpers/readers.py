@@ -3,7 +3,8 @@
 import pandas as pd
 from pathlib import Path
 import json
-from helpers.utils import convert_and_downcast # helpers. so notebook can resolve path 
+ # helpers. so notebook can resolve path 
+from helpers.utils import convert_and_downcast, preprocess_cmu_movies, preprocess_cmu_characters, preprocess_imdb_movies, preprocess_movieLens_movies
 
 DATA_PATH = Path(__file__).resolve().parent.parent / 'data'
 GENERATED_PATH = Path(__file__).resolve().parent.parent / 'generated'
@@ -19,11 +20,25 @@ FILES = {
     # IMDb tables
     'imdb/names': DATA_PATH / 'IMDb/name.basics.tsv',
     'imdb/movies': DATA_PATH / 'IMDb/title.basics.tsv',
-    'imdb/principals': DATA_PATH / 'IMDb/title.principals.tsv', # rename if needed
+    'imdb/principals': DATA_PATH / 'IMDb/title.principals.tsv',
     'imdb/ratings': DATA_PATH / 'IMDb/title.ratings.tsv',
     'imdb/akas': DATA_PATH / 'IMDb/title.akas.tsv', # unused for now
     'imdb/crew': DATA_PATH / 'IMDb/title.crew.tsv', # unused for now
     'imdb/episode': DATA_PATH / 'IMDb/title.episode.tsv', # unused for now
+
+    # Mappings
+    'mapping_wikipedia_imdb_freebase': GENERATED_PATH / 'wp2imdb.csv',
+    'mapping_wikipedia_imdb': GENERATED_PATH / 'wp2imdb_01.csv',
+    'mapping_freebase_imdb': GENERATED_PATH / 'wp2imdb_02.csv',
+
+    # MovieLens
+    'movieLens/credits': DATA_PATH / 'MovieLens/credits.csv', # unused for now
+    'movieLens/keywords': DATA_PATH / 'MovieLens/keywords.csv', # unused for now
+    'movieLens/links': DATA_PATH / 'MovieLens/links.csv', # unused for now
+    'movieLens/links_small': DATA_PATH / 'MovieLens/links_small.csv', # unused for now
+    'movieLens/movies': DATA_PATH / 'MovieLens/movies_metadata.csv',
+    'movieLens/ratings': DATA_PATH / 'MovieLens/ratings.csv', # unused for now
+    'movieLens/ratings_small': DATA_PATH / 'MovieLens/ratings_small.csv', # unused for now
     
     # NLP old annotations dataframes
     'cmu/tokens_2013' : GENERATED_PATH / 'annotations_2013/tokens.parquet',
@@ -42,16 +57,19 @@ FILES = {
     
 }
 
-def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
+def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd.DataFrame:
     """Reads a dataframe with a suitable method and arguments and returns it."""
 
     filepath = FILES[name]
 
+    ### CMU
     if name == 'cmu/summaries':
         summaries = pd.read_csv(filepath,
                     names=usecols,
                     sep= '\t',
                     )
+        if preprocess:
+            print("Ignoring preprocess")
         return convert_and_downcast(summaries)
     
     if name == 'cmu/movies':
@@ -59,19 +77,25 @@ def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
             names=usecols,
             sep='\t',
         )
-        return convert_and_downcast(movies)  
+        if preprocess:
+            movies = preprocess_cmu_movies(movies)
+        return convert_and_downcast(movies)
 
     if name == 'cmu/characters':
         characters = pd.read_csv(filepath,
             names =usecols,
             sep='\t',
         )
+        if preprocess:
+            characters = preprocess_cmu_characters(characters)
         return convert_and_downcast(characters)
 
     if name == 'cmu/nameclusters':
         names_clusters = pd.read_csv(filepath,
                     names=usecols,
                     sep= '\t')
+        if preprocess:
+            print("Ignoring preprocess")
         return convert_and_downcast(names_clusters)
 
     if name == 'cmu/tvtropes':
@@ -88,16 +112,26 @@ def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
                     'Actor name': char_info['actor']
                 }
                 rows.append(row)
-        tvtropes_clusters = pd.DataFrame(rows, names=usecols)
+        if preprocess:
+            print("Ignoring preprocess")
+        tvtropes_clusters = pd.DataFrame(rows)
+
         return convert_and_downcast(tvtropes_clusters)
 
-    if name == 'imdb/names': # to correct / modify (reused code from imdb/movies)
+    ### IMDb
+
+    if name == 'imdb/names':
         names = pd.read_csv(filepath,
             names=usecols,
             sep='\t',
             na_values=['\\N'],
-            dtype={'runtimeMinutes': object},  # probably wrong
         )
+        names['birthYear'] = names['birthYear'].astype('Int64')
+        names['deathYear'] = names['deathYear'].astype('Int64')
+
+        if preprocess:
+            print("Ignoring preprocess")
+
         return convert_and_downcast(names)
     
     if name == 'imdb/movies':
@@ -107,6 +141,13 @@ def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
             na_values=['\\N'],
             dtype={'runtimeMinutes': object},  # Has some strings
         )
+        movies['titleType'] = movies['titleType'].astype('category')
+        movies['isAdult'] = movies['isAdult'].astype('Int64')
+        movies['startYear'] = movies['startYear'].astype('Int64')
+        movies['endYear'] = movies['endYear'].astype('Int64')
+        movies['runtimeMinutes'] = movies['runtimeMinutes'].astype('string')
+        if preprocess: # fix runtimeMinutes and genres
+            movies = preprocess_imdb_movies(movies)
         return convert_and_downcast(movies)
 
     if name == 'imdb/principals': # (reused code from imdb/movies)
@@ -114,8 +155,10 @@ def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
             names=usecols,
             sep='\t',
             na_values=['\\N'],
-            dtype={'runtimeMinutes': object},  # probably wrong
         )
+        principals['category'] = principals['category'].astype('category')
+        if preprocess:
+            print("Ignoring preprocess")
         return convert_and_downcast(principals) 
     
     if name == 'imdb/ratings':
@@ -123,9 +166,90 @@ def read_dataframe(name: str, usecols: list[str] = None) -> pd.DataFrame:
             names=usecols,
             sep='\t',
             na_values=['\\N'],
-            dtype={'runtimeMinutes': object},  # probably wrong
         )
-        return convert_and_downcast(ratings) 
+        if preprocess:
+            print("Ignoring preprocess")
+        return convert_and_downcast(ratings)
+    
+    if name == 'imdb/akas':
+        akas = pd.read_csv(filepath,
+            names=usecols,
+            sep='\t',
+            na_values=['\\N'],
+            dtype={'attributes': object},
+        )
+        akas['isOriginalTitle'] = akas['isOriginalTitle'].astype('Int64')
+        if preprocess:
+            print("Ignoring preprocess")
+        return convert_and_downcast(akas)
+    
+    if name == 'imdb/crew':
+        crew = pd.read_csv(filepath,
+            names=usecols,
+            sep='\t',
+            na_values=['\\N'],
+        )
+        if preprocess:
+            print("Ignoring preprocess")
+        return convert_and_downcast(crew)
+    
+    if name == 'imdb/episode':
+        episode = pd.read_csv(filepath,
+            names=usecols,
+            sep='\t',
+            na_values=['\\N'],
+        )
+        episode['seasonNumber'] = episode['seasonNumber'].astype('Int64')
+        episode['episodeNumber'] = episode['episodeNumber'].astype('Int64')
+        if preprocess:
+            print("Ignoring preprocess")
+        return convert_and_downcast(episode)
+    
+    ### Mappings
+
+    if name == 'mapping_wikipedia_imdb_freebase':
+        mapping = pd.read_csv(filepath,
+            names=usecols,
+            sep=',',
+        )
+        mapping['wikipedia'] = mapping['wikipedia'].astype('Int64')
+        if preprocess:
+            print("Ignoring preprocess")
+        return convert_and_downcast(mapping)
+    
+    if (name == 'mapping_wikipedia_imdb') or (name == 'mapping_freebase_imdb'):
+        mapping = pd.read_csv(filepath,
+            names=usecols,
+            sep=',',
+        )
+        if preprocess:
+            print("Ignoring preprocess")
+        return convert_and_downcast(mapping)
+    
+    ### MovieLens
+
+    if name == 'movieLens/movies':
+        movies = pd.read_csv(filepath,
+            names=usecols,
+            sep=',',
+            dtype=object,
+        )
+        if preprocess:
+            # could add date split to YYYY, MM, DD
+            movies = preprocess_movieLens_movies(movies)
+
+        movies['adult'] = movies['adult'].astype('category')
+        movies['budget'] = movies['budget'].astype('Int64')
+        movies['id'] = movies['id'].astype('Int64')
+        movies['popularity'] = movies['popularity'].astype('float')
+        movies['revenue'] = movies['revenue'].astype('Int64')
+        movies['runtime'] = movies['runtime'].astype('float').astype('Int64')
+        movies['video'] = movies['video'].astype('category')
+        movies['vote_average'] = movies['vote_average'].astype('float')
+        movies['vote_count'] = movies['vote_count'].astype('Int64')
+        return convert_and_downcast(movies)
+
+    ### NLP
 
     if name == 'cmu/tokens_2013':
         return pd.read_parquet(filepath)
