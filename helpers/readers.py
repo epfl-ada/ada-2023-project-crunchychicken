@@ -270,7 +270,7 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
             names=usecols,
         )
         if preprocess:
-            print("Ignoring preprocess")
+            links['imdbId'] = links['imdbId'].apply(lambda x: 'tt{:07d}'.format(x))
 
         links['tmdbId'] = links['tmdbId'].astype('Int64')
         return convert_and_downcast(links)
