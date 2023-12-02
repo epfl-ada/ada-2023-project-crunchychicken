@@ -248,6 +248,41 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         movies['vote_average'] = movies['vote_average'].astype('float')
         movies['vote_count'] = movies['vote_count'].astype('Int64')
         return convert_and_downcast(movies)
+    
+    if name == 'movieLens/credits':
+        credits = pd.read_csv(filepath,
+            names=usecols,
+        )
+        if preprocess:
+            print("Ignoring preprocess")
+        return convert_and_downcast(credits)
+    
+    if name == 'movieLens/keywords':
+        keywords = pd.read_csv(filepath,
+            names=usecols,
+        )
+        if preprocess:
+            print("Ignoring preprocess")
+        return convert_and_downcast(keywords)
+    
+    if name == 'movieLens/links':
+        links = pd.read_csv(filepath,
+            names=usecols,
+        )
+        if preprocess:
+            print("Ignoring preprocess")
+
+        links['tmdbId'] = links['tmdbId'].astype('Int64')
+        return convert_and_downcast(links)
+    
+    if name == 'movieLens/ratings':
+        ratings = pd.read_csv(filepath,
+            names=usecols,
+        )
+        if preprocess:
+            print("Ignoring preprocess")
+
+        return convert_and_downcast(ratings)
 
     ### NLP
 
