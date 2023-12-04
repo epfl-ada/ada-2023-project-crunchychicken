@@ -24,6 +24,7 @@ FILES = {
     'imdb/principals': DATA_PATH / 'IMDb/title.principals.tsv',
     'imdb/ratings': DATA_PATH / 'IMDb/title.ratings.tsv',
     'imdb/enhanced_movies': DATA_PATH / 'IMDb/enhanced_imdb.csv',
+    'imdb/awards' : DATA_PATH / 'IMDb/awards.csv',
     'imdb/akas': DATA_PATH / 'IMDb/title.akas.tsv', # unused for now
     'imdb/crew': DATA_PATH / 'IMDb/title.crew.tsv', # unused for now
     'imdb/episode': DATA_PATH / 'IMDb/title.episode.tsv', # unused for now
@@ -193,6 +194,19 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         if preprocess:
             print("Ignoring preprocess")
         return(convert_and_downcast(movies))
+    
+
+    if name == 'imdb/awards':
+        awards = pd.read_csv(filepath,
+            names=usecols,
+            sep=',',
+            dtype={'year': object,
+                   'characterNames' : object},
+        )
+        awards['year'] = awards['year'].astype('Int64')
+        if preprocess:
+            print("Ignoring preprocess")
+        return(convert_and_downcast(awards))
     
     if name == 'imdb/akas':
         akas = pd.read_csv(filepath,
