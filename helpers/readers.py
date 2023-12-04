@@ -16,6 +16,7 @@ FILES = {
     'cmu/nameclusters': DATA_PATH / 'CMU/name.clusters.txt',
     'cmu/summaries': DATA_PATH / 'CMU/plot_summaries.txt',
     'cmu/tvtropes': DATA_PATH / 'CMU/tvtropes.clusters.txt',
+    'cmu/movies_scraped': GENERATED_PATH / 'scraped_cmu_movies_infobox.parquet',
 
     # IMDb tables
     'imdb/names': DATA_PATH / 'IMDb/name.basics.tsv',
@@ -122,6 +123,11 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         tvtropes_clusters = pd.DataFrame(rows)
 
         return convert_and_downcast(tvtropes_clusters)
+    
+    if name == 'cmu/movies_scraped':
+        if preprocess:
+            print("Ignoring preprocess")
+        return convert_and_downcast(pd.read_parquet(filepath))
 
     ### IMDb
 
