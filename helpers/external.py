@@ -1,10 +1,13 @@
 from typing import Union, Iterator
+from time import sleep
+
 import wikipedia
-from wikipedia import PageError, DisambiguationError
 import requests
 import pandas as pd
 import tqdm
-from time import sleep
+from wikipedia import PageError, DisambiguationError
+
+from helpers.utils import batched
 
 
 def crawl_wikipedia(pageid: Union[int, str]) -> dict:
@@ -87,7 +90,7 @@ def crawl_wikidata(values: list[str], by: str = 'freebase') -> list[list[str]]:
 def extract_cmu_imdb_mapping():
 
     # Read the movies from the CMU dataset
-    cmu_movies = pd.read_csv('data/MovieSummaries/movie.metadata.tsv', sep='\t', usecols=[0, 1], names=['wikipedia', 'freebase'])
+    cmu_movies = pd.read_csv('data/CMU/movie.metadata.tsv', sep='\t', usecols=[0, 1], names=['wikipedia', 'freebase'])
 
     # Get mapping by crawling Wikipedia
     mapping_01 = []
@@ -101,13 +104,12 @@ def extract_cmu_imdb_mapping():
     mapping_01.to_csv('generated/wp2imdb_01.csv', index=False)
 
     # Get mapping by querying Wikidata
-    # mapping_02 = []
-    # sz = 200
-    # for batch in tqdm.tqdm(batched(cmu_movies.freebase, sz=sz), total=(len(cmu_movies.freebase)//sz + 1)):
-    #     mapping_02.extend(crawl_wikidata(values=batch.to_list(), by='freebase'))
-    # mapping_02 = pd.DataFrame(mapping_02).dropna()
-    # mapping_02.to_csv('generated/wp2imdb_02.csv', index=False)
-    mapping_02 = pd.read_csv('generated/wp2imdb_02.csv')  # TMP
+    mapping_02 = []
+    sz = 200
+    for batch in tqdm.tqdm(batched(cmu_movies.freebase, sz=sz), total=(len(cmu_movies.freebase)//sz + 1)):
+        mapping_02.extend(crawl_wikidata(values=batch.to_list(), by='freebase'))
+    mapping_02 = pd.DataFrame(mapping_02).dropna()
+    mapping_02.to_csv('generated/wp2imdb_02.csv', index=False)
 
     # Aggregate the two and store
     mapping = pd.merge(left=mapping_01, right=mapping_02, on='imdb', how='outer')
