@@ -6,6 +6,3 @@ generated/annotations_2013/*
 generated/annotations_2023/*
 !.gitkeep
 *.tar.gz
-# will be removed soon
-scraped_cmu_movies.parquet 
-final_results.json
