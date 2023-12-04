@@ -22,7 +22,7 @@ FILES = {
     'imdb/movies': DATA_PATH / 'IMDb/title.basics.tsv',
     'imdb/principals': DATA_PATH / 'IMDb/title.principals.tsv',
     'imdb/ratings': DATA_PATH / 'IMDb/title.ratings.tsv',
-    'imdb/enhanced_movies': DATA_PATH / 'IMDb/enhanced_movies.csv',
+    'imdb/enhanced_movies': DATA_PATH / 'IMDb/enhanced_imdb.csv',
     'imdb/akas': DATA_PATH / 'IMDb/title.akas.tsv', # unused for now
     'imdb/crew': DATA_PATH / 'IMDb/title.crew.tsv', # unused for now
     'imdb/episode': DATA_PATH / 'IMDb/title.episode.tsv', # unused for now
@@ -62,6 +62,10 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
     """Reads a dataframe with a suitable method and arguments and returns it."""
 
     filepath = FILES[name]
+
+    if not Path(filepath).exists():
+        print(f"File not found: {filepath}")
+        return None
 
     ### CMU
     if name == 'cmu/summaries':
@@ -176,9 +180,12 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         movies = pd.read_csv(filepath,
             names=usecols,
             sep=',',
-            dtype=object,
+            dtype={'year': object},
         )
-        ## Add other processing steps
+        movies.loc[movies["year"] == "TV Movie 2019", "year"] = "2019"
+        movies['year'] = movies['year'].astype('Int64')
+        if preprocess:
+            print("Ignoring preprocess")
         return(convert_and_downcast(movies))
     
     if name == 'imdb/akas':

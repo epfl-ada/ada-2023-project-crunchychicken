@@ -2,11 +2,10 @@
 .DS_Store
 __pycache__/
 data/*
-XML_data/* # can probably remove
-nlp_results/* # can probably remove
-stanford-corenlp-4.5.5/* # can probably remove
-plots/* # can probably remove
 generated/annotations_2013/*
 generated/annotations_2023/*
 !.gitkeep
 *.tar.gz
+# will be removed soon
+scraped_cmu_movies.parquet 
+final_results.json
