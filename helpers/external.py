@@ -29,9 +29,13 @@ def crawl_wikipedia(pageid: Union[int, str]) -> dict:
     for url in wikipedia_page.references[::-1]:
         # IMDb ID
         if imdb is None and 'imdb.com/title' in url:
-            imdb = url.split('imdb.com/title/')[1].split('/')[0]
+            split =  url.split('imdb.com/title/')[1].split('/')
+            imdb = split[0]
             if imdb[:2] != 'tt':
                 imdb = None
+            if len(split) > 1 and split[1] != '':
+                imdb = None
+
         # Box Office Mojo ID (needs improvement)
         # if bomojo_id is None and 'boxofficemojo.com/movies' in url:
             # bomojo_id = [item.split('=')[1] for item in url.split('/')[-1].split('.')[0].split('?') if item.split('=')[0] == 'id'][0]
