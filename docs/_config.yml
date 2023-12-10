@@ -1,12 +1,12 @@
 theme: jekyll-theme-minimal
-title: Frames of success: Diving into the minds of movie wizards
+title: "Frames of success: Diving into the minds of movie wizards"
 description: A template website for ADA Project
 
 show_downloads: False
 
-#author:  George # testing
-#twitter_username: elonmusk # testing
-#github_username: Arthurepfl123 # testing
+author:  George # testing
+twitter_username: elonmusk # testing
+github_username: Arthurepfl123 # testing
 
 markdown: kramdown # testing
 kramdown:
