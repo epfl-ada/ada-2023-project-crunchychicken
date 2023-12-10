@@ -1,9 +1,11 @@
 theme: jekyll-theme-minimal
-title: ADA Template Website
-description: A template website for ADA
-show_downloads: True
+title: Frames of success Diving into the minds of movie wizards
+description: A template website for ADA Project
+show_downloads: False
 navigation:
   - title: Home
     url: /
-  - title: Example
-    url: example
+  - title: Backup Home
+    url: backup-home
+  - title: Backup Example
+    url: backup-example
