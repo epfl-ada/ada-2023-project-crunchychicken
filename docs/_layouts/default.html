@@ -39,8 +39,17 @@
 
       </section>
       <footer>
+        <!-- To remove? -->
         {% if site.github.is_project_page %}
         <p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
+        {% endif %}
+        
+        <!-- Social Links -->
+        {% if site.github_username %}
+          <a href="https://github.com/{{ site.github_username }}">GitHub</a>
+        {% endif %}
+        {% if site.twitter_username %}
+          <a href="https://twitter.com/{{ site.twitter_username }}">Twitter</a>
         {% endif %}
       </footer>
     </div>
