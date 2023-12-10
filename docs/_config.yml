@@ -6,7 +6,7 @@ show_downloads: False
 
 author: George # testing
 twitter_username: elonmusk # testing
-github_username: Arthurepfl123 # testing
+github_username: epfl-ada/ada-2023-project-crunchychicken
 
 markdown: kramdown # testing
 kramdown:
