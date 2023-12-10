@@ -2,6 +2,7 @@ theme: jekyll-theme-minimal
 title: "Frames of success: Diving into the minds of movie wizards"
 description: A template website for ADA Project
 
+short_title: "Frames of success"
 show_downloads: False
 
 # author: George Lucas # testing, "author" not implemented in layouts
