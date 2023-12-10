@@ -4,9 +4,11 @@ description: A template website for ADA Project
 
 show_downloads: False
 
-author: George # testing
-twitter_username: elonmusk # testing
+# author: George Lucas # testing, "author" not implemented in layouts
+# twitter_username: elonmusk # testing
 github_username: epfl-ada/ada-2023-project-crunchychicken
+
+favicon: 'assets/img/camera_with_flash.png'
 
 markdown: kramdown # testing
 kramdown:
