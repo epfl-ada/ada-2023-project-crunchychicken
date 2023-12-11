@@ -3,6 +3,10 @@
 # for full layout add a home icon to redirect to home
 # investigate for a simple way to adjust image sizes (allow different sizes for different images)
 
+# to launch locally (requires ruby installed then gem install bundler), run in docs/ cmd:
+# bundle install
+# bundle exec jekyll serve
+
 theme: jekyll-theme-minimal
 
 title: "Frames of success: Diving into the minds of movie wizards"
