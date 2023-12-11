@@ -25,10 +25,10 @@ markdown: kramdown
 kramdown:
     math_engine: katex 
 
-# Uncomment to exclude backup files (comment the files in navigation when working locally)
-exclude:
-  - backup-home.md
-  - backup-example.md
+# used to work, not anymore, using manuall comment in navigation
+#exclude:
+#  - backup-home.md
+#  - backup-example.md
 
 navigation:
   - title: Home
@@ -41,7 +41,7 @@ navigation:
     url: section-3
   - title: Conclusion
     url: conclusion
-  - title: Backup Home
-    url: backup-home
-  - title: Backup Example
-    url: backup-example
+#  - title: Backup Home
+#    url: backup-home
+#  - title: Backup Example
+#    url: backup-example
