@@ -1,3 +1,8 @@
+# TODO: 
+# for full layout similar to latex create a catcher that will catch the # ## ### #### of the titles so we can apply to them different css (centering, not justified)
+# for full layout add a home icon to redirect to home
+# investigate for a simple way to adjust image sizes (allow different sizes for different images
+)
 theme: jekyll-theme-minimal
 
 title: "Frames of success: Diving into the minds of movie wizards"
