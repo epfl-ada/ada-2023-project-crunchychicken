@@ -1,7 +1,7 @@
 theme: jekyll-theme-minimal
 
 title: "Frames of success: Diving into the minds of movie wizards"
-description: A template website for ADA Project
+# description: A template website for ADA Project
 
 short_title: "Frames of success"
 show_downloads: False
@@ -16,10 +16,10 @@ markdown: kramdown # testing
 kramdown:
     math_engine: katex # testing
 
-# Uncomment to exclude backup files
-#exclude:
-#  - backup-home.md
-#  - backup-example.md
+# Uncomment to exclude backup files (had to comment the files in navigation when working locally)
+exclude:
+  - backup-home.md
+  - backup-example.md
 
 navigation:
   - title: Home
@@ -30,7 +30,9 @@ navigation:
     url: section-2
   - title: Idea 3
     url: section-3
-  - title: Backup Home
-    url: backup-home
-  - title: Backup Example
-    url: backup-example
+  - title: Conclusion
+    url: conclusion
+#  - title: Backup Home
+#    url: backup-home
+#  - title: Backup Example
+#    url: backup-example

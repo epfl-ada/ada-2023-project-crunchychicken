@@ -57,6 +57,7 @@ a:hover small {
 .wrapper {
   width:1080px;
   margin:0 auto;
+  text-align: justify; /* justified for full layout, but is it also applied to title, need to find a workaround) */
 }
 
 blockquote {
@@ -101,6 +102,9 @@ th {
 
 img {
   max-width:100%;
+  display: block; /* for centering */
+  margin-left: auto; /* for centering */
+  margin-right: auto; /* for centering */
 }
 
 header {
@@ -173,6 +177,7 @@ section {
   width:750px;
   float:right;
   padding-bottom:50px;
+  text-align: justify; /* make text justfied */
 }
 
 small {
