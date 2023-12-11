@@ -50,39 +50,32 @@ layout: full
     </div>
 
     <!-- Footer Navigation -->
-<div class="footer-nav">
-  {% for nav_item in site.navigation %}
-    {% assign page_url = page.url | remove: 'index.html' | remove: '.html' %}
-    {% assign page_url = page_url | slice: 1, page_url.size %}
-    {% if page_url == nav_item.url %}
-      {% unless forloop.first %}
-        {% assign prev = forloop.index0 | minus: 1 %}
-        {% if site.navigation[prev].url == '/' %}
-        <p>Debug: Previous is root</p> <!-- Debug statement -->
-        <p>Previous title {{ site.navigation[prev].title }}</p>
-        <p>Link: {{ site.baseurl }} </p>
-          <a href="{{ site.baseurl }}">Previous: {{ site.navigation[prev].title }}</a>
-        {% else %}
-        <p>Debug: Previous is not root</p> <!-- Debug statement -->
-          <a href="{{ site.baseurl | append: '/' }}{{ site.navigation[prev].url }}">Previous: {{ site.navigation[prev].title }}</a>
-        {% endif %}
-      {% endunless %}
+    <div class="footer-nav">
+      {% for nav_item in site.navigation %}
+        {% assign page_url = page.url | remove: 'index.html' | remove: '.html' %}
+        {% assign page_url = page_url | slice: 1, page_url.size %}
+        {% if page_url == nav_item.url %}
+          {% unless forloop.first %}
+            {% assign prev = forloop.index0 | minus: 1 %}
+            {% if site.navigation[prev].url == '/' %}
+              <a href="{{ site.baseurl | append: '/'}}">Previous: {{ site.navigation[prev].title }}</a>
+            {% else %}
+              <a href="{{ site.baseurl | append: '/' }}{{ site.navigation[prev].url }}">Previous: {{ site.navigation[prev].title }}</a>
+            {% endif %}
+          {% endunless %}
 
-      {% unless forloop.last %}
-        {% assign next = forloop.index0 | plus: 1 %}
-        <p>Last: {{ site.navigation[next].url }}</p> <!-- Debug statement -->
-        {% if site.navigation[next].url == '/' %}
-        <p>Also here:</p> <!-- Debug statement -->
-          <a href="{{ site.baseurl }}">Next: {{ site.navigation[next].title }}</a>
-        {% else %}
-        <p>Also here 2: {{ nav_item.url }}</p> <!-- Debug statement -->
-          <a href="{{ site.baseurl | append: '/' }}{{ site.navigation[next].url }}">Next: {{ site.navigation[next].title }}</a>
+          {% unless forloop.last %}
+            {% assign next = forloop.index0 | plus: 1 %}
+            {% if site.navigation[next].url == '/' %}
+              <a href="{{ site.baseurl }}">Next: {{ site.navigation[next].title }}</a>
+            {% else %}
+              <a href="{{ site.baseurl | append: '/' }}{{ site.navigation[next].url }}">Next: {{ site.navigation[next].title }}</a>
+            {% endif %}
+          {% endunless %}
         {% endif %}
-      {% endunless %}
-    {% endif %}
-  {% endfor %}
-</div>
-    
+      {% endfor %}
+    </div>
+        
     <style>
       .footer-nav {
         text-align: center;
