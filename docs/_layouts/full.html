@@ -57,12 +57,12 @@ layout: full
         {% if page_url == nav_item.url %}
           {% unless forloop.first %}
             {% assign prev = forloop.index0 | minus: 1 %}
-            <a href="{{ site.baseurl }}{{ site.navigation[prev].url }}">Previous: {{ site.navigation[prev].title }}</a>
+            <a href="{{ site.baseurl }}/{{ site.navigation[prev].url }}">Previous: {{ site.navigation[prev].title }}</a>
           {% endunless %}
 
           {% unless forloop.last %}
             {% assign next = forloop.index0 | plus: 1 %}
-            <a href="{{ site.baseurl }}{{ site.navigation[next].url }}">Next: {{ site.navigation[next].title }}</a>
+            <a href="{{ site.baseurl }}/{{ site.navigation[next].url }}">Next: {{ site.navigation[next].title }}</a>
           {% endunless %}
         {% endif %}
       {% endfor %}
