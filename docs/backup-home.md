@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # ADA Template Website
 ## Website Link
 https://epfl-ada.github.io/ada-2023-project-crunchychicken/
