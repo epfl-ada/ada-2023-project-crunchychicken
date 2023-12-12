@@ -15,6 +15,6 @@ Morbi hendrerit elit non elit tincidunt sollicitudin ut nec erat. Donec aliquam 
 $$
 e^{i \pi} = -1$$
 
-Inline Text $\sum_{i=1}^\infty\frac{1}{n^2} =\frac{\pi^2}{6}$ Inline Text. <span style="color:blue">some *blue* text</span>.
+Inline Text $\sum_{i=1}^\infty\frac{1}{n^2} =\frac{\pi^2}{6}$ Inline Text. <span style="color:blue">Some *blue* text</span>. <span style="color: blue; font-weight: bold;">Some blue and bold text</span>.
 
 ![Temp Image](https://i.postimg.cc/L8ZnDTVR/image-2023-12-11-214623541.png)
