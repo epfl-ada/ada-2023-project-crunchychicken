@@ -71,7 +71,7 @@ root
 |----------|-------------|-------|-----|------|----------------|
 | 10000053 | 1           | 3     | 6   | 5    | True           |
 
-Then, using these dataframes, we want to generate a bag-of-words matrix $(movie_{id}, character, r, w)$, where $r$ is of {agent verb, patient verb, attribute} and $w$ the lemma form the word associated to the character.
+Then, [Annotations to Personas (2013).ipnyb](https://github.com/epfl-ada/ada-2023-project-crunchychicken/blob/main/pipelines/Annotations%20to%20Personas%20(2013).ipynb), using these dataframes, generates a bag-of-words matrix $(movie_{id}, character, r, w)$, where $r$ is of {agent verb, patient verb, attribute} and $w$ the lemma form the word associated to the character:
 
 | movie_id | character | r | w | 
 |----------|-----------|---|---|
