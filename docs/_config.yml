@@ -23,7 +23,7 @@ markdown: kramdown
 kramdown:
     math_engine: katex 
 
-# used to work, not anymore, using manuall comment in navigation
+# used to work, not anymore, using manual comment in navigation
 #exclude:
 #  - backup-home.md
 #  - backup-example.md
