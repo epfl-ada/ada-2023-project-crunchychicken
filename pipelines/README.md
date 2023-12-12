@@ -43,4 +43,35 @@ root
 │ │ │ │ │ head
 ```
 
+[XML to Dataframes (2013).ipnyb](https://github.com/epfl-ada/ada-2023-project-crunchychicken/blob/main/pipelines/XML%20to%20Dataframes%20(2013).ipynb) parses the XML files and saves the NLP annotations to four dataframes: `tokens_df`, `dependencies_df`, `parses_df` and `coref_df`.
+
+- `tokens_df`:
+
+| movie_id | sentence_id | token_id | word | lemma | COB | COE | POS | NER |
+|----------|-------------|----------|------|-------|-----|-----|-----|-----|
+| 10000053 | 1           | 1        | Fur  | Fur   | 0   | 3   | NNP | O   |
+
+- `dependencies_df`
+
+| movie_id | sentence_id | dependency_class | dependency_type | governor_id | governor_word | dependent_id | dependent_word |
+|----------|-------------|------------------|-----------------|-------------|---------------|--------------|----------------|
+| 10000053 | 1           | basic            | nn              | 6           | te            | 1            | Fur            |
+
+
+- `parses_df`
+
+| movie_id | sentence_id | parse                                         |
+|----------|-------------|-----------------------------------------------|
+| 10000053 | 1           | (ROOT (S (NP (NNP Fur) (NNP trapper) (NNP...  |
+
+
+- `coref_df`
+
+| movie_id | sentence_id | start | end | head | representative |
+|----------|-------------|-------|-----|------|----------------|
+| 10000053 | 1           | 3     | 6   | 5    | True           |
+
+
 ![2013 Explanation Image](https://i.postimg.cc/5yZsSVFd/image-2023-12-12-213128256.png)
+
+## 2nd Approach: 
