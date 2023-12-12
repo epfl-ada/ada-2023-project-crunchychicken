@@ -43,9 +43,9 @@ root
 │ │ │ │ │ head
 ```
 
-[XML to Dataframes (2013).ipnyb](https://github.com/epfl-ada/ada-2023-project-crunchychicken/blob/main/pipelines/XML%20to%20Dataframes%20(2013).ipynb) parses the XML files and saves the NLP annotations to four dataframes: `tokens_df`, `dependencies_df`, `parses_df` and `coref_df`.
+[XML to Dataframes (2013).ipnyb](https://github.com/epfl-ada/ada-2023-project-crunchychicken/blob/main/pipelines/XML%20to%20Dataframes%20(2013).ipynb) parses the XML files and saves the NLP annotations to four dataframes: `tokens_df`, `dependencies_df`, `parses_df` and `coref_df`:
 
-- `tokens_df`:
+- `tokens_df`
 
 | movie_id | sentence_id | token_id | word | lemma | COB | COE | POS | NER |
 |----------|-------------|----------|------|-------|-----|-----|-----|-----|
@@ -70,6 +70,12 @@ root
 | movie_id | sentence_id | start | end | head | representative |
 |----------|-------------|-------|-----|------|----------------|
 | 10000053 | 1           | 3     | 6   | 5    | True           |
+
+Then, using these dataframes, we want to generate a bag-of-words matrix $(movie_id, character, r, w)$, where $r$ is of $\{$agent verb, patient verb, attribute$\}$ and $w$ the lemma form the word associated to the character.
+
+| movie_id | character | r | w | 
+|----------|-----------|---|---|
+| 11784534 | Ingrid Bergman | attribute | Ingrid |
 
 
 ![2013 Explanation Image](https://i.postimg.cc/5yZsSVFd/image-2023-12-12-213128256.png)
