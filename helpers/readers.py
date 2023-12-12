@@ -3,7 +3,7 @@
 import pandas as pd
 from pathlib import Path
 import json
- # helpers. so notebook can resolve path 
+# helpers. so notebook can resolve path 
 from helpers.utils import convert_and_downcast, preprocess_cmu_movies, preprocess_cmu_characters, preprocess_imdb_movies, preprocess_movieLens_movies
 
 DATA_PATH = Path(__file__).resolve().parent.parent / 'data'
@@ -66,7 +66,7 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
     filepath = FILES[name]
 
     if not Path(filepath).exists():
-        print(f"File not found: {filepath}")
+        print(f"⚠️ File not found: {filepath} ⚠️")
         return None
 
     ### CMU
