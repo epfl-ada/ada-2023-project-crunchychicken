@@ -1,6 +1,3 @@
-# TODO: 
-# for full layout add a home icon to redirect to home
-
 # to launch locally (requires ruby installed then gem install bundler), run in docs/ cmd:
 # bundle install
 # bundle exec jekyll serve

@@ -199,6 +199,28 @@ footer {
   -webkit-font-smoothing:subpixel-antialiased;
 }
 
+/* full layout navigation */
+.header-nav {
+  text-align: left; 
+  margin-bottom: 30px;
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.footer-nav {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #007bff; 
+}
+
 @media print, screen and (max-width: 960px) {
 
   div.wrapper {
