@@ -71,7 +71,7 @@ root
 |----------|-------------|-------|-----|------|----------------|
 | 10000053 | 1           | 3     | 6   | 5    | True           |
 
-Then, using these dataframes, we want to generate a bag-of-words matrix $(movie_id, character, r, w)$, where $r$ is of $\{$agent verb, patient verb, attribute$\}$ and $w$ the lemma form the word associated to the character.
+Then, using these dataframes, we want to generate a bag-of-words matrix $(movie_{id}, character, r, w)$, where $r$ is of {agent verb, patient verb, attribute} and $w$ the lemma form the word associated to the character.
 
 | movie_id | character | r | w | 
 |----------|-----------|---|---|
