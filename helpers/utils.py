@@ -51,8 +51,14 @@ def preprocess_cmu_movies(cmu_movies: pd.DataFrame) -> pd.DataFrame:
         cmu_movies['Movie release Day'] = cmu_movies['Movie release date'].str.split('-').str[2].astype('Int64')
         cmu_movies.drop(columns=['Movie release date'], inplace=True)
         print("✅ Movie release date splitted to three columns: Movie release Year, Movie release Month, Movie release Day")
+
+        # https://en.wikipedia.org/wiki/Hunting_Season_(2010_film)
+        # https://en.wikipedia.org/?curid=29666067
+        cmu_movies.loc[cmu_movies["Movie release Year"] == 1010, "Movie release Year"] = 2010
+        print("✅ Fixed 'Hunting Season' release year 1010 => 2010")
     except:
         print("❌ Failed to split Movie release date")
+        print("❌ Failed to fix 'Hunting Season' release year 1010 => 2010")
 
     try:
         cmu_movies['parsed languages'] = cmu_movies['Movie languages'].apply(ast.literal_eval)
@@ -78,8 +84,20 @@ def preprocess_cmu_movies(cmu_movies: pd.DataFrame) -> pd.DataFrame:
         }, inplace=True)
 
         print("✅ Seperated freebase identifiers from Movie Languages, Movie Countries and Movie Genres")
+
+        cmu_movies.loc[cmu_movies['Movie languages'] == 'Hariyani', 'Movie languages'] = 'Haryanvi'
+        cmu_movies['Movie languages'] = cmu_movies['Movie languages'].str.replace('Hariyani,', '')
+        print("✅ Replaced Hariyani with Haryanvi")
+
+        cmu_movies.loc[cmu_movies['Wikipedia movie ID'] == 16301022, 'Movie languages'] = cmu_movies.loc[cmu_movies['Wikipedia movie ID'] == 16301022, 'Movie languages'].str.replace('Saami, ', '')
+        cmu_movies.loc[cmu_movies['Movie languages'].str.contains('Saami'), 'Movie languages'] = cmu_movies['Movie languages'].str.replace('Saami', 'Sami')
+        print("✅ Replaced Saami with Sami")
+
+
     except:
         print("❌ Failed to seperate freebase identifiers from Movie Languages, Movie Countries and Movie Genres")
+        print("❌ Failed to replace Hariyani with Haryanvi")
+        print("❌ Failed to replace Saami with Sami")
 
     # could also drop Freebase Movie ID if not needed
 
