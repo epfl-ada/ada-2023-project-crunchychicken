@@ -106,4 +106,4 @@ Table from: https://stanfordnlp.github.io/CoreNLP/coref.html (accessed 13.12.202
 
 [Annotations to Personas (2023).ipnyb](https://github.com/epfl-ada/ada-2023-project-crunchychicken/blob/main/pipelines/Annotations%20to%20Personas%20(2023).ipynb), similarly to the first approach, we obtain the *characters dataframe*.
 
-![2023 Explanation Image](https://i.postimg.cc/C57vSX8Q/image-2023-12-13-144315793.png)
+![2023 Explanation Image](https://i.postimg.cc/1zfR9GNm/image-2023-12-13-163516199.png)

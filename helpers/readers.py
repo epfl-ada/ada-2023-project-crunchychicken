@@ -23,7 +23,7 @@ FILES = {
     'imdb/movies': DATA_PATH / 'IMDb/title.basics.tsv',
     'imdb/principals': DATA_PATH / 'IMDb/title.principals.tsv',
     'imdb/ratings': DATA_PATH / 'IMDb/title.ratings.tsv',
-    'imdb/enhanced_movies': DATA_PATH / 'IMDb/enhanced_imdb.csv',
+    'imdb/enhanced_movies': DATA_PATH / 'IMDb/enhanced_imdb.csv', # external
     'imdb/awards' : DATA_PATH / 'IMDb/awards.csv', # from Kaggle (https://www.kaggle.com/datasets/iwooloowi/film-awards-imdb)
     'imdb/akas': DATA_PATH / 'IMDb/title.akas.tsv', # unused for now
     'imdb/crew': DATA_PATH / 'IMDb/title.crew.tsv', # unused for now
