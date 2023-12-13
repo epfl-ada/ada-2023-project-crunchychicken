@@ -71,7 +71,7 @@ root
 |----------|-------------|-------|-----|------|----------------|
 | 10000053 | 1           | 3     | 6   | 5    | True           |
 
-Then, [Annotations to Personas (2013).ipnyb](https://github.com/epfl-ada/ada-2023-project-crunchychicken/blob/main/pipelines/Annotations%20to%20Personas%20(2013).ipynb), using these dataframes, generates a bag-of-words matrix $(movie_{id}, character, r, w)$, where $r$ is of {agent verb, patient verb, attribute} and $w$ the lemma form the word associated to the character:
+Then, [Annotations to Personas (2013).ipnyb](https://github.com/epfl-ada/ada-2023-project-crunchychicken/blob/main/pipelines/Annotations%20to%20Personas%20(2013).ipynb), using these dataframes, generates a bag-of-words matrix $(movie_{id}, character, r, w)$, where $r$ is of {agent verb, patient verb, attribute} and $w$ the lemma form the word associated to the character. We obtain the *characters dataframe*.
 
 | movie_id | character | r | w | 
 |----------|-----------|---|---|
@@ -80,4 +80,30 @@ Then, [Annotations to Personas (2013).ipnyb](https://github.com/epfl-ada/ada-202
 
 ![2013 Explanation Image](https://i.postimg.cc/5yZsSVFd/image-2023-12-12-213128256.png)
 
-## 2nd Approach: 
+## 2nd Approach: Annotating with Stanford CoreNLP 4.5.5
+The first approach used annotations generated in 2012 with an older and less accurate version of Stanford's CoreNLP Pipeline. We decided to annotate the movie summaries using the [latest CoreNLP Pipeline](https://stanfordnlp.github.io/CoreNLP/) (version 4.5.5). A notable enhancement is the use of the [neural system for coreference](https://github.com/clarkkev/deep-coref), the most accurate of the 3 systems:
+
+| System        | Language | Preprocessing Time | Coref Time | Total Time | F1 Score |
+|---------------|----------|--------------------|------------|------------|----------|
+| Deterministic | English  | 3.87s              | 0.11s      | 3.98s      | 49.5     |
+| Statistical   | English  | 0.48s              | 1.23s      | 1.71s      | 56.2     |
+| Neural        | English  | 3.22s              | 4.96s      | 8.18s      | 60.0     |
+
+Table from: https://stanfordnlp.github.io/CoreNLP/coref.html (accessed 13.12.2023)
+
+[Create New Annotations (2023).ipnyb](https://github.com/epfl-ada/ada-2023-project-crunchychicken/blob/main/pipelines/Create%20New%20Annotations%20(2023).ipynb) implements the pipeline to annotate all the movie plot summaries using CoreNLP 4.5.5 and saving the annotations to individual text files: nlp_movie_330.txt, nlp_movie_333.txt, ...
+
+[Text to Dataframes (2023).ipnyb](https://github.com/epfl-ada/ada-2023-project-crunchychicken/blob/main/pipelines/Text%20to%20Dataframes%20(2023).ipynb) parses the generated text files and saves the NLP annotations to Pandas dataframes: 
+
+- df_sentences
+- df_tokens
+- df_constituency_parse
+- df_binary_parse
+- df_sentiment_tree
+- df_dependencies
+- df_entities
+- df_coreference
+
+[Annotations to Personas (2023).ipnyb](https://github.com/epfl-ada/ada-2023-project-crunchychicken/blob/main/pipelines/Annotations%20to%20Personas%20(2023).ipynb), similarly to the first approach, we obtain the *characters dataframe*.
+
+![2023 Explanation Image](https://i.postimg.cc/C57vSX8Q/image-2023-12-13-144315793.png)
