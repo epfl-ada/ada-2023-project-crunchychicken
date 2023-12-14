@@ -23,8 +23,8 @@ FILES = {
     'imdb/movies': DATA_PATH / 'IMDb/title.basics.tsv',
     'imdb/principals': DATA_PATH / 'IMDb/title.principals.tsv',
     'imdb/ratings': DATA_PATH / 'IMDb/title.ratings.tsv',
-    'imdb/enhanced_movies': DATA_PATH / 'IMDb/enhanced_imdb.csv',
-    'imdb/awards' : DATA_PATH / 'IMDb/awards.csv',
+    'imdb/enhanced_movies': DATA_PATH / 'IMDb/enhanced_imdb.csv', # external
+    'imdb/awards' : DATA_PATH / 'IMDb/awards.csv', # from Kaggle (https://www.kaggle.com/datasets/iwooloowi/film-awards-imdb)
     'imdb/akas': DATA_PATH / 'IMDb/title.akas.tsv', # unused for now
     'imdb/crew': DATA_PATH / 'IMDb/title.crew.tsv', # unused for now
     'imdb/episode': DATA_PATH / 'IMDb/title.episode.tsv', # unused for now
@@ -34,7 +34,7 @@ FILES = {
     'mapping_wikipedia_imdb': GENERATED_PATH / 'wp2imdb_01.csv',
     'mapping_freebase_imdb': GENERATED_PATH / 'wp2imdb_02.csv',
 
-    # MovieLens
+    # MovieLens (from Kaggle: https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset)
     'movieLens/credits': DATA_PATH / 'MovieLens/credits.csv', # unused for now
     'movieLens/keywords': DATA_PATH / 'MovieLens/keywords.csv', # unused for now
     'movieLens/links': DATA_PATH / 'MovieLens/links.csv', # unused for now
