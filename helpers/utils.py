@@ -93,11 +93,18 @@ def preprocess_cmu_movies(cmu_movies: pd.DataFrame) -> pd.DataFrame:
         cmu_movies.loc[cmu_movies['Movie languages'].str.contains('Saami'), 'Movie languages'] = cmu_movies['Movie languages'].str.replace('Saami', 'Sami')
         print("✅ Replaced Saami with Sami")
 
+        cmu_movies.loc[cmu_movies['Wikipedia movie ID'] == 27814939, 'Movie countries'] = 'United Kingdom'
+        print("✅ The Flying Scotsman (1929 film) country fix")
+
+        cmu_movies.loc[cmu_movies['Wikipedia movie ID'] == 15657123, 'Movie countries'] = 'Ukrainian SSR, Soviet Union'
+        print("✅ Ukranian SSR fix")
 
     except:
         print("❌ Failed to seperate freebase identifiers from Movie Languages, Movie Countries and Movie Genres")
         print("❌ Failed to replace Hariyani with Haryanvi")
         print("❌ Failed to replace Saami with Sami")
+        print("❌ Failed The Flying Scotsman (1929 film) country fix")
+        print("❌ Failed Ukranian SSR fix")
 
     # could also drop Freebase Movie ID if not needed
 
