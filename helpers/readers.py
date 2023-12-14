@@ -60,7 +60,7 @@ FILES = {
     
 }
 
-def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd.DataFrame:
+def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, convert_downcast=True) -> pd.DataFrame:
     """Reads a dataframe with a suitable method and arguments and returns it."""
 
     filepath = FILES[name]
@@ -77,7 +77,9 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
                     )
         if preprocess:
             print("Ignoring preprocess")
-        return convert_and_downcast(summaries)
+        if convert_downcast:
+            summaries = convert_and_downcast(summaries)
+        return summaries
     
     if name == 'cmu/movies':
         movies = pd.read_csv(filepath,
@@ -86,7 +88,9 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         )
         if preprocess:
             movies = preprocess_cmu_movies(movies)
-        return convert_and_downcast(movies)
+        if convert_downcast:
+            movies = convert_and_downcast(movies)
+        return movies
 
     if name == 'cmu/characters':
         characters = pd.read_csv(filepath,
@@ -95,7 +99,9 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         )
         if preprocess:
             characters = preprocess_cmu_characters(characters)
-        return convert_and_downcast(characters)
+        if convert_downcast:
+            characters = convert_and_downcast(characters)
+        return characters
 
     if name == 'cmu/nameclusters':
         names_clusters = pd.read_csv(filepath,
@@ -103,7 +109,9 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
                     sep= '\t')
         if preprocess:
             print("Ignoring preprocess")
-        return convert_and_downcast(names_clusters)
+        if convert_downcast:
+            names_clusters = convert_and_downcast(names_clusters)
+        return names_clusters
 
     if name == 'cmu/tvtropes':
         rows = []
@@ -122,13 +130,17 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         if preprocess:
             print("Ignoring preprocess")
         tvtropes_clusters = pd.DataFrame(rows)
-
-        return convert_and_downcast(tvtropes_clusters)
+        if convert_downcast:
+            tvtropes_clusters = convert_and_downcast(tvtropes_clusters)
+        return tvtropes_clusters
     
     if name == 'cmu/movies_scraped':
         if preprocess:
             print("Ignoring preprocess")
-        return convert_and_downcast(pd.read_parquet(filepath))
+        if convert_downcast:
+            return convert_and_downcast(pd.read_parquet(filepath))
+        else:
+            return pd.read_parquet(filepath)
 
     ### IMDb
 
@@ -143,8 +155,9 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
 
         if preprocess:
             print("Ignoring preprocess")
-
-        return convert_and_downcast(names)
+        if convert_downcast:
+            names = convert_and_downcast(names)
+        return names
     
     if name == 'imdb/movies':
         movies = pd.read_csv(filepath,
@@ -160,7 +173,9 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         movies['runtimeMinutes'] = movies['runtimeMinutes'].astype('string')
         if preprocess: # fix runtimeMinutes and genres
             movies = preprocess_imdb_movies(movies)
-        return convert_and_downcast(movies)
+        if convert_downcast:
+            movies = convert_and_downcast(movies)
+        return movies
 
     if name == 'imdb/principals': # (reused code from imdb/movies)
         principals = pd.read_csv(filepath,
@@ -171,7 +186,9 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         principals['category'] = principals['category'].astype('category')
         if preprocess:
             print("Ignoring preprocess")
-        return convert_and_downcast(principals) 
+        if convert_downcast:
+            principals = convert_and_downcast(principals)
+        return principals 
     
     if name == 'imdb/ratings':
         ratings = pd.read_csv(filepath,
@@ -181,9 +198,11 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         )
         if preprocess:
             print("Ignoring preprocess")
-        return convert_and_downcast(ratings)
+        if convert_downcast:
+            ratings = convert_and_downcast(ratings)
+        return ratings
     
-    if name == 'imdb/enhanced_movies' :
+    if name == 'imdb/enhanced_movies':
         movies = pd.read_csv(filepath,
             names=usecols,
             sep=',',
@@ -193,9 +212,10 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         movies['year'] = movies['year'].astype('Int64')
         if preprocess:
             print("Ignoring preprocess")
-        return(convert_and_downcast(movies))
+        if convert_downcast:
+            movies = convert_and_downcast(movies)
+        return movies
     
-
     if name == 'imdb/awards':
         awards = pd.read_csv(filepath,
             names=usecols,
@@ -206,7 +226,9 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         awards['year'] = awards['year'].astype('Int64')
         if preprocess:
             print("Ignoring preprocess")
-        return(convert_and_downcast(awards))
+        if convert_downcast:
+            awards = convert_and_downcast(awards)
+        return awards
     
     if name == 'imdb/akas':
         akas = pd.read_csv(filepath,
@@ -218,7 +240,9 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         akas['isOriginalTitle'] = akas['isOriginalTitle'].astype('Int64')
         if preprocess:
             print("Ignoring preprocess")
-        return convert_and_downcast(akas)
+        if convert_downcast:
+            akas = convert_and_downcast(akas)
+        return akas
     
     if name == 'imdb/crew':
         crew = pd.read_csv(filepath,
@@ -228,7 +252,9 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         )
         if preprocess:
             print("Ignoring preprocess")
-        return convert_and_downcast(crew)
+        if convert_downcast:
+            crew = convert_and_downcast(crew)
+        return crew
     
     if name == 'imdb/episode':
         episode = pd.read_csv(filepath,
@@ -240,7 +266,9 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         episode['episodeNumber'] = episode['episodeNumber'].astype('Int64')
         if preprocess:
             print("Ignoring preprocess")
-        return convert_and_downcast(episode)
+        if convert_downcast:
+            episode = convert_and_downcast(episode)
+        return episode
     
     ### Mappings
 
@@ -252,7 +280,9 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         mapping['wikipedia'] = mapping['wikipedia'].astype('Int64')
         if preprocess:
             print("Ignoring preprocess")
-        return convert_and_downcast(mapping)
+        if convert_downcast:
+            mapping = convert_and_downcast(mapping)
+        return mapping
     
     if (name == 'mapping_wikipedia_imdb') or (name == 'mapping_freebase_imdb'):
         mapping = pd.read_csv(filepath,
@@ -261,7 +291,9 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         )
         if preprocess:
             print("Ignoring preprocess")
-        return convert_and_downcast(mapping)
+        if convert_downcast:
+            mapping = convert_and_downcast(mapping)
+        return mapping
     
     ### MovieLens
     if name == 'movieLens/movies':
@@ -283,7 +315,10 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         movies['video'] = movies['video'].astype('category')
         movies['vote_average'] = movies['vote_average'].astype('float')
         movies['vote_count'] = movies['vote_count'].astype('Int64')
-        return convert_and_downcast(movies)
+
+        if convert_downcast:
+            movies = convert_and_downcast(movies)
+        return movies
     
     if name == 'movieLens/credits':
         credits = pd.read_csv(filepath,
@@ -291,7 +326,9 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         )
         if preprocess:
             print("Ignoring preprocess")
-        return convert_and_downcast(credits)
+        if convert_downcast:
+            credits = convert_and_downcast(credits)
+        return credits
     
     if name == 'movieLens/keywords':
         keywords = pd.read_csv(filepath,
@@ -299,7 +336,9 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         )
         if preprocess:
             print("Ignoring preprocess")
-        return convert_and_downcast(keywords)
+        if convert_downcast:
+            keywords = convert_and_downcast(keywords)
+        return keywords
     
     if name == 'movieLens/links':
         links = pd.read_csv(filepath,
@@ -309,7 +348,10 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
             links['imdbId'] = links['imdbId'].apply(lambda x: 'tt{:07d}'.format(x))
 
         links['tmdbId'] = links['tmdbId'].astype('Int64')
-        return convert_and_downcast(links)
+
+        if convert_downcast:
+            links = convert_and_downcast(links)
+        return links
     
     if name == 'movieLens/ratings':
         ratings = pd.read_csv(filepath,
@@ -317,8 +359,9 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False) -> pd
         )
         if preprocess:
             print("Ignoring preprocess")
-
-        return convert_and_downcast(ratings)
+        if convert_downcast:
+            ratings = convert_and_downcast(ratings)
+        return ratings
 
     ### NLP
 

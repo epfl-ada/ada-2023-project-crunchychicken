@@ -10,6 +10,14 @@ def batched(it, sz: int):
         start += sz
     yield it[start:]
 
+def cast_back_to_int64(df: pd.DataFrame, col_name: str) -> pd.DataFrame:
+    df[col_name] = df[col_name].astype('int64')
+    return df
+
+def downcast_int64(df: pd.DataFrame, col_name: str) -> pd.DataFrame:
+    df[col_name] = pd.to_numeric(df[col_name], downcast='integer')
+    return df
+
 def convert_and_downcast(df: pd.DataFrame) -> pd.DataFrame:
     """Convert object columns to string and downcast numeric columns to save memory."""
     for col in df.columns:
@@ -99,12 +107,41 @@ def preprocess_cmu_movies(cmu_movies: pd.DataFrame) -> pd.DataFrame:
         cmu_movies.loc[cmu_movies['Wikipedia movie ID'] == 15657123, 'Movie countries'] = 'Ukrainian SSR, Soviet Union'
         print("✅ Ukranian SSR fix")
 
+        cmu_movies.loc[cmu_movies['Wikipedia movie ID'] == 35851069, 'Movie countries'] = 'France,Palestinian territories,Israel,Netherlands'
+        print("✅ Palestinian territories fix")
+
+
     except:
         print("❌ Failed to seperate freebase identifiers from Movie Languages, Movie Countries and Movie Genres")
         print("❌ Failed to replace Hariyani with Haryanvi")
         print("❌ Failed to replace Saami with Sami")
         print("❌ Failed The Flying Scotsman (1929 film) country fix")
         print("❌ Failed Ukranian SSR fix")
+        print("❌ Failed Palestinian territories fix")
+
+    try:
+        # https://en.wikipedia.org/?curid=10815585
+        cmu_movies.loc[cmu_movies['Wikipedia movie ID'] == 10815585, 'Movie runtime'] = 94
+        cmu_movies.loc[cmu_movies['Wikipedia movie ID'] == 21689271, 'Movie runtime'] = 85
+        cmu_movies.loc[cmu_movies['Wikipedia movie ID'] == 21689271, 'Movie release Year'] = 1934
+        cmu_movies.loc[cmu_movies['Wikipedia movie ID'] == 36136594, 'Movie runtime'] = 64
+        cmu_movies.loc[cmu_movies['Wikipedia movie ID'] == 24873771, 'Movie runtime'] = 145
+        cmu_movies.loc[cmu_movies['Wikipedia movie ID'] == 24873771, 'Movie release Year'] = 2012
+        cmu_movies.loc[cmu_movies['Wikipedia movie ID'] == 2551150, 'Movie runtime'] = 86
+        cmu_movies.loc[cmu_movies['Wikipedia movie ID'] == 11039905, 'Movie runtime'] = 153
+        cmu_movies.loc[cmu_movies['Wikipedia movie ID'] == 11829180, 'Movie runtime'] = 1315
+        cmu_movies.loc[cmu_movies['Wikipedia movie ID'] == 6012645, 'Movie runtime'] = float('nan')
+        print("✅ Fixed huge runtimes")
+
+        series_wiki_ids_to_remove = [18983351, 25930191, 33483307, 1348747] # series
+        large_wiki_ids_to_remove = [14545195, 884506, 884435, 32441022, 884492, 11829180, 25345684] # over 1000 minutes movies
+        wiki_ids_to_remove = series_wiki_ids_to_remove + large_wiki_ids_to_remove
+        cmu_movies = cmu_movies[~cmu_movies['Wikipedia movie ID'].isin(wiki_ids_to_remove)]
+        print("✅ Removed series")
+    
+    except:
+        print("❌ Fixed huge runtimes")
+        print("❌ Removed series")
 
     # could also drop Freebase Movie ID if not needed
 
