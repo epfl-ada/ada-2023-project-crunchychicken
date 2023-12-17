@@ -4,7 +4,7 @@
   <img src="https://i.postimg.cc/8cHW6gW4/magie-noire-menace.jpg" alt="Temp Image">
   <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
     <div style="font-size: 24px; font-weight: bold;">Frames of success: Diving into the minds of movie wizards</div>
-    <div style="font-size: 14px; margin-top: 10px">by Chang Chun-Tzu, Arthur Lamour, Clémence Mayaux, Sepehr Mousavi, Romain Rochepeau</div>
+    <div style="font-size: 14px; margin-top: 20px">by Chang Chun-Tzu, Arthur Lamour, Clémence Mayaux, Sepehr Mousavi, Romain Rochepeau</div>
   </div>
 </div>
 
