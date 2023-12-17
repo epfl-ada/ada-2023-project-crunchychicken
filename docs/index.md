@@ -1,5 +1,9 @@
 <!-- Don't add layout -->
 
+[![Chulapa live
+preview](https://i.postimg.cc/8cHW6gW4/magie-noire-menace.jpg "live preview")]
+
+
 # **Frames of success: Diving into the minds of movie wizards**
 
 ## Subsection
