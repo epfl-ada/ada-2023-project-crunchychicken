@@ -1,7 +1,11 @@
 <!-- Don't add layout -->
 
-![Temp Image](https://i.postimg.cc/8cHW6gW4/magie-noire-menace.jpg "live preview")
+![Temp Image](https://i.postimg.cc/8cHW6gW4/magie-noire-menace.jpg)
 
+<div style="position: relative; text-align: center; margin-bottom: 20px;">
+  <img src="https://i.postimg.cc/8cHW6gW4/magie-noire-menace.jpg" alt="Temp Image">
+  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 24px; font-weight: bold;">Frames of success: Diving into the minds of movie wizards</div>
+</div>
 
 # **Frames of success: Diving into the minds of movie wizards**
 
