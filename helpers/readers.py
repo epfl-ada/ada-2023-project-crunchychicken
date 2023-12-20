@@ -3,8 +3,9 @@
 import pandas as pd
 from pathlib import Path
 import json
-# helpers. so notebook can resolve path 
 from helpers.utils import convert_and_downcast, preprocess_cmu_movies, preprocess_cmu_characters, preprocess_imdb_movies, preprocess_movieLens_movies
+import numpy as np
+
 
 DATA_PATH = Path(__file__).resolve().parent.parent / 'data'
 GENERATED_PATH = Path(__file__).resolve().parent.parent / 'generated'
@@ -42,7 +43,7 @@ FILES = {
     'movieLens/movies': DATA_PATH / 'MovieLens/movies_metadata.csv',
     'movieLens/ratings': DATA_PATH / 'MovieLens/ratings.csv', # unused for now
     'movieLens/ratings_small': DATA_PATH / 'MovieLens/ratings_small.csv', # unused for now
-    
+
     # NLP old annotations dataframes
     'cmu/tokens_2013' : GENERATED_PATH / 'annotations_2013/tokens.parquet',
     'cmu/dependencies_2013' : GENERATED_PATH / 'annotations_2013/dependencies.parquet',
@@ -57,7 +58,7 @@ FILES = {
     'cmu/bags_2023': GENERATED_PATH / 'annotations_2023/bags.parquet',
     'cmu/characters_2023': GENERATED_PATH / 'annotations_2023/characters.parquet',
     'cmu/character_classification_2023': GENERATED_PATH / 'annotations_2023/character_classification.parquet',
-    
+
 }
 
 def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, convert_downcast=True) -> pd.DataFrame:
@@ -80,7 +81,7 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
         if convert_downcast:
             summaries = convert_and_downcast(summaries)
         return summaries
-    
+
     if name == 'cmu/movies':
         movies = pd.read_csv(filepath,
             names=usecols,
@@ -133,7 +134,7 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
         if convert_downcast:
             tvtropes_clusters = convert_and_downcast(tvtropes_clusters)
         return tvtropes_clusters
-    
+
     if name == 'cmu/movies_scraped':
         if preprocess:
             print("Ignoring preprocess")
@@ -158,7 +159,7 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
         if convert_downcast:
             names = convert_and_downcast(names)
         return names
-    
+
     if name == 'imdb/movies':
         movies = pd.read_csv(filepath,
             names=usecols,
@@ -188,8 +189,8 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
             print("Ignoring preprocess")
         if convert_downcast:
             principals = convert_and_downcast(principals)
-        return principals 
-    
+        return principals
+
     if name == 'imdb/ratings':
         ratings = pd.read_csv(filepath,
             names=usecols,
@@ -201,7 +202,7 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
         if convert_downcast:
             ratings = convert_and_downcast(ratings)
         return ratings
-    
+
     if name == 'imdb/enhanced_movies':
         movies = pd.read_csv(filepath,
             names=usecols,
@@ -215,13 +216,15 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
         if convert_downcast:
             movies = convert_and_downcast(movies)
         return movies
-    
+
     if name == 'imdb/awards':
         awards = pd.read_csv(filepath,
             names=usecols,
             sep=',',
-            dtype={'year': object,
-                   'characterNames' : object},
+            dtype={
+                'year': object,
+                'characterNames' : object,
+            },
         )
         awards['year'] = awards['year'].astype('Int64')
         if preprocess:
@@ -229,7 +232,7 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
         if convert_downcast:
             awards = convert_and_downcast(awards)
         return awards
-    
+
     if name == 'imdb/akas':
         akas = pd.read_csv(filepath,
             names=usecols,
@@ -243,7 +246,7 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
         if convert_downcast:
             akas = convert_and_downcast(akas)
         return akas
-    
+
     if name == 'imdb/crew':
         crew = pd.read_csv(filepath,
             names=usecols,
@@ -255,7 +258,7 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
         if convert_downcast:
             crew = convert_and_downcast(crew)
         return crew
-    
+
     if name == 'imdb/episode':
         episode = pd.read_csv(filepath,
             names=usecols,
@@ -269,7 +272,7 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
         if convert_downcast:
             episode = convert_and_downcast(episode)
         return episode
-    
+
     ### Mappings
 
     if name == 'mapping_wikipedia_imdb_freebase':
@@ -283,7 +286,7 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
         if convert_downcast:
             mapping = convert_and_downcast(mapping)
         return mapping
-    
+
     if (name == 'mapping_wikipedia_imdb') or (name == 'mapping_freebase_imdb'):
         mapping = pd.read_csv(filepath,
             names=usecols,
@@ -294,7 +297,7 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
         if convert_downcast:
             mapping = convert_and_downcast(mapping)
         return mapping
-    
+
     ### MovieLens
     if name == 'movieLens/movies':
         movies = pd.read_csv(filepath,
@@ -319,7 +322,7 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
         if convert_downcast:
             movies = convert_and_downcast(movies)
         return movies
-    
+
     if name == 'movieLens/credits':
         credits = pd.read_csv(filepath,
             names=usecols,
@@ -329,7 +332,7 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
         if convert_downcast:
             credits = convert_and_downcast(credits)
         return credits
-    
+
     if name == 'movieLens/keywords':
         keywords = pd.read_csv(filepath,
             names=usecols,
@@ -339,7 +342,7 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
         if convert_downcast:
             keywords = convert_and_downcast(keywords)
         return keywords
-    
+
     if name == 'movieLens/links':
         links = pd.read_csv(filepath,
             names=usecols,
@@ -352,7 +355,7 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
         if convert_downcast:
             links = convert_and_downcast(links)
         return links
-    
+
     if name == 'movieLens/ratings':
         ratings = pd.read_csv(filepath,
             names=usecols,
@@ -375,7 +378,7 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
         return pd.read_parquet(filepath)
     if name == 'cmu/character_classification_2013':
         return pd.read_parquet(filepath)
-    
+
     if name == 'cmu/tokens_2023':
         return pd.read_parquet(filepath)
     if name == 'cmu/dependencies_2023':
@@ -388,3 +391,134 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
         return pd.read_parquet(filepath)
     if name == 'cmu/character_classification_2023':
         return pd.read_parquet(filepath)
+
+
+# NOTE: Feel free to edit the following method as you wish
+# The idea is to have primary, clean dataframes that contain everything that we need
+# If you need a column but it's dropped, just add it and make sure the column is not repeated and is clean
+
+
+def prepare_dataframes() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """Prepares the primary movies dataframe by combining multiple raw dataframes."""
+
+    # Read dataframs
+    cmu_movies = read_dataframe(
+        name='cmu/movies',
+        preprocess=True,
+        usecols=[
+            "Wikipedia movie ID", "Freebase movie ID", "Movie name",
+            "Movie release date", "Movie box office revenue", "Movie runtime",
+            "Movie languages", "Movie countries", "Movie genres",
+        ]
+    )
+    imdb_info = read_dataframe(name='imdb/movies', preprocess=True)
+    imdb_ratings = read_dataframe(name='imdb/ratings')
+    movieLens_movies = read_dataframe(name='movieLens/movies', preprocess=True)
+    imdb_crew = read_dataframe(name='imdb/crew')
+    imdb_people = read_dataframe(name='imdb/names')
+    imdb_awards = read_dataframe('imdb/awards')
+
+    # Drop extra columns of imdb_awards
+    imdb_awards.drop([
+            'occurrence', 'winAnnouncementTime', 'name',
+            'originalName', 'songNames', 'episodeNames',
+            'characterNames', 'isSecondary', 'notes'
+        ],
+        axis=1,
+        inplace=True,
+    )
+
+    # Separate movie awards from persons awards
+    imdb_awards_movies = imdb_awards.query('isTitle == True')
+    imdb_awards_persons = imdb_awards.query('isPerson == True')
+
+    # Copy cmu_movies
+    movies = cmu_movies.drop(['Movie release Day', 'Movie release Month'], axis=1).copy()
+
+    # Rename the columns of movies
+    # NOTE: Feel free to change the column names, we'll need to unify the names in the final notebook
+    movies.rename(
+        columns={
+            'Wikipedia movie ID': 'wikipediaID',
+            'Freebase movie ID': 'freebaseID',
+            'Movie name': 'title',
+            'Movie box office revenue': 'revenue',
+            'Movie runtime': 'runtime',
+            'Movie languages': 'languages',
+            'Movie countries': 'countries',
+            'Movie genres': 'genres',
+            'Movie release Year': 'release',
+        },
+        inplace=True,
+    )
+
+    # Merge movies with imdb mapping
+    mapping_freebase_imdb = read_dataframe(name='mapping_freebase_imdb')
+    movies = movies.merge(
+        right=mapping_freebase_imdb.drop_duplicates(subset='freebase'),
+        left_on='freebaseID', right_on='freebase', how='left'
+    ).rename(columns={'imdb': 'tconst'}).drop('freebase', axis=1)
+
+    # Remove duplicated movies
+    movies.drop_duplicates(subset='tconst', inplace=True)
+
+    # Merge movies with imdb_info
+    movies = movies.merge(
+        right=imdb_info.rename(columns={'genres': 'genres_imdb', 'runtimeMinutes': 'runtime_imdb'})[['tconst', 'isAdult', 'runtime_imdb', 'genres_imdb']],
+        on='tconst', how='left',
+    )
+
+    # Merge movies with imdb_ratings
+    movies = movies.merge(
+        right=imdb_ratings.rename(columns={'averageRating': 'rating', 'numVotes': 'votes'}),
+        on='tconst', how='left',
+    )
+
+    # # movies Merge with movieLens_movies  #  NOTE: Only adds ratings for 100 movies, not worth it
+    # movies = movies.merge(
+    #     right=movieLens_movies[['vote_average', 'vote_count', 'imdb_id']].rename(columns={'vote_average': 'rating_lens', 'vote_count': 'votes_lens', 'imdb_id': 'tconst'}),
+    #     on='tconst', how='left',
+    # )
+    # movies.rating_lens.replace(to_replace=0, value=pd.NA)
+
+    # Merge movies with imdb_crew
+    movies = movies.merge(right=imdb_crew.drop('writers', axis=1), on='tconst', how='left')
+
+    # Add awards and nominations to movies
+    imdb_awards_movies_counts = imdb_awards_movies.groupby(by='const').apply(lambda df: pd.Series({'awardsNominated': len(df), 'awardsWon': len(df.query('isWinner == "True"'))})).reset_index()
+    movies = movies.merge(
+        right=imdb_awards_movies_counts,
+        left_on='tconst', right_on='const', how='left'
+    ).drop('const', axis=1)
+    movies.awardsNominated.fillna(0, inplace=True)
+    movies.awardsWon.fillna(0, inplace=True)
+    movies.awardsNominated = movies.awardsNominated.astype(int)
+    movies.awardsWon = movies.awardsWon.astype(int)
+
+    # Set the index of movies
+    movies = movies.set_index('tconst')
+
+    # Get a list of the existing directors from the movies dataframe
+    nconsts = []
+    for item in movies.dropna(subset='directors').directors.str.split(','):
+        nconsts.extend(item)
+    nconsts = set(nconsts)
+
+    # Get the directors from imdb_people
+    directors = imdb_people[imdb_people.nconst.isin(nconsts)].copy()
+
+    # Add awards and nominations to directors
+    imdb_awards_persons_counts = imdb_awards_persons.groupby(by='const').apply(lambda df: pd.Series({'awardsNominated': len(df), 'awardsWon': len(df.query('isWinner == "True"'))})).reset_index()
+    directors = directors.merge(
+        right=imdb_awards_persons_counts,
+        left_on='nconst', right_on='const', how='left'
+    ).drop('const', axis=1)
+    directors.awardsNominated.fillna(0, inplace=True)
+    directors.awardsWon.fillna(0, inplace=True)
+    directors.awardsNominated = directors.awardsNominated.astype(int)
+    directors.awardsWon = directors.awardsWon.astype(int)
+
+    # Set the index of directors
+    directors = directors.set_index('nconst')
+
+    return movies.copy(), directors.copy(), imdb_awards.copy()

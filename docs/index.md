@@ -1,20 +1,16 @@
 <!-- Don't add layout -->
 
-# Frames of success: Diving into the minds of movie wizards
+<div style="position: relative; text-align: center; margin-bottom: 20px;">
+  <img src="https://i.postimg.cc/8cHW6gW4/magie-noire-menace.jpg" alt="Temp Image">
+  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
+    <div style="font-size: 24px; font-weight: bold;">Frames of success: Diving into the minds of movie wizards</div>
+    <div style="font-size: 14px; margin-top: 20px">by Chang Chun-Tzu, Arthur Lamour, Clémence Mayaux, Sepehr Mousavi, Romain Rochepeau</div>
+  </div>
+</div>
 
-## Subsection
+## **Abstract**
 
-### Subsubsection
-
-#### Subsubsubsection
-
-###### Subsubsubsubsection
-
-Morbi hendrerit elit non elit tincidunt sollicitudin ut nec erat. Donec aliquam tempus orci quis interdum. Nullam maximus feugiat ipsum nec mollis. Phasellus vitae condimentum quam, sed malesuada nisl. Sed egestas ipsum in mauris luctus, fermentum feugiat nibh laoreet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam sagittis purus justo, id bibendum dolor lacinia et. Donec nec orci at lorem vulputate pulvinar. Duis ut mattis eros. Pellentesque non ligula vel lectus aliquet interdum. Suspendisse potenti. Aenean interdum urna sed quam pharetra, sed vulputate orci viverra. Sed ut euismod ante. Vestibulum in elit et quam convallis posuere. Donec risus turpis, lacinia eu venenatis nec, tempor at sem.
-
-$$
-e^{i \pi} = -1$$
-
-Inline Text $\sum_{i=1}^\infty\frac{1}{n^2} =\frac{\pi^2}{6}$ Inline Text. <span style="color:blue">Some *blue* text</span>. <span style="color: blue; font-weight: bold;">Some blue and bold text</span>.
+Stanley Kubrick is known to have at least one great movie in every major movie genre. Conversely, when you see David Fincher's name as the director of a new movie, you are almost sure that there is going to be one or more serial killers involved. The directorial approach of the most successful directors can be so different and taking the right directorial approaches early can lead a director to achieve significant success in their career, and is believed to be the main factor determining the quality of the movie. In this data analysis project, we will utilize the CMU Movie Summary Corpus, along with supplementary datasets, to examine approaches of the brightest directors from three angles: the genre of their films, the team surrounding them, and the character personas in their movies. We aim to gain a clear insight on how their decisions impact the overall success of the movie.
 
 ![Temp Image](https://i.postimg.cc/L8ZnDTVR/image-2023-12-11-214623541.png)
+

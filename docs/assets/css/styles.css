@@ -11,6 +11,11 @@ h1, h2, h3, h4, h5, h6 { /* equivalent of # ## ### #### in Markdown */
   margin:0 0 20px;
 }
 
+.centered-iframe { /* for embedding html figs */
+  display: block;
+  margin: auto;
+}
+
 p, ul, ol, table, pre, dl {
   margin:0 0 20px;
 }
