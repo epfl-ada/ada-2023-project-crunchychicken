@@ -440,12 +440,18 @@ def prepare_dataframes() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
             "Movie languages", "Movie countries", "Movie genres",
         ]
     )
+    print("Finished loading cmu_movies")
     imdb_info = read_dataframe(name='imdb/movies', preprocess=True)
+    print("Finished loading imdb_info")
     imdb_ratings = read_dataframe(name='imdb/ratings')
-    movieLens_movies = read_dataframe(name='movieLens/movies', preprocess=True)
+    print("Finished loading imdb_ratings")
+    #movieLens_movies = read_dataframe(name='movieLens/movies', preprocess=True)
     imdb_crew = read_dataframe(name='imdb/crew')
+    print("Finished loading imdb_crew")
     imdb_people = read_dataframe(name='imdb/names')
+    print("Finished loading imdb_people")
     imdb_awards = read_dataframe('imdb/awards')
+    print("Finished loading imdb_awards")
 
     # Drop extra columns of imdb_awards
     imdb_awards.drop([
