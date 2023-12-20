@@ -524,7 +524,9 @@ def prepare_dataframes() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     print("Finished merge 4/6 : movies with imdb_crew")
 
     # Add awards and nominations to movies
-    imdb_awards_movies_counts = imdb_awards_movies.groupby(by='const').apply(lambda df: pd.Series({'awardsNominated': len(df), 'awardsWon': len(df.query('isWinner == "True"'))})).reset_index()
+    #imdb_awards_movies_counts = imdb_awards_movies.groupby(by='const').apply(lambda df: pd.Series({'awardsNominated': len(df), 'awardsWon': len(df.query('isWinner == "True"'))})).reset_index()
+    # testing an optimization:
+    imdb_awards_movies_counts = imdb_awards_movies.groupby('const').agg(awardsNominated=('const', 'size'), awardsWon=('isWinner', lambda x: (x == "True").sum())).reset_index()
     movies = movies.merge(
         right=imdb_awards_movies_counts,
         left_on='tconst', right_on='const', how='left'
@@ -548,7 +550,12 @@ def prepare_dataframes() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     directors = imdb_people[imdb_people.nconst.isin(nconsts)].copy()
 
     # Add awards and nominations to directors
-    imdb_awards_persons_counts = imdb_awards_persons.groupby(by='const').apply(lambda df: pd.Series({'awardsNominated': len(df), 'awardsWon': len(df.query('isWinner == "True"'))})).reset_index()
+    #imdb_awards_persons_counts = imdb_awards_persons.groupby(by='const').apply(lambda df: pd.Series({'awardsNominated': len(df), 'awardsWon': len(df.query('isWinner == "True"'))})).reset_index()
+    # testing an optimization:
+    imdb_awards_persons_counts = imdb_awards_persons.groupby('const').agg(
+        awardsNominated=('const', 'size'),
+        awardsWon=('isWinner', lambda x: (x == "True").sum())
+    ).reset_index()
     directors = directors.merge(
         right=imdb_awards_persons_counts,
         left_on='nconst', right_on='const', how='left'

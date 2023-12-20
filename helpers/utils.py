@@ -2,6 +2,7 @@ import pandas as pd
 import ast
 import re
 
+####################### Utility function for external.py #######################
 def batched(it, sz: int):
     """Generator for retrieving batches from an iterator."""
 
@@ -11,6 +12,8 @@ def batched(it, sz: int):
         start += sz
     yield it[start:]
 
+########## Utility function to ensure merge as Pandas requires int64  ##########
+
 def cast_back_to_int64(df: pd.DataFrame, col_name: str) -> pd.DataFrame:
     df[col_name] = df[col_name].astype('int64')
     return df
@@ -18,6 +21,8 @@ def cast_back_to_int64(df: pd.DataFrame, col_name: str) -> pd.DataFrame:
 def downcast_int64(df: pd.DataFrame, col_name: str) -> pd.DataFrame:
     df[col_name] = pd.to_numeric(df[col_name], downcast='integer')
     return df
+
+######### Function to downcast the dtypes of dataframes to save space  #########
 
 def convert_and_downcast(df: pd.DataFrame) -> pd.DataFrame:
     """Convert object columns to string and downcast numeric columns to save memory."""
@@ -31,6 +36,8 @@ def convert_and_downcast(df: pd.DataFrame) -> pd.DataFrame:
         else:
             df[col] = pd.to_numeric(df[col], downcast='integer')
     return df
+
+############################# Preprocess functions #############################
 
 def preprocess_cmu_movies(cmu_movies: pd.DataFrame) -> pd.DataFrame:
     cmu_movies.loc[46808, 'Movie countries'] = '{"/m/03rk0": "India"}'
@@ -179,6 +186,7 @@ def preprocess_cmu_characters(cmu_characters: pd.DataFrame) -> pd.DataFrame:
 
     return cmu_characters
 
+# Utility function for preprocess_cmu_scraped
 def parse_runtime(runtime):
     if pd.isna(runtime):
         return None
@@ -258,6 +266,7 @@ def parse_runtime(runtime):
 
     return None
 
+# Utility function for preprocess_cmu_scraped
 def currency_symbol_to_code(text):
     currency_map = {
         '€': 'EUR', 'eur': 'EUR', 'euros': 'EUR',
@@ -280,24 +289,28 @@ def currency_symbol_to_code(text):
             return value
     return None
 
+# Utility function for preprocess_cmu_scraped
 def convert_million(value):
     try:
         return float(value) * 1_000_000
     except ValueError:
         return None
 
+# Utility function for preprocess_cmu_scraped
 def convert_billion(value):
     try:
         return float(value) * 1_000_000_000
     except ValueError:
         return None
 
+# Utility function for preprocess_cmu_scraped
 def convert_crore(value):
     try:
         return float(value) * 10_000_000
     except ValueError:
         return None
 
+# Utility function for preprocess_cmu_scraped
 def parse_number(value):
     try:
         return float(value.replace(',', ''))
@@ -307,6 +320,7 @@ def parse_number(value):
         except ValueError:
             return None
 
+# Utility function for preprocess_cmu_scraped
 def parse_revenue(revenue):
     if pd.isna(revenue):
         return None, None
@@ -333,6 +347,7 @@ def parse_revenue(revenue):
 
     return None, None
 
+# Utility function for preprocess_cmu_scraped
 def compute_profit(row):
     if (
         pd.notna(row['budget_value']) and pd.notna(row['revenue_value']) and
