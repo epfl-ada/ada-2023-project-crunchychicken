@@ -415,6 +415,7 @@ def get_cmu_movies_enhanced() -> pd.DataFrame:
     cmu_movies_enhanced = cmu_movies_enhanced.drop(columns=['release_year'])
     cmu_movies_enhanced = cmu_movies_enhanced.drop(columns=['Movie runtime'])
     cmu_movies_enhanced = cmu_movies_enhanced.drop(columns=['Movie box office revenue'])
+    # can also drop month and day if not needed
     return cmu_movies_enhanced
 
 
