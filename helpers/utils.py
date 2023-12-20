@@ -1,5 +1,6 @@
 import pandas as pd
 import ast
+import re
 
 def batched(it, sz: int):
     """Generator for retrieving batches from an iterator."""
@@ -36,7 +37,7 @@ def preprocess_cmu_movies(cmu_movies: pd.DataFrame) -> pd.DataFrame:
     cmu_movies.loc[67202, 'Movie countries'] = '{"/m/03rk0": "India"}'
     cmu_movies.loc[67202, 'Movie languages'] = '{"/m/0999q": "Malayalam Language"}'
     cmu_movies.loc[72685, 'Movie countries'] = '{"/m/084n_": "Weimar Republic", "/m/0345h": "Germany"}'
-    print("Preprocess logs:")
+    print("Preprocess logs cmu_movies:")
     if len(cmu_movies[cmu_movies['Movie countries'].str.contains('Language')]) == 0:
         print("✅ Fixed Movie Languages inside Movie Countries")
     else:
@@ -148,7 +149,7 @@ def preprocess_cmu_movies(cmu_movies: pd.DataFrame) -> pd.DataFrame:
     return cmu_movies
 
 def preprocess_cmu_characters(cmu_characters: pd.DataFrame) -> pd.DataFrame:
-    print("Preprocess logs:")
+    print("Preprocess logs cmu_characters:")
     try:
         cmu_characters['Movie release Year'] = cmu_characters['Movie release date'].str.split('-').str[0].astype('Int64')
         cmu_characters['Movie release Month'] = cmu_characters['Movie release date'].str.split('-').str[1].astype('Int64')
@@ -178,6 +179,222 @@ def preprocess_cmu_characters(cmu_characters: pd.DataFrame) -> pd.DataFrame:
 
     return cmu_characters
 
+def parse_runtime(runtime):
+    if pd.isna(runtime):
+        return None
+    
+    # https://en.wikipedia.org/wiki/Reel
+    if 'reels' in runtime:
+        match = re.search(r'(\d+) reels', runtime)
+        if match:
+            return int(match.group(1)) * 10
+        
+    if 'reel' in runtime:
+        match = re.search(r'(\d+) reel', runtime)
+        if match:
+            return int(match.group(1)) * 10
+
+    if 'feet' in runtime:
+        match = re.search(r'(\d+) feet', runtime)
+        if match:
+            return int(match.group(1)) / 1000 * 11
+
+    if 'hour' in runtime or 'hr' in runtime:
+        hours = re.search(r'(\d+) hour', runtime)
+        hours = int(hours.group(1)) if hours else 0
+        minutes = re.search(r'(\d+) min', runtime)
+        minutes = int(minutes.group(1)) if minutes else 0
+        return hours * 60 + minutes
+
+    if 'Min' in runtime:
+        match = re.search(r'(\d+) Min', runtime)
+        if match:
+            return int(match.group(1))
+        
+    if 'seconds' in runtime:
+        match = re.search(r'(\d+) seconds', runtime)
+        if match:
+            return int(match.group(1)) / 60
+        
+    if 'secs' in runtime:
+        match = re.search(r'(\d+) secs', runtime)
+        if match:
+            return int(match.group(1)) / 60
+    
+    if 'minute' in runtime or 'min' in runtime or "'" in runtime:
+        minute_patterns = [r'(\d+)\s*min', r'(\d+)\s*minute', r"(\d+)'"]
+        for pattern in minute_patterns:
+            match = re.search(pattern, runtime)
+            if match:
+                return int(match.group(1))
+            
+    if ':' in runtime:
+        try:
+            minutes, seconds = runtime.split(':')
+            return int(minutes) + int(seconds) / 60
+        except ValueError:
+            pass
+        
+    hour_minute_patterns = [r'(\d+)h\s*(\d+)m', r'(\d+)\.(\d+)']
+    for pattern in hour_minute_patterns:
+        match = re.search(pattern, runtime)
+        if match:
+            hours, minutes = match.groups()
+            return int(hours) * 60 + int(minutes)
+
+    if ':' in runtime and runtime.count(':') == 1:
+        try:
+            minutes, seconds = runtime.split(':')
+            return int(minutes) + int(seconds) / 60
+        except ValueError:
+            pass  
+        
+    if ':' in runtime and runtime.count(':') == 2:
+        try:
+            hours, minutes, seconds = runtime.split(':')
+            return int(hours) * 60 + int(minutes) + int(seconds) / 60
+        except ValueError:
+            pass
+
+    return None
+
+def currency_symbol_to_code(text):
+    currency_map = {
+        '€': 'EUR', 'eur': 'EUR', 'euros': 'EUR',
+        '$': 'USD', 'USD': 'USD', 'dollar': 'USD',
+        '₹': 'INR', 'Rs': 'INR', 'Rp': 'INR', 'rupee': 'INR',
+        '£': 'GBP', 'GPD': 'GBP',
+        '¥': 'CNY', 'renminbi': 'CNY', 'yuan': 'CNY',
+        '₽': 'RUB', 'RUR': 'RUB', 'rubles': 'RUB', 'RUB': 'RUB',
+        'IRR': 'IRR', 'rial': 'IRR', 'Rial': 'IRR', 'rials': 'IRR',
+        'real': 'BRL',
+        'SEK' : 'SEK',
+        '₱': 'PHP', 
+        '₤': 'ITL', 'L.': 'ITL', 'Italian lire' : 'ITL',
+        'yen': 'JPY', 'Yen' : 'JPY',
+        'CZK' : 'CZK',
+        'AUD' : 'AUD',
+    }
+    for key, value in currency_map.items():
+        if key in text:
+            return value
+    return None
+
+def convert_million(value):
+    try:
+        return float(value) * 1_000_000
+    except ValueError:
+        return None
+
+def convert_billion(value):
+    try:
+        return float(value) * 1_000_000_000
+    except ValueError:
+        return None
+
+def convert_crore(value):
+    try:
+        return float(value) * 10_000_000
+    except ValueError:
+        return None
+
+def parse_number(value):
+    try:
+        return float(value.replace(',', ''))
+    except ValueError:
+        try:
+            return float(value.replace('.', '').replace(',', '.'))
+        except ValueError:
+            return None
+
+def parse_revenue(revenue):
+    if pd.isna(revenue):
+        return None, None
+
+    revenue = re.sub(r'(est\.|c\.)\s*', '', revenue).replace(',', '')
+
+    currency = currency_symbol_to_code(revenue)
+
+    match = re.search(r'(\d+(?:\.\d+)?)\s*(billion|million|crore)?', revenue, re.IGNORECASE)
+    if match:
+        value, multiplier = match.groups()
+
+        if multiplier:
+            if 'million' in multiplier.lower():
+                value = convert_million(value)
+            elif 'billion' in multiplier.lower():
+                value = convert_billion(value)
+            elif 'crore' in multiplier.lower():
+                value = convert_crore(value)
+        else:
+            value = parse_number(value)
+
+        return currency, float(value)
+
+    return None, None
+
+def compute_profit(row):
+    if (
+        pd.notna(row['budget_value']) and pd.notna(row['revenue_value']) and
+        row['budget_currency'] == row['revenue_currency'] and
+        row['budget_currency'] is not None
+    ):
+        profit = row['revenue_value'] - row['budget_value']
+        return profit, row['budget_currency']
+    else:
+        return None, None
+
+def preprocess_cmu_movies_scraped(cmu_scraped_movies: pd.DataFrame) -> pd.DataFrame:
+    columns_to_drop = [
+        'Directed by', 'Screenplay by', 'Story by', 
+        'Based on', 'Produced by', 'Starring', 'Cinematography', 
+        'Edited by', 'Music by', 'Production company', 'Distributed by'
+    ]
+    print("Preprocess logs cmu_movies_scraped:")
+    try: 
+        cmu_scraped_movies = cmu_scraped_movies.drop(columns=columns_to_drop)
+        print("✅ Dropped initial screenplay related columns")
+    except:
+        print("❌ Failed to drop initial screenplay related columns")
+    try:
+        cmu_scraped_movies['runtime_minutes'] = cmu_scraped_movies['Running time'].apply(parse_runtime)
+        print("✅ Parsed runtime")
+    except:
+        print("❌ Failed to parse runtime")
+    try: 
+        cmu_scraped_movies['revenue_currency'], cmu_scraped_movies['revenue_value'] = zip(*cmu_scraped_movies['Box office'].apply(parse_revenue))
+        print("✅ Parsed revenue (box office)")
+    except:
+        print("❌ Failed to parse revenue (box office)")
+    try:
+        cmu_scraped_movies['budget_currency'], cmu_scraped_movies['budget_value'] = zip(*cmu_scraped_movies['Budget'].apply(parse_revenue))
+        print("✅ Parsed budget")
+    except:
+        print("❌ Failed to parse budget")
+    try:
+        cmu_scraped_movies[['profit_value', 'profit_currency']] = cmu_scraped_movies.apply(compute_profit, axis=1, result_type='expand')
+        print("✅ Generated movie profit")
+    except:
+        print("❌ Failed to generate movie profit")
+    try:
+        cmu_scraped_movies['release_year'] = cmu_scraped_movies['Release dates'].str.extract(r'(\d{4})')
+        cmu_scraped_movies['release_year'] = pd.to_numeric(cmu_scraped_movies['release_year'], errors='coerce')
+        cmu_scraped_movies['release_year'] = cmu_scraped_movies['release_year'].astype('Int64')
+        print("✅ Extracted movie release year")
+    except:
+        print("❌ Failed to extract movie release year")
+
+    columns_to_drop = [
+        "Running time", "Budget", "Box office", "Release dates"
+    ]
+
+    try:
+        cmu_scraped_movies = cmu_scraped_movies.drop(columns=columns_to_drop)
+        print("✅ Dropped parsed columns")
+    except:
+        print("❌ Failed to drop parsed columns")
+    return cmu_scraped_movies
+
 def is_numeric(x):
     if str(x) != "<NA>":
         try:
@@ -189,7 +406,7 @@ def is_numeric(x):
         return True
 
 def preprocess_imdb_movies(imdb_movies: pd.DataFrame) -> pd.DataFrame:
-    print("Preprocess logs:")
+    print("Preprocess logs imdb_movies:")
     try:
         numeric_filter = imdb_movies['runtimeMinutes'].apply(is_numeric)
         non_numeric_rows = imdb_movies[~numeric_filter]
@@ -210,7 +427,7 @@ def preprocess_movieLens_movies(movieLens_movies: pd.DataFrame) -> pd.DataFrame:
     def is_misaligned(row):
         return row['adult'] not in ['False', 'True']
     
-    print("Preprocess logs:")
+    print("Preprocess logs movieLens_movies:")
     try: 
         misaligned_filter = movieLens_movies.apply(is_misaligned, axis=1)
         misaligned_rows = movieLens_movies[misaligned_filter]

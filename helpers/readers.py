@@ -3,7 +3,8 @@
 import pandas as pd
 from pathlib import Path
 import json
-from helpers.utils import convert_and_downcast, preprocess_cmu_movies, preprocess_cmu_characters, preprocess_imdb_movies, preprocess_movieLens_movies
+from helpers.utils import preprocess_cmu_movies, preprocess_cmu_characters, preprocess_imdb_movies, preprocess_movieLens_movies, preprocess_cmu_movies_scraped
+from helpers.utils import convert_and_downcast, cast_back_to_int64, downcast_int64
 import numpy as np
 
 
@@ -137,8 +138,10 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
 
     if name == 'cmu/movies_scraped':
         if preprocess:
-            print("Ignoring preprocess")
-        if convert_downcast:
+            cmu_movies_scraped = preprocess_cmu_movies_scraped(pd.read_parquet(filepath))
+            if convert_downcast:
+                return convert_and_downcast(cmu_movies_scraped)
+        elif convert_downcast:
             return convert_and_downcast(pd.read_parquet(filepath))
         else:
             return pd.read_parquet(filepath)
@@ -391,6 +394,28 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
         return pd.read_parquet(filepath)
     if name == 'cmu/character_classification_2023':
         return pd.read_parquet(filepath)
+
+# to get revenue, budget, profit for cmu movies
+def get_cmu_movies_enhanced() -> pd.DataFrame:
+    cmu_movies = read_dataframe(
+        name='cmu/movies',
+        preprocess=True,
+        usecols=[
+            "Wikipedia movie ID", "Freebase movie ID", "Movie name",
+            "Movie release date", "Movie box office revenue", "Movie runtime",
+            "Movie languages", "Movie countries", "Movie genres",
+        ]
+    )
+    cmu_scraped_movies = read_dataframe(name='cmu/movies_scraped', preprocess=True)
+    cmu_movies = cast_back_to_int64(cmu_movies, "Wikipedia movie ID")
+    cmu_movies_enhanced = pd.merge(cmu_movies, cmu_scraped_movies, left_on="Wikipedia movie ID", right_on="Wikipedia movie ID", how="left")
+    cmu_movies = downcast_int64(cmu_movies, "Wikipedia movie ID")
+    cmu_movies_enhanced = downcast_int64(cmu_movies_enhanced, "Wikipedia movie ID")
+    cmu_movies_enhanced['Movie release Year'] = cmu_movies_enhanced['Movie release Year'].fillna(cmu_movies_enhanced['release_year'])
+    cmu_movies_enhanced = cmu_movies_enhanced.drop(columns=['release_year'])
+    cmu_movies_enhanced = cmu_movies_enhanced.drop(columns=['Movie runtime'])
+    cmu_movies_enhanced = cmu_movies_enhanced.drop(columns=['Movie box office revenue'])
+    return cmu_movies_enhanced
 
 
 # NOTE: Feel free to edit the following method as you wish
