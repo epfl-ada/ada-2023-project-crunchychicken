@@ -90,14 +90,17 @@ FILES_PARQUET = {
     # add merged dataframes here so we don't merge each time
     'merged/movies': GENERATED_PATH / 'movies.parquet',
     'merged/directors': GENERATED_PATH / 'directors.parquet',
-    'merged/imdb_awards': GENERATED_PATH / 'imdb_awards.parquet',
+    'merged/awards': GENERATED_PATH / 'awards.parquet',
 
 }
 
 def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, convert_downcast=True) -> pd.DataFrame:
     """Reads a dataframe with a suitable method and arguments and returns it."""
 
-    filepath = FILES[name]
+    try: 
+        filepath = FILES[name]
+    except:
+        print("Key Error: key does not exist in FILES")
 
     if not Path(filepath).exists():
         print(f"⚠️ File not found: {filepath} ⚠️")
@@ -453,7 +456,11 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
 def read_dataframe_parquet(name: str) -> pd.DataFrame:
     """Reads a dataframe with a suitable method and arguments and returns it."""
 
-    filepath = FILES_PARQUET[name]
+    try: 
+        filepath = FILES_PARQUET[name]
+    except:
+        print("Key Error: key does not exist in FILES_PARQUET")
+    
 
     if not Path(filepath).exists():
         print(f"⚠️ File not found: {filepath} ⚠️")
@@ -462,16 +469,21 @@ def read_dataframe_parquet(name: str) -> pd.DataFrame:
     return pd.read_parquet(filepath)
 
 # to get revenue, budget, profit for cmu movies
-def get_cmu_movies_enhanced() -> pd.DataFrame:
-    cmu_movies = read_dataframe(
-        name='cmu/movies',
-        preprocess=True,
-        usecols=[
-            "Wikipedia movie ID", "Freebase movie ID", "Movie name",
-            "Movie release date", "Movie box office revenue", "Movie runtime",
-            "Movie languages", "Movie countries", "Movie genres",
-        ]
-    )
+def get_cmu_movies_enhanced(use_parquet=True) -> pd.DataFrame:
+    if use_parquet == False:
+        cmu_movies = read_dataframe(
+            name='cmu/movies',
+            preprocess=True,
+            usecols=[
+                "Wikipedia movie ID", "Freebase movie ID", "Movie name",
+                "Movie release date", "Movie box office revenue", "Movie runtime",
+                "Movie languages", "Movie countries", "Movie genres",
+            ]
+        )
+        
+    else:
+        cmu_movies = read_dataframe_parquet("cmu/movies")
+
     cmu_scraped_movies = read_dataframe(name='cmu/movies_scraped', preprocess=True)
 
     cmu_movies = cast_back_to_int64(cmu_movies, "Wikipedia movie ID")
@@ -663,7 +675,8 @@ def prepare_dataframes(use_parquet=False, save=True) -> tuple[pd.DataFrame, pd.D
     if save:
         movies.to_parquet(GENERATED_PATH / 'movies.parquet', compression="brotli")
         directors.to_parquet(GENERATED_PATH / 'directors.parquet', compression="brotli")
-        imdb_awards.to_parquet(GENERATED_PATH / 'imdb_awards.parquet', compression="brotli")
+        imdb_awards.to_parquet(GENERATED_PATH / 'awards.parquet', compression="brotli")
+        print("Saved merged dataframes to generated folder")
 
     function_end_time = time.perf_counter()
     function_elapsed_time = function_end_time - function_start_time  
