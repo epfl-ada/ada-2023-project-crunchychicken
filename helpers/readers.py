@@ -407,11 +407,14 @@ def get_cmu_movies_enhanced() -> pd.DataFrame:
         ]
     )
     cmu_scraped_movies = read_dataframe(name='cmu/movies_scraped', preprocess=True)
+
     cmu_movies = cast_back_to_int64(cmu_movies, "Wikipedia movie ID")
     cmu_movies_enhanced = pd.merge(cmu_movies, cmu_scraped_movies, left_on="Wikipedia movie ID", right_on="Wikipedia movie ID", how="left")
     cmu_movies = downcast_int64(cmu_movies, "Wikipedia movie ID")
     cmu_movies_enhanced = downcast_int64(cmu_movies_enhanced, "Wikipedia movie ID")
+    
     cmu_movies_enhanced['Movie release Year'] = cmu_movies_enhanced['Movie release Year'].fillna(cmu_movies_enhanced['release_year'])
+    
     cmu_movies_enhanced = cmu_movies_enhanced.drop(columns=['release_year'])
     cmu_movies_enhanced = cmu_movies_enhanced.drop(columns=['Movie runtime'])
     cmu_movies_enhanced = cmu_movies_enhanced.drop(columns=['Movie box office revenue'])
@@ -478,12 +481,13 @@ def prepare_dataframes() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
         inplace=True,
     )
 
-    # Merge movies with imdb mapping
+    # Merge movies with imdb mapping (CMU IMDb movie merge)
     mapping_freebase_imdb = read_dataframe(name='mapping_freebase_imdb')
     movies = movies.merge(
         right=mapping_freebase_imdb.drop_duplicates(subset='freebase'),
         left_on='freebaseID', right_on='freebase', how='left'
     ).rename(columns={'imdb': 'tconst'}).drop('freebase', axis=1)
+    print("Finished merge 1/6 : cmu imdb movies")
 
     # Remove duplicated movies
     movies.drop_duplicates(subset='tconst', inplace=True)
@@ -493,12 +497,14 @@ def prepare_dataframes() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
         right=imdb_info.rename(columns={'genres': 'genres_imdb', 'runtimeMinutes': 'runtime_imdb'})[['tconst', 'isAdult', 'runtime_imdb', 'genres_imdb']],
         on='tconst', how='left',
     )
+    print("Finished merge 2/6 : movies with imdb_info")
 
     # Merge movies with imdb_ratings
     movies = movies.merge(
         right=imdb_ratings.rename(columns={'averageRating': 'rating', 'numVotes': 'votes'}),
         on='tconst', how='left',
     )
+    print("Finished merge 3/6 : movies with imdb_ratings")
 
     # # movies Merge with movieLens_movies  #  NOTE: Only adds ratings for 100 movies, not worth it
     # movies = movies.merge(
@@ -509,6 +515,7 @@ def prepare_dataframes() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
 
     # Merge movies with imdb_crew
     movies = movies.merge(right=imdb_crew.drop('writers', axis=1), on='tconst', how='left')
+    print("Finished merge 4/6 : movies with imdb_crew")
 
     # Add awards and nominations to movies
     imdb_awards_movies_counts = imdb_awards_movies.groupby(by='const').apply(lambda df: pd.Series({'awardsNominated': len(df), 'awardsWon': len(df.query('isWinner == "True"'))})).reset_index()
@@ -516,6 +523,7 @@ def prepare_dataframes() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
         right=imdb_awards_movies_counts,
         left_on='tconst', right_on='const', how='left'
     ).drop('const', axis=1)
+    print("Finished merge 5/6 : movies and nominations for tconst")
     movies.awardsNominated.fillna(0, inplace=True)
     movies.awardsWon.fillna(0, inplace=True)
     movies.awardsNominated = movies.awardsNominated.astype(int)
@@ -539,6 +547,7 @@ def prepare_dataframes() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
         right=imdb_awards_persons_counts,
         left_on='nconst', right_on='const', how='left'
     ).drop('const', axis=1)
+    print("Finished merge 6/6 : movies and nominations for nconst")
     directors.awardsNominated.fillna(0, inplace=True)
     directors.awardsWon.fillna(0, inplace=True)
     directors.awardsNominated = directors.awardsNominated.astype(int)
