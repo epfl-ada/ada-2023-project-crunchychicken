@@ -3,10 +3,10 @@
 import pandas as pd
 from pathlib import Path
 import json
+import numpy as np # unused?
 from helpers.utils import preprocess_cmu_movies, preprocess_cmu_characters, preprocess_imdb_movies, preprocess_movieLens_movies, preprocess_cmu_movies_scraped
 from helpers.utils import convert_and_downcast, cast_back_to_int64, downcast_int64
-import numpy as np
-
+import time
 
 DATA_PATH = Path(__file__).resolve().parent.parent / 'data'
 GENERATED_PATH = Path(__file__).resolve().parent.parent / 'generated'
@@ -62,10 +62,45 @@ FILES = {
 
 }
 
+FILES_PARQUET = {
+
+    # CMU tables
+    'cmu/movies': DATA_PATH / 'CMU/movie.metadata.parquet',
+    'cmu/characters': DATA_PATH / 'CMU/character.metadata.parquet',
+    # IMDb tables
+    'imdb/names': DATA_PATH / 'IMDb/name.basics.parquet',
+    'imdb/movies': DATA_PATH / 'IMDb/title.basics.parquet',
+    'imdb/principals': DATA_PATH / 'IMDb/title.principals.parquet',
+    'imdb/ratings': DATA_PATH / 'IMDb/title.ratings.parquet',
+    'imdb/enhanced_movies': DATA_PATH / 'IMDb/enhanced_imdb.parquet', # external
+    'imdb/awards' : DATA_PATH / 'IMDb/awards.parquet', # from Kaggle (https://www.kaggle.com/datasets/iwooloowi/film-awards-imdb)
+    'imdb/akas': DATA_PATH / 'IMDb/title.akas.parquet', # unused for now
+    'imdb/crew': DATA_PATH / 'IMDb/title.crew.parquet', # unused for now
+    'imdb/episode': DATA_PATH / 'IMDb/title.episode.parquet', # unused for now
+
+    # MovieLens (from Kaggle: https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset)
+    'movieLens/credits': DATA_PATH / 'MovieLens/credits.parquet', # unused for now
+    'movieLens/keywords': DATA_PATH / 'MovieLens/keywords.parquet', # unused for now
+    'movieLens/links': DATA_PATH / 'MovieLens/links.parquet', # unused for now
+    'movieLens/links_small': DATA_PATH / 'MovieLens/links_small.parquet', # unused for now
+    'movieLens/movies': DATA_PATH / 'MovieLens/movies_metadata.parquet',
+    'movieLens/ratings': DATA_PATH / 'MovieLens/ratings.parquet', # unused for now
+    'movieLens/ratings_small': DATA_PATH / 'MovieLens/ratings_small.parquet', # unused for now
+
+    # add merged dataframes here so we don't merge each time
+    'merged/movies': GENERATED_PATH / 'movies.parquet',
+    'merged/directors': GENERATED_PATH / 'directors.parquet',
+    'merged/awards': GENERATED_PATH / 'awards.parquet',
+
+}
+
 def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, convert_downcast=True) -> pd.DataFrame:
     """Reads a dataframe with a suitable method and arguments and returns it."""
 
-    filepath = FILES[name]
+    try: 
+        filepath = FILES[name]
+    except:
+        print("Key Error: key does not exist in FILES")
 
     if not Path(filepath).exists():
         print(f"⚠️ File not found: {filepath} ⚠️")
@@ -358,8 +393,31 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
         if convert_downcast:
             links = convert_and_downcast(links)
         return links
+    
+    if name == 'movieLens/links_small':
+        links = pd.read_csv(filepath,
+            names=usecols,
+        )
+        if preprocess:
+            links['imdbId'] = links['imdbId'].apply(lambda x: 'tt{:07d}'.format(x))
+
+        links['tmdbId'] = links['tmdbId'].astype('Int64')
+
+        if convert_downcast:
+            links = convert_and_downcast(links)
+        return links
 
     if name == 'movieLens/ratings':
+        ratings = pd.read_csv(filepath,
+            names=usecols,
+        )
+        if preprocess:
+            print("Ignoring preprocess")
+        if convert_downcast:
+            ratings = convert_and_downcast(ratings)
+        return ratings
+    
+    if name == 'movieLens/ratings_small':
         ratings = pd.read_csv(filepath,
             names=usecols,
         )
@@ -394,18 +452,38 @@ def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, conve
         return pd.read_parquet(filepath)
     if name == 'cmu/character_classification_2023':
         return pd.read_parquet(filepath)
+    
+def read_dataframe_parquet(name: str) -> pd.DataFrame:
+    """Reads a dataframe with a suitable method and arguments and returns it."""
+
+    try: 
+        filepath = FILES_PARQUET[name]
+    except:
+        print("Key Error: key does not exist in FILES_PARQUET")
+    
+
+    if not Path(filepath).exists():
+        print(f"⚠️ File not found: {filepath} ⚠️")
+        return None
+    
+    return pd.read_parquet(filepath)
 
 # to get revenue, budget, profit for cmu movies
-def get_cmu_movies_enhanced() -> pd.DataFrame:
-    cmu_movies = read_dataframe(
-        name='cmu/movies',
-        preprocess=True,
-        usecols=[
-            "Wikipedia movie ID", "Freebase movie ID", "Movie name",
-            "Movie release date", "Movie box office revenue", "Movie runtime",
-            "Movie languages", "Movie countries", "Movie genres",
-        ]
-    )
+def get_cmu_movies_enhanced(use_parquet=True) -> pd.DataFrame:
+    if use_parquet == False:
+        cmu_movies = read_dataframe(
+            name='cmu/movies',
+            preprocess=True,
+            usecols=[
+                "Wikipedia movie ID", "Freebase movie ID", "Movie name",
+                "Movie release date", "Movie box office revenue", "Movie runtime",
+                "Movie languages", "Movie countries", "Movie genres",
+            ]
+        )
+        
+    else:
+        cmu_movies = read_dataframe_parquet("cmu/movies")
+
     cmu_scraped_movies = read_dataframe(name='cmu/movies_scraped', preprocess=True)
 
     cmu_movies = cast_back_to_int64(cmu_movies, "Wikipedia movie ID")
@@ -427,31 +505,56 @@ def get_cmu_movies_enhanced() -> pd.DataFrame:
 # If you need a column but it's dropped, just add it and make sure the column is not repeated and is clean
 
 
-def prepare_dataframes() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+def prepare_dataframes(use_parquet=False, save=True) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """Prepares the primary movies dataframe by combining multiple raw dataframes."""
-
+    function_start_time = time.perf_counter()
     # Read dataframs
-    cmu_movies = read_dataframe(
-        name='cmu/movies',
-        preprocess=True,
-        usecols=[
-            "Wikipedia movie ID", "Freebase movie ID", "Movie name",
-            "Movie release date", "Movie box office revenue", "Movie runtime",
-            "Movie languages", "Movie countries", "Movie genres",
-        ]
-    )
-    print("Finished loading cmu_movies")
-    imdb_info = read_dataframe(name='imdb/movies', preprocess=True)
-    print("Finished loading imdb_info")
-    imdb_ratings = read_dataframe(name='imdb/ratings')
-    print("Finished loading imdb_ratings")
-    #movieLens_movies = read_dataframe(name='movieLens/movies', preprocess=True)
-    imdb_crew = read_dataframe(name='imdb/crew')
-    print("Finished loading imdb_crew")
-    imdb_people = read_dataframe(name='imdb/names')
-    print("Finished loading imdb_people")
-    imdb_awards = read_dataframe('imdb/awards')
-    print("Finished loading imdb_awards")
+    if use_parquet == False:
+        start_time = time.perf_counter()
+        cmu_movies = read_dataframe(
+            name='cmu/movies',
+            preprocess=True,
+            usecols=[
+                "Wikipedia movie ID", "Freebase movie ID", "Movie name",
+                "Movie release date", "Movie box office revenue", "Movie runtime",
+                "Movie languages", "Movie countries", "Movie genres",
+            ]
+        )
+        print("Finished loading cmu_movies")
+        imdb_info = read_dataframe(name='imdb/movies', preprocess=True)
+        print("Finished loading imdb_info")
+        imdb_ratings = read_dataframe(name='imdb/ratings')
+        print("Finished loading imdb_ratings")
+        #movieLens_movies = read_dataframe(name='movieLens/movies', preprocess=True)
+        imdb_crew = read_dataframe(name='imdb/crew')
+        print("Finished loading imdb_crew")
+        imdb_people = read_dataframe(name='imdb/names')
+        print("Finished loading imdb_people")
+        imdb_awards = read_dataframe('imdb/awards')
+        print("Finished loading imdb_awards")
+        
+        end_time = time.perf_counter()
+        elapsed_time = end_time - start_time    
+        print(f"Total loading time: {elapsed_time} seconds")
+    else:
+        start_time = time.perf_counter()
+        cmu_movies = read_dataframe_parquet("cmu/movies")
+        print("Finished loading cmu_movies")
+        imdb_info = read_dataframe_parquet("imdb/movies")
+        print("Finished loading imdb_info")
+        imdb_ratings = read_dataframe_parquet('imdb/ratings')
+        print("Finished loading imdb_ratings")
+        #movieLens_movies = read_dataframe_parquet('movieLens/movies')
+        imdb_crew = read_dataframe_parquet('imdb/crew')
+        print("Finished loading imdb_crew")
+        imdb_people = read_dataframe_parquet('imdb/names')
+        print("Finished loading imdb_people")
+        imdb_awards = read_dataframe_parquet('imdb/awards')
+        print("Finished loading imdb_awards")
+        
+        end_time = time.perf_counter()
+        elapsed_time = end_time - start_time    
+        print(f"Total loading time: {elapsed_time} seconds")
 
     # Drop extra columns of imdb_awards
     imdb_awards.drop([
@@ -568,5 +671,15 @@ def prepare_dataframes() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
 
     # Set the index of directors
     directors = directors.set_index('nconst')
+
+    if save:
+        movies.to_parquet(GENERATED_PATH / 'movies.parquet', compression="brotli")
+        directors.to_parquet(GENERATED_PATH / 'directors.parquet', compression="brotli")
+        imdb_awards.to_parquet(GENERATED_PATH / 'awards.parquet', compression="brotli")
+        print("Saved merged dataframes to generated folder")
+
+    function_end_time = time.perf_counter()
+    function_elapsed_time = function_end_time - function_start_time  
+    print(f"Total merge time: {function_elapsed_time} seconds")
 
     return movies.copy(), directors.copy(), imdb_awards.copy()
