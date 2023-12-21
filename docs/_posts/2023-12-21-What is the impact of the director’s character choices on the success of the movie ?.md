@@ -24,22 +24,40 @@ Now, let's delve into the distribution of character types chosen by all director
 [![topic-distribution-of-top10-directors.png](https://i.postimg.cc/6pqdq8jj/topic-distribution-of-top10-directors.png)](https://postimg.cc/HrGJPkCX)
 
 What are the choise for the top 10 directors?
+[![director-chracter-choices-heatmap.png](https://i.postimg.cc/QMbJwYqB/director-chracter-choices-heatmap.png)](https://postimg.cc/kV2Stcz9)
 
-| Director               | Chosen Characters                                        |
-|------------------------|----------------------------------------------------------|
-| Christopher Nolan      | 1, 7, 8, 9, 11, 12, 14, 15, 16, 20, 21, 22, 23, 26, 27, 30, 31, 32, 35, 37, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49 |
-| Peter Jackson          | 1, 2, 3, 4, 5, 6, 7, 9, 10, 12, 14, 15, 17, 18, 21, 22, 23, 24, 26, 29, 30, 31, 33, 36, 39, 41, 42, 44, 45, 47, 48, 49 |
-| Francis Ford Coppola   | 1, 2, 3, 4, 5, 7, 8, 9, 10, 12, 13, 15, 16, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 36, 37, 38, 40, 41, 42, 44, 45, 48, 49|
-| Quentin Tarantino      | [0, 1, 2, 6, 8, 9, 11, 14, 15, 16, 21, 22, 26, 28, 30, 31, 32, 33, 34, 35, 37, 38, 39, 42, 44, 45, 46, 49]               |
-| Steven Spielberg       | [0, 2, 4, 5, 7, 8, 9, 10, 12, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30, 31, 33, 34, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 49] |
-| Martin Scorsese        | [0, 1, 2, 3, 4, 5, 6, 7, 9, 12, 14, 16, 17, 19, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 43, 44, 45, 48] |
-| David Fincher          | [0, 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14, 15, 18, 19, 20, 22, 23, 24, 27, 28, 29, 30, 36, 37, 39, 41, 42, 44, 45, 48] |
-| Robert Zemeckis        | [2, 3, 4, 7, 8, 11, 13, 14, 15, 17, 18, 19, 21, 23, 24, 28, 29, 30, 31, 32, 33, 34, 38, 40, 41, 43, 44, 45, 48, 49]         |
-| Frank Darabont         | [1, 2, 4, 10, 12, 16, 19, 20, 24, 27, 33, 36, 38, 43, 49]         |
-| Ridley Scott           | [0, 2, 3, 4, 6, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 27, 28, 29, 30, 31, 32, 33, 35, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 49] |
+It appears that they all make diverse character choices. Let's examine this more closely. The top 5 topics among the top 10 directors are 14, 31, 19, 30, and 15. Now, let's explore the words corresponding to each topic.
 
+| Chracter types | Words                                            |
+|-------|--------------------------------------------------|
+| 14    | tell take find leave try give visit admit agree return |
+| 31    | see ask tell find go refuse leave get give try   |
+| 19    | officer hire general detective david major assign film artist pilot |
+| 30    | wife girl plan befriend member martin wound ex expose minister |
+| 15    | john professor perform rao consider guy intervene transform count dump |
+
+And the distribution of all character types among the top 10 directors.
+
+[![chracter-type-distribution-top10-directors.png](https://i.postimg.cc/zD0KNRWQ/chracter-type-distribution-top10-directors.png)](https://postimg.cc/QVKHkCfg)
+
+Based on the information above, it is evident that character type 14 is the most commonly chosen among all top 10 directors. Nonetheless, the character choices vary significantly among these directors.
 
 ## How diverse the directors are in their character choices ? 
+
+From above, seems like success directers have a diverse choice of chracters. But let us explore more about the diversity if the directors choices of chracters. First, let see the distrubutin of the directers by the number of unique chracters he/she workded with.
+[![Distribution-of-Directors-by-Number-of-Unique-Characters.png](https://i.postimg.cc/J7ckRYDK/Distribution-of-Directors-by-Number-of-Unique-Characters.png)](https://postimg.cc/fkyLKKv0)
+
+Let's have a close look of ten directors with the highest diversity.
+[![top10-directer-highest-diversity.png](https://i.postimg.cc/05BqKPwN/top10-directer-highest-diversity.png)](https://postimg.cc/z3KQ9mpm)
+
+From the above pie chart, we can observe that almost half of the directors only worked with one or two chractor type. However, using this method to define the diversity of directors' chatacter choices  might be subject to the influence of the total number of movies each director has undertaken. To achieve a more precise quantification of the diversity in directors' character choices, we need a more refined quantitative method.
+
+For quantify diversity, we calculate the Shannon diversity index with normalization for each director based on the distribution of chracter types in their movies. Higher entropy values indicate grater diversity.
+[![Distribution-of-Directors-by-diversity-score.png](https://i.postimg.cc/K8K7cryz/Distribution-of-Directors-by-diversity-score.png)](https://postimg.cc/MnSfdBH2)
+[![top10-directer-highest-diversity-score.png](https://i.postimg.cc/Y9LT1mgq/top10-directer-highest-diversity-score.png)](https://postimg.cc/BLsh3bMd)
+
+Based on the information presented in the pie chart, it is evident that 32.6% of directors exhibit a diversity score falling within the 1-2 range. Additionally, 31.6% of directors possess a diversity score of 0, indicating that their works predominantly feature a single character type. It's worth noting that this might be influenced by the limitations of the plot data available from CMU, as not all movies and characters have sufficient information to determine character types accurately. In the 0-1 range, 20.1% of directors fall into this category, while 13.8% fall within the 2-3 range. Notably, only 1.9% of directors attain a score of 3-4, indicating a higher diversity of character types in their works.
+
 ## Can we find very successful directors that always use the same type of characters or others that vary a lot in their personas choices ?
 ## In definitive, how does this impact the movie’s success ?
 
