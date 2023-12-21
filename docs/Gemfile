@@ -5,5 +5,5 @@ gemspec
 gem 'webrick'
 gem 'faraday-retry'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
-gem "jekyll-theme-yat"
-gem 'jekyll-spaceship', group: :jekyll_plugins
+# gem "jekyll-theme-yat"
+# gem 'jekyll-spaceship', group: :jekyll_plugins
