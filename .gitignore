@@ -6,4 +6,4 @@ generated/annotations_2013/*
 generated/annotations_2023/*
 !.gitkeep
 *.tar.gz
-directors_with_score.parquet
+
