@@ -1,25 +1,89 @@
-# TODO:
-- Doc to update as we are working on P3 : 
-[Here](https://docs.google.com/document/d/1I8oTcdz1QQ-hEw_nMJjvXaWbeH089go-Vf3_V0yVUfc/edit)
+# Frames of success :  Diving into the minds of movie wizards
 
-# P3: Final project and the datastory
+## Abstract
 
-When you are done with Homework H2, in Milestone P3 you will execute the project you proposed. For the final milestone, you will be expected to execute your project proposal and describe your project in a data story.
+Stanley Kubrick is known to have at least one great movie in every major movie genre. Conversely, when you see David Fincher's name as the director of a new movie, you are almost sure that there is going to be one or more serial killers involved. The directorial approach of the most successful directors can be so different and taking the right directorial approaches early can lead a director to achieve significant success in their career, and is believed to be the main factor determining the quality of the movie. In this data analysis project, we will utilize the CMU Movie Summary Corpus, along with supplementary datasets, to examine approaches of the brightest directors from three angles: the genre of their films, the team surrounding them, and the character personas in their movies. We aim to gain a clear insight on how their decisions impact the overall success of the movie.
 
-Data stories are a blog post or short article, with an important visual component, using data to tell a story and illustrate it effectively. You can be less formal here (although methods and math should then appear in the notebook), but more visual. Please look at the top-k projects from [2022](https://epfl-ada.github.io/teaching/fall2022/cs401/reports/), [2021](https://epfl-ada.github.io/teaching/fall2021/cs401/reports/), [2020](https://epfl-ada.github.io/teaching/fall2020/cs401/reports/), and [2019](https://epfl-ada.github.io/teaching/fall2019/cs401/reports/) as a reference for designing good data stories. You can pick your preferred platform option, but we encourage you to use Jekyll. We prepared a short tutorial for [creating a website with GitHub pages](https://epfl-ada.github.io/teaching/fall2023/cs401/projects/github_pages_tutorial/) outlining how you can host the datastory. You submit the story by providing a URL to it in your README file.
 
-A Jupyter notebook extending the one delivered for Milestone P2 is also expected and will be graded. The README in Milestone P3 shall be updated. It should also detail the contributions of all group members.
+## Research Questions 
 
-Example
-John: Plotting graphs during data analysis, crawling the data, preliminary data analysis
-Mary: Problem formulation, coming up with the algorithm
-Chris: Coding up the algorithm, running tests, tabulating final results
-Eve: Writing up the report or the data story, preparing the final presentation
+1. **How impactful is the team surrounding the director on the success of the movie?**
 
-There will be project office hours dedicated to helping you finish the project successfully. The bulk of your work will be over before the winter break, so you can focus on the exam (and exams of other classes) during that time.
+    Are the directors who always work with the same technical crew more successful? Are some directors successful only because they cast popular actors? Can we find some directors that decided to cast, for their next project, only very popular actors by looking at details about their previous works? Successful directors built up their renown across the industry thanks to now very popular movies, but can it also be thanks to the presence of certain individuals in their team? If yes, how frequently have they been collaborating with each other?
 
-P3 deliverables (done as a team):
+2. **To what extent does the director's choice of movie genre affect the success of the movie?**
 
-1. The final project repository containing your final notebook. We will grade the correctness, quality of code, and quality of textual descriptions. There should be a single Jupyter notebook containing the main logic. The implementation of helper functions that is not essential for understanding the main logic should be contained in external scripts/modules that will be called from the main notebook.
+    Are more successful directors more often specialized in a certain combination of genres? Are directors who tend to work on more diverse projects less successful? Is there a correlation between a director's critical success and the evolution of their style, regarding the choices of movie genres? To what extent do directors experiment with new genres and thematics over the course of their career, and is there a pattern of periods of experimentation followed by periods of consistency?
 
-2. Data story
+3. **What is the impact of the director's character choices on the success of the movie?**
+
+    What types of characters do successful directors choose? How diverse the directors are in their character choices? Can we find very successful directors that always use the same type of characters or others that vary a lot in their personas choices? In definitive, how does this impact the movie's success?
+
+- Additional question:
+ 
+    Can we spot bright underrated directors who are in the early stages of their career?
+    We will try to do that by analyzing the movie genre, the plot summary, the movie characters, the profile of the director (e.g., age, gender, country of origin) and the profile of the cast and crew of their movies.
+
+
+## Proposed additional datasets
+
+### Stanford CoreNLP-processed summaries
+The dataset is available online [here](https://www.cs.cmu.edu/~ark/personas/data/corenlp_plot_summaries.tar).
+By using this dataset access to structured and rich data, which will help to understand the nuances of movies, characters and directorial style. We can accurately identify the characters, their actions and attributes, allowing to categorize them based on their traits. The type of characters and their dynamic will give key insights on directors narrative styles. 
+
+
+### IMDb Non commercial datasets
+The dataset is available online [here](https://developer.imdb.com/non-commercial-datasets/). Using this dataset, we can enrich the metadata about the movies in the CMU dataset, as well as the cast and crew of a movie. The major challenge for using this dataset is merging it with the CMU dataset. We have been able to merge them successfully by crawling Wikipedia and querying Wikidata to get the corresponding IMDb movie ID for each movie present in the CMU dataset. Next step is to also find such a mapping between the actors and actresses in the CMU dataset and their corresponding ID in the IMDb dataset, which is less critical.
+
+### 'TheMovies' Dataset
+
+The dataset is available on [Kaggle](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset?select=movies_metadata.csv). This dataset contains metadata for all 45,000 movies listed in the Full MovieLens Dataset. In it, we can retrieve some interesting information to cure as well as enrich our CMU concerning the movie runtimes, release years, production companies, as well as precious information regarding the movie's success, with some ratings and the revenue. In the dataset, 27 500~ movies are also part of our CMU Movie Corpus.
+
+## Methods
+
+### Success and popularity of a movie
+We measure the success of a movie by one or a combination of the IMDb ratings, the number of rates, the Box Office revenue, and possibly the awards and nominations of the movie. Will create a *success score* and a *popularity score* for each movie. We will decide on the exact definition of these scores based on their distribution and their representativeness of what we intend to measure.
+
+### Success and popularity of a director
+The most basic idea would be to calculate the average success and popularity scores of the movies of a director. A more elegant approach can be to count the number of successful or popular movies of the director, by applying a threshold on the scores. This way, we will take into account that for a director to be successful, only a couple of successful movies is enough. Taking Martin Scorsese for instance, movies like Casino, Goodfellas, and Taxi Driver are enough to make him a successful director, and for such directors, we should get a *success score* close to maximum, so why impinging his score with taking into account the success of movies like Made in Milan or The Family which nobody knows about?
+
+### Natural Language Processing
+Following [*Learning Latent Personas of Film Characters*](https://www.cs.cmu.edu/~dbamman/pubs/pdf/bamman+oconnor+smith.acl13.pdf), from the NLP data of movie summaries, we extract characters. For each character, we find the associated dependency of type: agent, patient, attribute. Then, we generate bags of words and do LDA to get the latent personas.
+
+## Proposed timeline for P3
+
+
+| Deadline   | Question #1                                                                                                                           | Question #2                                                                              | Question #3                                                                              |
+|------------|---------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
+| 3.12.2023  | 1. Finish cleaning the datasets ;<br>2. Clean & unify the codes <br> 3.Decide on success and popularity metrics.                    | Same as Q1                                                                               | Same as Q1                                                                               |
+| 10.12.2023 | 1. Decide on the set of directors to study;<br>2. Decide on the definition of the "team" around the director;<br>3. Prepare the dataframes and preliminary visualizations. | 1. Prepare the Dataframes for vizsualizations <br> 2. Check the diversity of the genres per director | 1. Decide on how exactly to use the Persona's data with respect to directors<br> 2.  Prepare the dataframes and preliminary visualizations. |
+| 17.12.2023 | 1. Try to address the raised research questions in detail;<br>2. Enhance the visualizations.                                            | 1. Assess the link the director's style to success<br>2. Enhance the visualizations       <br>3. Explore director's activity consistency regarding genres           | 1. Assess the director's personas choices<br>2. Link it to the success of the movies/directors                 |
+| 22.12.2023 | 1. Finalize the visualizations;<br>2. Write the story and work on presentation (Github pages).                                          | Same as Q1                                                                               | Same as Q1                                                                               |
+
+
+## Organization within the team
+
+Until 3.12.2023, we will focus on Homework 2 but we will also start cleaning our datasets and trying retrieve more data, as explained in the notebook.
+
+| Deadline   | Chang   | Arthur  | Clemence | Sepehr  | Romain  |
+|------------|---------|---------|----------|---------|---------|
+| 3.12.2023  | General | General | General  | General | General |
+| 10.12.2023 | Q1      | Q3      | Q1       | Q2      | Q2      |
+| 17.12.2023 | Q1      | Q3      | Q2-3       | Q1-2      | Q2-3      |
+| 22.12.2023 | General      | General     | General       | General      | General      |
+
+## Questions for TAs
+
+- Our plan is to try to answer as many of the raised research questions as possible, but for the moment we are not sure which ones will give us more interesting results. Is this a good approach in your opinion? Should we focus on one of them instead?
+
+- Are the methods clear enough ?  Or should we maybe define exact workflows for milestone P3 ?
+
+## Authors
+
+***CrunchyChicken* group - Advanced Data Science (CS-401) 2023**
+
+- [Chang Chun-Tzu](mailto:chun-tzu.chang@epfl.ch) (SCIPER 351986)
+- [Arthur Lamour](mailto:arthur.lamour@epfl.ch) (SCIPER 300443)
+- [Clémence Mayaux](mailto:clemence.mayaux@epfl.ch) (SCIPER 300278)
+- [Sepehr Mousavi](mailto:sepehr.mousavi@epfl.ch) (SCIPER 338673)
+- [Romain Rochepeau](mailto:romain.rochepeau@epfl.ch) (SCIPER 300574)
