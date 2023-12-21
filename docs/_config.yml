@@ -21,7 +21,7 @@ header_pages:
   - categories.md
   - about.md
 
-favicon: "/assets/img/camera_with_flash.png"  # TODO: Change?
+favicon: "/assets/img/tophat.ico"  # TODO: Change?
 content_width: "920px"
 header_transparent: true
 night_mode: "manual"
@@ -103,7 +103,7 @@ kramdown:
 repository: epfl-ada/ada-2023-project-crunchychicken
 
 plugins:
-  - jekyll-feed
+#  - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-paginate
