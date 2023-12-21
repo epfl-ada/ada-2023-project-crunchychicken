@@ -4,7 +4,8 @@
 #   $ bundle install
 #   $ bundle exec jekyll serve
 
-title: "Frames of Success: Diving into the minds of movie wizards"
+#title: "Frames of Success: Diving into the minds of movie wizards"
+title: "Frames of success"
 short_title: "Frames of success"
 author: Chang Chun-Tzu, Arthur Lamour, Clémence Mayaux, Sepehr Mousavi, Romain Rochepeau
 description: >- # this means to ignore newlines until next field
