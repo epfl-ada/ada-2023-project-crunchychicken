@@ -2,7 +2,8 @@
 # bundle install
 # bundle exec jekyll serve
 
-theme: jekyll-theme-minimal
+# theme: jekyll-theme-yat
+remote_theme: "jeffreytse/jekyll-theme-yat"
 
 title: "Frames of success: Diving into the minds of movie wizards"
 # description: A template website for ADA Project
