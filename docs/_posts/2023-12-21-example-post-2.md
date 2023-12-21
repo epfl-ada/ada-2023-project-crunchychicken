@@ -13,6 +13,11 @@ Some directors are known for consistently producing the same movie genre, while 
 **Are directors who tend to work on more diverse projects less successful or more successful?**
 **Correlation between a director’s critical success and evolution of their style regarding movie genres ?**
 **To what extent do directors experiment with new genres and thematics over the course of their career, and is there a pattern of periods of experimentation followed by periods of consistency?**
+
+We note that, directors are less and less inclined to explore new genres as their careers progress.
+
+![directors-success.png](https://i.postimg.cc/N0tvN4yW/directors-success.png)
+
 **Is it less likely or more likely for a movie to succeed when the director tries a new genre?**
 
 
