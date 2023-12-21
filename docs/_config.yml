@@ -11,6 +11,9 @@ description: >- # this means to ignore newlines until next field
   A data story about the choices of the most successful directors.
   This data story is a part of a project for ADA.
 github_username: epfl-ada/ada-2023-project-crunchychicken
+
+# For custom deployment
+url: ""
 baseurl: "/blog"
 
 remote_theme: "jeffreytse/jekyll-theme-yat"
