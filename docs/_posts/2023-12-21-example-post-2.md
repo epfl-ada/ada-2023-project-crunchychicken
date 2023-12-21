@@ -11,6 +11,13 @@ sidebar: []
 **Are more successful directors more often specialized in a certain combination of genres?**
 Some directors are known for consistently producing the same movie genre, while others explore a wide range of cinematic genres. Looking at the most successful directors, Joel Coen excels by producing films in a limited number of genres, while Steven Spielberg experiments with more than 60 different genres. Our aim is then to determine which combinations of genres lead to the highest level of success
 **Are directors who tend to work on more diverse projects less successful or more successful?**
+
+There is a noticeable variation among directors regarding the diversity of their projects. Analyzing the relationship between the average scores of directors and the number of different movie genres they explore, reveals a robust correlation. The success of directors appears to increase with the diversity of their projects.
+
+![genre-explored.png](https://i.postimg.cc/rmnmXbxd/genre-explored.png)
+
+![score-directors-genre.png](https://i.postimg.cc/zXSfqVCZ/score-directors-genre.png)
+
 **Correlation between a director’s critical success and evolution of their style regarding movie genres ?**
 **To what extent do directors experiment with new genres and thematics over the course of their career, and is there a pattern of periods of experimentation followed by periods of consistency?**
 
