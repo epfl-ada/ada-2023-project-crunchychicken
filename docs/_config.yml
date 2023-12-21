@@ -12,10 +12,6 @@ description: >- # this means to ignore newlines until next field
   This data story is a part of a project for ADA.
 github_username: epfl-ada/ada-2023-project-crunchychicken
 
-# For custom deployment
-# url: ""
-# baseurl: ""
-
 remote_theme: "jeffreytse/jekyll-theme-yat"
 yat:
   date_format: "%b %d, %Y"
