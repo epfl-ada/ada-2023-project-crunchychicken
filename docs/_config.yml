@@ -107,4 +107,8 @@ kramdown:
 repository: epfl-ada/ada-2023-project-crunchychicken
 
 plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
   - jekyll-spaceship
