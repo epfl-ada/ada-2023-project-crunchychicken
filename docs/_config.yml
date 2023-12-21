@@ -102,6 +102,9 @@ click_to_top:
 markdown: kramdown
 kramdown:
   input: GFM
+  math_engine: katex
+
+repository: epfl-ada/ada-2023-project-crunchychicken
 
 plugins:
   - jekyll-spaceship

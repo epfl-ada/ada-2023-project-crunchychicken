@@ -8,6 +8,8 @@ on:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    env:
+      PAGES_REPO_NWO: epfl-ada/ada-2023-project-crunchychicken
     steps:
       - uses: actions/checkout@v2
 
