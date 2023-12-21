@@ -1,6 +1,13 @@
 import pandas as pd
 import ast
 import re
+import seaborn as sns
+
+
+# Discrete
+PALETTE_D = sns.color_palette([sns.color_palette("colorblind")[i] for i in [4, 2, 0, 1, 3, 5, 7, 8, 6, 9]])
+# Continuous
+PALETTE_C = sns.color_palette("dark:#5A9_r", as_cmap=True)
 
 ####################### Utility function for external.py #######################
 def batched(it, sz: int):

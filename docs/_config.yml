@@ -4,8 +4,9 @@
 #   $ bundle install
 #   $ bundle exec jekyll serve
 
-title: "Frames of Success: Diving into the minds of movie wizards"
-short_title: "Frames of success"
+long_title: "Frames of Success: Diving into the minds of movie wizards" # too long for taskbar
+#title: "Frames of success"
+title: "Frames of success"
 author: Chang Chun-Tzu, Arthur Lamour, Clémence Mayaux, Sepehr Mousavi, Romain Rochepeau
 description: >- # this means to ignore newlines until next field
   A data story about the choices of the most successful directors.
@@ -21,7 +22,7 @@ header_pages:
   - categories.md
   - about.md
 
-favicon: "/assets/img/camera_with_flash.png"  # TODO: Change?
+favicon: "/assets/img/mage.png"  # TODO: Change?
 content_width: "920px"
 header_transparent: true
 night_mode: "manual"
@@ -103,7 +104,7 @@ kramdown:
 repository: epfl-ada/ada-2023-project-crunchychicken
 
 plugins:
-  - jekyll-feed
+#  - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-paginate
