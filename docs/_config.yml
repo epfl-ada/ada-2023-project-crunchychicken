@@ -14,7 +14,7 @@ github_username: epfl-ada/ada-2023-project-crunchychicken
 
 # For custom deployment
 url: ""
-baseurl: "/blog"
+baseurl: ""
 
 remote_theme: "jeffreytse/jekyll-theme-yat"
 yat:
