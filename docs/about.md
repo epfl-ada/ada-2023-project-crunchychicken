@@ -1,5 +1,5 @@
 ---
-layout: full
+layout: about
 title: About
 ---
 
