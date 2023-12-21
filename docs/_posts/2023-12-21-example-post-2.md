@@ -47,3 +47,5 @@ We note that, directors are less and less inclined to explore new genres as thei
 <img src="https://i.postimg.cc/sX52PNjZ/image-2023-12-11-214406269.png" alt="Temp Image" width="300"> <!-- height="50"> -->
 
 {% include plotly_demo_include.html %}
+
+{% include plotly_top_directors_by_country_include.html %}
