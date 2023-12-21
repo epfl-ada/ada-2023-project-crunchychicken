@@ -11,6 +11,18 @@ import time
 DATA_PATH = Path(__file__).resolve().parent.parent / 'data'
 GENERATED_PATH = Path(__file__).resolve().parent.parent / 'generated'
 
+def save_parquet_to_generated(filename: str, df: pd.DataFrame):
+    if not filename:
+        raise ValueError("Filename cannot be empty")
+
+    full_path = GENERATED_PATH / filename
+
+    if not full_path.suffix:
+        full_path = full_path.with_suffix('.parquet')
+
+    df.to_parquet(full_path, compression='brotli')
+
+
 FILES = {
     # CMU tables
     'cmu/movies': DATA_PATH / 'CMU/movie.metadata.tsv',
@@ -91,6 +103,8 @@ FILES_PARQUET = {
     'merged/movies': GENERATED_PATH / 'movies.parquet',
     'merged/directors': GENERATED_PATH / 'directors.parquet',
     'merged/awards': GENERATED_PATH / 'awards.parquet',
+
+    'directors/metrics': GENERATED_PATH / 'director_metrics.parquet',
 
 }
 
