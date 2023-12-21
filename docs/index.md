@@ -5,7 +5,7 @@
 layout: home
 title: Home
 heading: "Frames of Success: Diving into the minds of movie wizards"
-subheading: "Authors: Chang Chun-Tzu, Arthur Lamour, Clémence Mayaux, Sepehr Mousavi, and Romain Rochepeau"
+subheading: "Chang Chun-Tzu, Arthur Lamour, Clémence Mayaux, Sepehr Mousavi, and Romain Rochepeau"
 banner:
   image: /assets/img/atriptothemoon.gif
   opacity: 0.50
