@@ -22,7 +22,7 @@ header_pages:
   - categories.md
   - about.md
 
-favicon: "/assets/img/tophat.ico"  # TODO: Change?
+favicon: "/assets/img/tophat.png"  # TODO: Change?
 content_width: "920px"
 header_transparent: true
 night_mode: "manual"
