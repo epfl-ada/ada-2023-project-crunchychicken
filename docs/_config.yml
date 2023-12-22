@@ -20,7 +20,6 @@ yat:
 header_pages:
   - index.md
   - categories.md
-  - about.md
 
 favicon: "/assets/img/mage.png"  # TODO: Change?
 content_width: "920px"
