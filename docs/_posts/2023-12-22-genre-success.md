@@ -66,7 +66,20 @@ To answer this question, we analyze the correlation between the career years of 
 | Successful director   | +0.6308 (< 0.01)    | -0.1555 (< 0.01)              | 0.159     |
 | All (after 7.5 years) | +0.5380 (< 0.01)    | -0.1019 (< 0.01)              | 0.032     |
 
-In the first two models, the intercept is quite high which means that with average years passed through the career of the director (around 7.5 years), the probability of trying a new genre is 0.6804 and 0.6308 among all directors and successful directors, respectively. Here, successful directors are those whose the `avg-3` score is higher than 40, which includes only 135 directors in our dataset. In both models, there is a significant negative correlation between our variables. The coefficient for each row means that for each standard deviation (around 9.3 years) passed through the career of a director, the probability of trying a new genre drops as the coefficient. We notice a smaller drop among the successful directors. The third row takes into account the fact that in the first years of their career, it is naturally more probable for directors to try new genres, and takes into account only movies after at least 7.5 years through their careers. Here, again, the negative correlation exists although it is a bit milder than the other two. These negative correlations are obvious in the followin figure.
+In the first two models, the intercept is quite high which means that with average years passed through the career of the director (around 7.5 years), the probability of trying a new genre is 0.6804 and 0.6308 among all directors and successful directors, respectively. Here, successful directors are those whose the `avg-3` score is higher than 40, which includes only 135 directors in our dataset. In both models, there is a significant negative correlation between our variables. The coefficient for each row means that for each standard deviation (around 9.3 years) passed through the career of a director, the probability of trying a new genre drops as the coefficient. We notice a smaller drop among the successful directors. The third row takes into account the fact that in the first years of their career, it is naturally more probable for directors to try new genres, and takes into account only movies after at least 7.5 years through their careers. Here, again, the negative correlation exists although it is a bit milder than the other two. These negative correlations are obvious in the followin figure. Here, the mean value of binary dependent variable is plotted agains the independent variable, with 95% confidence intervals.
 
 [![careeryears-newgenre.png](https://i.postimg.cc/T1VKLLzd/careeryears-newgenre.png)](https://postimg.cc/T5PdBw2F)
+
+
+## ...
+
+TODO: Add temporal plot for director genres (interactive)
+
+## Are more successful directors more often specialized in a certain combination of genres?
+
+To answer this question, we need to study not only the existence of single genres in the movies of directors, but also the co-existenec of one or more genres in their movies. Take, for instance, three comedy-romance movies, one romance-drama movie, and three drama-crime movies in a portfolio. The presense of romance genre is the same as drama (4), and close to the presence of comedy (3) and crime (3), but these numbers alone do not represent the style of this portfolio. What is significant here, is the co-existence of comedy-romance and drama-crime movies.
+
+In order to get the co-existence of genres, we define a undirected bipartite graph of the movies and their genres, and draw an edge between each movie and its genres. Projection of this bipartite graph on the movies will give us a multigraph of co-existence of genres in a group of movies. The multiplicity of each edge can then be reduced to a weight to get an ordinary undirected weight graph of the co-existence of genres in a group of movies.
+
+{% include genre_coexistence_include.html %}
 

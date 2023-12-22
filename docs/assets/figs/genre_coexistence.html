@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Genre Co-existence by Country or Decade</title>
+    <style>
+        /* Your CSS styles here */
+    </style>
+</head>
+<body>
+
+<h4 align="left">Movie Genre Co-existence by Country or Decade</h4>
+
+<select id="countrySelector" onchange="loadImageCountry()">
+    <option value=""selected>All</option>
+    <option value="Albania">Albania</option>
+    <option value="Algeria">Algeria</option>
+    <option value="Argentina">Argentina</option>
+    <option value="Armenia">Armenia</option>
+    <option value="Australia">Australia</option>
+    <option value="Austria">Austria</option>
+    <option value="Azerbaijan">Azerbaijan</option>
+    <option value="Bahamas">Bahamas</option>
+    <option value="Bahrain">Bahrain</option>
+    <option value="Bangladesh">Bangladesh</option>
+    <option value="Belgium">Belgium</option>
+    <option value="Bolivia">Bolivia</option>
+    <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+    <option value="Brazil">Brazil</option>
+    <option value="Bulgaria">Bulgaria</option>
+    <option value="Burkina Faso">Burkina Faso</option>
+    <option value="Burma">Burma</option>
+    <option value="Cambodia">Cambodia</option>
+    <option value="Cameroon">Cameroon</option>
+    <option value="Canada">Canada</option>
+    <option value="Chile">Chile</option>
+    <option value="China">China</option>
+    <option value="Colombia">Colombia</option>
+    <option value="Congo">Congo</option>
+    <option value="Costa Rica">Costa Rica</option>
+    <option value="Croatia">Croatia</option>
+    <option value="Cuba">Cuba</option>
+    <option value="Cyprus">Cyprus</option>
+    <option value="Czech Republic">Czech Republic</option>
+    <option value="Czechoslovakia">Czechoslovakia</option>
+    <option value="Democratic Republic of the Congo">Democratic Republic of the Congo</option>
+    <option value="Denmark">Denmark</option>
+    <option value="Egypt">Egypt</option>
+    <option value="England">England</option>
+    <option value="Estonia">Estonia</option>
+    <option value="Ethiopia">Ethiopia</option>
+    <option value="Federal Republic of Yugoslavia">Federal Republic of Yugoslavia</option>
+    <option value="Finland">Finland</option>
+    <option value="France">France</option>
+    <option value="Georgia">Georgia</option>
+    <option value="Georgian SSR">Georgian SSR</option>
+    <option value="German Democratic Republic">German Democratic Republic</option>
+    <option value="Germany">Germany</option>
+    <option value="Greece">Greece</option>
+    <option value="Guinea">Guinea</option>
+    <option value="Guinea-Bissau">Guinea-Bissau</option>
+    <option value="Haiti">Haiti</option>
+    <option value="Hong Kong">Hong Kong</option>
+    <option value="Hungary">Hungary</option>
+    <option value="Iceland">Iceland</option>
+    <option value="India">India</option>
+    <option value="Indonesia">Indonesia</option>
+    <option value="Iran">Iran</option>
+    <option value="Iraq">Iraq</option>
+    <option value="Ireland">Ireland</option>
+    <option value="Israel">Israel</option>
+    <option value="Italy">Italy</option>
+    <option value="Jamaica">Jamaica</option>
+    <option value="Japan">Japan</option>
+    <option value="Jordan">Jordan</option>
+    <option value="Kenya">Kenya</option>
+    <option value="Kingdom of Great Britain">Kingdom of Great Britain</option>
+    <option value="Korea">Korea</option>
+    <option value="Kuwait">Kuwait</option>
+    <option value="Lebanon">Lebanon</option>
+    <option value="Libya">Libya</option>
+    <option value="Lithuania">Lithuania</option>
+    <option value="Luxembourg">Luxembourg</option>
+    <option value="Malaysia">Malaysia</option>
+    <option value="Mali">Mali</option>
+    <option value="Malta">Malta</option>
+    <option value="Mexico">Mexico</option>
+    <option value="Mongolia">Mongolia</option>
+    <option value="Montenegro">Montenegro</option>
+    <option value="Morocco">Morocco</option>
+    <option value="Nazi Germany">Nazi Germany</option>
+    <option value="Nepal">Nepal</option>
+    <option value="Netherlands">Netherlands</option>
+    <option value="New Zealand">New Zealand</option>
+    <option value="Nigeria">Nigeria</option>
+    <option value="Norway">Norway</option>
+    <option value="Pakistan">Pakistan</option>
+    <option value="Palestinian territories">Palestinian territories</option>
+    <option value="Peru">Peru</option>
+    <option value="Philippines">Philippines</option>
+    <option value="Poland">Poland</option>
+    <option value="Portugal">Portugal</option>
+    <option value="Puerto Rico">Puerto Rico</option>
+    <option value="Republic of Macedonia">Republic of Macedonia</option>
+    <option value="Romania">Romania</option>
+    <option value="Russia">Russia</option>
+    <option value="Scotland">Scotland</option>
+    <option value="Senegal">Senegal</option>
+    <option value="Serbia">Serbia</option>
+    <option value="Serbia and Montenegro">Serbia and Montenegro</option>
+    <option value="Singapore">Singapore</option>
+    <option value="Slovakia">Slovakia</option>
+    <option value="Slovenia">Slovenia</option>
+    <option value="Socialist Federal Republic of Yugoslavia">Socialist Federal Republic of Yugoslavia</option>
+    <option value="South Africa">South Africa</option>
+    <option value="South Korea">South Korea</option>
+    <option value="Soviet Union">Soviet Union</option>
+    <option value="Soviet occupation zone">Soviet occupation zone</option>
+    <option value="Spain">Spain</option>
+    <option value="Sri Lanka">Sri Lanka</option>
+    <option value="Sweden">Sweden</option>
+    <option value="Switzerland">Switzerland</option>
+    <option value="Taiwan">Taiwan</option>
+    <option value="Thailand">Thailand</option>
+    <option value="Tunisia">Tunisia</option>
+    <option value="Turkey">Turkey</option>
+    <option value="Ukraine">Ukraine</option>
+    <option value="United Arab Emirates">United Arab Emirates</option>
+    <option value="United Kingdom">United Kingdom</option>
+    <option value="United States of America">United States of America</option>
+    <option value="Uruguay">Uruguay</option>
+    <option value="Uzbek SSR">Uzbek SSR</option>
+    <option value="Venezuela">Venezuela</option>
+    <option value="Vietnam">Vietnam</option>
+    <option value="Weimar Republic">Weimar Republic</option>
+    <option value="West Germany">West Germany</option>
+    <option value="Yugoslavia">Yugoslavia</option>
+    <option value="Zimbabwe">Zimbabwe</option>
+</select>
+
+<select id="decadeSelector" onchange="loadImageDecade()">
+    <option value=""selected>All</option>
+    <option value="1800-1900">1800-1900</option>
+    <option value="1900-1910">1900-1910</option>
+    <option value="1910-1920">1910-1920</option>
+    <option value="1920-1930">1920-1930</option>
+    <option value="1930-1940">1930-1940</option>
+    <option value="1940-1950">1940-1950</option>
+    <option value="1950-1960">1950-1960</option>
+    <option value="1960-1970">1960-1970</option>
+    <option value="1970-1980">1970-1980</option>
+    <option value="1980-1990">1980-1990</option>
+    <option value="1990-2000">1990-2000</option>
+    <option value="2000-2010">2000-2010</option>
+    <option value="2010-2020">2010-2020</option>
+</select>
+
+
+<div id="plotContainer"  align="center">
+    <img id="plotImage" src="genre_coexistence_graphs/1950-1960.png" alt="Select a country or a decade to view the graph">
+</div>
+
+<script>
+    function loadImageCountry() {
+        var selectedDecade = document.getElementById('decadeSelector').value;
+        var selectedCountry = document.getElementById('countrySelector').value;
+        var img = document.getElementById('plotImage');
+        if (selectedCountry) {
+            img.src = `genre_coexistence_graphs/${selectedCountry}.png`;
+            img.alt = `Plot for ${selectedCountry}`;
+        }
+        else if (selectedDecade) {
+            img.src = `genre_coexistence_graphs/${selectedDecade}.png`;
+            img.alt = `Plot for ${selectedDecade}`;
+        }
+        else {
+            img.src = "genre_coexistence_graphs/base.png"; // Default image
+            img.alt = "Plot for base"; // Default alt text
+        }
+    }
+
+    // Call loadImage on page load to display the default country's image
+    window.onload = loadImage;
+</script>
+
+<script>
+    function loadImageDecade() {
+        var selectedDecade = document.getElementById('decadeSelector').value;
+        var selectedCountry = document.getElementById('countrySelector').value;
+        var img = document.getElementById('plotImage');
+        if (selectedDecade) {
+            img.src = `genre_coexistence_graphs/${selectedDecade}.png`;
+            img.alt = `Plot for ${selectedDecade}`;
+        }
+        else if (selectedCountry) {
+            img.src = `genre_coexistence_graphs/${selectedCountry}.png`;
+            img.alt = `Plot for ${selectedCountry}`;
+        }
+        else {
+            img.src = "genre_coexistence_graphs/base.png"; // Default image
+            img.alt = "Plot for base"; // Default alt text
+        }
+    }
+
+    // Call loadImage on page load to display the default country's image
+    window.onload = loadImage;
+</script>
+
+
+</body>
+</html>
