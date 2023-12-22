@@ -142,6 +142,9 @@ FILES_PARQUET = {
     "q1/movies": GENERATED_PATH / 'q1_movies.parquet',
     "q1/directors_core" : GENERATED_PATH / 'q1_directors_core.parquet',
     "q1/matched_test" : GENERATED_PATH / 'q1_matched_test.parquet',
+    "q1/result_df" : GENERATED_PATH / 'q1_result_df.parquet',
+
+    "q3/matched_df": GENERATED_PATH / 'q3_matched_df.parquet',
 
 }
 
