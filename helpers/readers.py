@@ -130,12 +130,15 @@ FILES_PARQUET = {
     'merged/awards': GENERATED_PATH / 'awards.parquet',
 
     'directors/metrics': GENERATED_PATH / 'director_metrics.parquet',
+    "directors/scores": GENERATED_PATH / 'directors_with_score.parquet',
+    "movie/scores": GENERATED_PATH / 'movie_with_scores.parquet',
 
     "q1/matched_imdb_people": GENERATED_PATH / 'q1_matched_imdb_people.parquet',
     "q1/jobs_principal_people": GENERATED_PATH / 'q1_jobs_principal_people.parquet',
     "q1/mip_enhanced": GENERATED_PATH / 'q1_mip_enhanced.parquet',
     "q1/enhanced_directors": GENERATED_PATH / 'q1_enhanced_directors.parquet',
     "q1/movies_wcs": GENERATED_PATH / 'q1_movies_wcs.parquet',
+    "q1/movie_crews:": GENERATED_PATH / 'q1_movie_crews.parquet',
 
 }
 
