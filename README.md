@@ -59,6 +59,7 @@ Research question 1 was focused on the impact of the crew of the movie on the di
 
 ## Research Question 2
 
+Research question 2 looks at the impact of directors' genre selection on the success of their films. The research involves a comprehensive analysis of the interaction between genre, project diversity and the evolution of directors' styles, using both statistical analysis and graphical representation. By looking closely at directors' careers, we seek to discern patterns in their genre choices and their correlation with the overall success of their films.
 
 ## Research Question 3
 Distributions were studied with regard to the director score, the character type & choice as well as the relationship between the movie score & the character type. To quantify diversity, the main metric used was the Shannon Diversity index, to efficiently assess the diversity of directors in terms of all the elements previously cited. A regression model was also established to quantify the director's succes with respect to its choices, and datasets were matched for potential cofounding factors accordingly.
