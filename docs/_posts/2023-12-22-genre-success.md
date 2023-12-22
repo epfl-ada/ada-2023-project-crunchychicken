@@ -10,7 +10,12 @@ sidebar: []
 
 ## Introduction
 
-...
+In this post, we try to answer to the following questions using a data-centric approach:
+
+- Is it less or more likely for a movie to succeed when the director tries a new genre?
+- Are directors who tend to work on more diverse projects less or more successful?
+- To what extent do directors experiment with new genres and thematics over the course of their career?
+- Are more successful directors more often specialized in a certain combination of genres?
 
 
 ## Is it less or more likely for a movie to succeed when the director tries a new genre?
@@ -70,11 +75,6 @@ In the first two models, the intercept is quite high which means that with avera
 
 [![careeryears-newgenre.png](https://i.postimg.cc/T1VKLLzd/careeryears-newgenre.png)](https://postimg.cc/T5PdBw2F)
 
-
-## ...
-
-TODO: Add temporal plot for director genres (interactive)
-
 ## Are more successful directors more often specialized in a certain combination of genres?
 
 To answer this question, we need to study not only the existence of single genres in the movies of directors, but also the co-existenec of one or more genres in their movies. Take, for instance, three comedy-romance movies, one romance-drama movie, and three drama-crime movies in a portfolio. The presense of romance genre is the same as drama $(4)$, and close to the presence of comedy $(3)$ and crime $(3)$, but these numbers alone do not represent the style of this portfolio. What is significant here, is the co-existence of comedy-romance and drama-crime movies.
@@ -83,10 +83,9 @@ To answer this question, we need to study not only the existence of single genre
 
 In order to get the co-existence of genres, we define a undirected bipartite graph of the movies and their genres, and draw an edge between each movie and its genres. Projection of this bipartite graph on the movies will give us a multigraph of co-existence of genres in a group of movies. The multiplicity of each edge can then be reduced to a weight to get an ordinary undirected weight graph of the co-existence of genres in a group of movies. The following graphs are visualized in the plot below. You can select a country or a decade to see the corresponding graph of the selected item. We will use the same technique to visualize the style of selected directors in the rest of this section.
 
-TODO: Explore these graphs and draw a few interesting facts.
-
 {% include genre_coexistence_include.html %}
 
+Notice the transition from Short-Comedy-Drama movies in the 1900s through Comedy-Drama-Romances in the 1930s, to more emphasis on Drama and combinations with Action and Crime genres in the 2000s and 2010s. The co-existence of Drama, Action, and Romance in Indian movies is also noticable.
 
 ### Genre-similarity measure
 
@@ -120,15 +119,17 @@ We now calculate the similarity of movies of top directors to get the following 
 
 The first three rows are more or less the same as the score resulted from drawing random movies. The rest, however, show that there is actually a similarity regarding the style of the directors who have multiple highly-rated movies or have won many awards. Note that here, we filter the directors based on their characteristics and then consider all their movies, which represent their true style.
 
-TODO: Add some interpretations on these figures
+The first style comprises of Comedy, Animation and Family movies with an emphasis on the co-existence of Comedy-Animation.
 
 [![style-rate80-10.png](https://i.postimg.cc/wjmMMxr4/style-rate80-10.png)](https://postimg.cc/Snmkt4kc)
 <p style="text-align: center;"><b>Style of 7 directors with at least 10 movies rated 8.0 or above</b></p>
 
+The second style comprises of Drama movies combined with Comedy, Crime, Action and Romance.
 
 [![style-rate85-3.png](https://i.postimg.cc/fLwR8cR1/style-rate85-3.png)](https://postimg.cc/wtGzvsJk)
 <p style="text-align: center;"><b>Style of 14 directors with at least 3 movies rated 8.5 or above</b></p>
 
+The third style is very similar the the second one, except that there's less emphasis on Action movies.
 
 [![style-awards-50.png](https://i.postimg.cc/JnmG9wP6/style-awards-50.png)](https://postimg.cc/sB6jhLF7)
 <p style="text-align: center;"><b>Style of 181 directors with at least 50 awards won</b></p>
@@ -144,8 +145,6 @@ Next, we do the same analysis but only considering movies produced in certain co
 | Directors with at least 50 awards won                | France  | 174       | 308    | 0.54  |
 | Directors with at least 10 awards won                | China   | 4299      | 300    | 0.57  |
 | Directors with at least 10 awards won                | Korea   | 2185      | 163    | 0.61  |
-
-TODO: Add some interpretations on these figures
 
 [![style-india.png](https://i.postimg.cc/28H9yrWW/style-india.png)](https://postimg.cc/0bw0Hgc5)
 <p style="text-align: center;"><b>Style of 555 Indian movies from directors with at least 10 awards</b></p>
