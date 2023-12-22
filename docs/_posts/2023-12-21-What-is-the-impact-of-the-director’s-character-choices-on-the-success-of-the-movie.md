@@ -21,7 +21,7 @@ These directors are widely recognized in the industry. Moving on, we'll take a c
 The director scores are centered around 20-30, indicating a distribution that follows the normal distribution pattern, with the highest frequency occurring around the average.
 
 Now, let's delve into the distribution of character types chosen by all directors.
-[![topic-distribution-of-top10-directors.png](https://i.postimg.cc/6pqdq8jj/topic-distribution-of-top10-directors.png)](https://postimg.cc/HrGJPkCX)
+[![chracter-type-distribution-of-top10-directors.png](https://i.postimg.cc/132LJ4Yf/chracter-type-distribution-of-top10-directors.png)](https://postimg.cc/FYbWKFv4)
 
 What are the choise for the top 10 directors?
 
