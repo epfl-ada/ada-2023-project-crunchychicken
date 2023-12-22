@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Success measures
+title: Success Measures
 subtitle: How we quantify measures for success of a movie or a director
 categories: General
 banner:
