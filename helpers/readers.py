@@ -139,6 +139,7 @@ FILES_PARQUET = {
     "q1/enhanced_directors": GENERATED_PATH / 'q1_enhanced_directors.parquet',
     "q1/movies_wcs": GENERATED_PATH / 'q1_movies_wcs.parquet',
     "q1/movie_crews:": GENERATED_PATH / 'q1_movie_crews.parquet',
+    "q1/directors": GENERATED_PATH / 'q1_directors.parquet',
 
 }
 
