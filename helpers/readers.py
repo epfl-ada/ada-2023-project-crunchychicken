@@ -3,6 +3,7 @@
 import pandas as pd
 from pathlib import Path
 import json
+import pickle
 import numpy as np # unused?
 from helpers.utils import preprocess_cmu_movies, preprocess_cmu_characters, preprocess_imdb_movies, preprocess_movieLens_movies, preprocess_cmu_movies_scraped
 from helpers.utils import convert_and_downcast, cast_back_to_int64, downcast_int64
@@ -10,6 +11,30 @@ import time
 
 DATA_PATH = Path(__file__).resolve().parent.parent / 'data'
 GENERATED_PATH = Path(__file__).resolve().parent.parent / 'generated'
+
+def save_dict_to_generated(filename:str, dic: dict):
+    if not filename:
+            raise ValueError("Filename cannot be empty")
+
+    full_path = GENERATED_PATH / filename
+
+    if not full_path.suffix:
+        full_path = full_path.with_suffix('.pickle')
+
+    with open(full_path, 'wb') as handle:
+        pickle.dump(dic, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+def load_dict_from_generated(filename: str):
+    if not filename:
+        raise ValueError("Filename cannot be empty")
+
+    full_path = GENERATED_PATH / filename
+
+    if not full_path.suffix:
+        full_path = full_path.with_suffix('.pickle')
+
+    with open(full_path, 'rb') as handle:
+        return pickle.load(handle)
 
 def save_parquet_to_generated(filename: str, df: pd.DataFrame):
     if not filename:
@@ -109,6 +134,7 @@ FILES_PARQUET = {
     "q1/matched_imdb_people": GENERATED_PATH / 'q1_matched_imdb_people.parquet',
     "q1/jobs_principal_people": GENERATED_PATH / 'q1_jobs_principal_people.parquet',
     "q1/mip_enhanced": GENERATED_PATH / 'q1_mip_enhanced.parquet',
+    "q1/enhanced_directors": GENERATED_PATH / 'q1_enhanced_directors.parquet',
 
 }
 
