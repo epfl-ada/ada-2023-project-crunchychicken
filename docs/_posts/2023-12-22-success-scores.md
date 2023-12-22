@@ -58,6 +58,8 @@ However, we should bear in mind that this method for quantifying the success of 
 ![votes-ratings-decade](../assets/figs/scores/votes-ratings-decades.png)
 
 
+## Success of a director
+TODO: Write
 
 
 ## Final remark
