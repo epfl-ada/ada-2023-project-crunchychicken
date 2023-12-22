@@ -108,6 +108,7 @@ FILES_PARQUET = {
 
     "q1/matched_imdb_people": GENERATED_PATH / 'q1_matched_imdb_people.parquet',
     "q1/jobs_principal_people": GENERATED_PATH / 'q1_jobs_principal_people.parquet',
+    "q1/mip_enhanced": GENERATED_PATH / 'q1_mip_enhanced.parquet',
 
 }
 
