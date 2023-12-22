@@ -85,7 +85,6 @@ Among the proposed scores, `avg-3` seems to be the most reliable one with the fe
 
 ### Successful directors in different countries
 
-{% include top_directors_by_country.html %}
 
 
 ## Final remark
