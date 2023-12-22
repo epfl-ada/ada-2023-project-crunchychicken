@@ -81,7 +81,7 @@ Following [*Learning Latent Personas of Film Characters*](https://www.cs.cmu.edu
 
 **Clémence** : Helped on the data pre-processing for general uses, working on Q2 research questions (Correlational Analyses + Visualizations)
 
-**Chang** : Helped for the NLP original analysis for characters persona extraction & general data pre-processing. Handling the resolution of our third research question + writing data story for Q3.
+**Chun Tzu** : Helped for the NLP original analysis for characters persona extraction & general data pre-processing. Handling the resolution of our third research question + writing data story for Q3.
 
 **Sepehr** : Matching IMDb & CMU, additional pre-processing, helping on setting up the website, working/investigating on success metrics, working on the overall Q2 + Writing the data story for Q2 + introduction.
 
