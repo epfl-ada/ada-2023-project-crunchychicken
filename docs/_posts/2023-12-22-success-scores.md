@@ -10,6 +10,8 @@ sidebar: []
 
 <!-- TODO: Let's refer to this post in the other postes -->
 
+## Introduction
+
 In order to conclude anything about the success of movies or directors in a data-centric approach, first, we need to have a definition about success, and it has to be such that we can measure it with the available data.
 
 We follow a movie-based approach for defining the success of a director, which means that we first need to define a success score for the movies. Having those, we can define several scores to quantify the success of a director based on the scores of the movies that the director has portrayed.
