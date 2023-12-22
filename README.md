@@ -11,7 +11,8 @@ Stanley Kubrick is known to have at least one great movie in every major movie g
 
 1. **How impactful is the team surrounding the director on the success of the movie?**
 
-    Are the directors who always work with the same technical crew more successful? Are some directors successful only because they cast popular actors? Can we find some directors that decided to cast, for their next project, only very popular actors by looking at details about their previous works? Successful directors built up their renown across the industry thanks to now very popular movies, but can it also be thanks to the presence of certain individuals in their team? If yes, how frequently have they been collaborating with each other?
+    Are the directors who always work with the same crew more successful? Successful directors built up their renown across the industry thanks to now very popular movies, but can it also be thanks to the presence of certain individuals in their team? If yes, how frequently have they been collaborating with each other?
+    Are some directors successful only because they cast popular actors?
 
 2. **To what extent does the director's choice of movie genre affect the success of the movie?**
 
@@ -21,13 +22,8 @@ Stanley Kubrick is known to have at least one great movie in every major movie g
 
     What types of characters do successful directors choose? How diverse the directors are in their character choices? Can we find very successful directors that always use the same type of characters or others that vary a lot in their personas choices? In definitive, how does this impact the movie's success?
 
-- Additional question:
- 
-    Can we spot bright underrated directors who are in the early stages of their career?
-    We will try to do that by analyzing the movie genre, the plot summary, the movie characters, the profile of the director (e.g., age, gender, country of origin) and the profile of the cast and crew of their movies.
 
-
-## Proposed additional datasets
+## Used additional datasets
 
 ### Stanford CoreNLP-processed summaries
 The dataset is available online [here](https://www.cs.cmu.edu/~ark/personas/data/corenlp_plot_summaries.tar).
@@ -39,36 +35,44 @@ The dataset is available online [here](https://developer.imdb.com/non-commercial
 
 ### 'TheMovies' Dataset
 
-The dataset is available on [Kaggle](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset?select=movies_metadata.csv). This dataset contains metadata for all 45,000 movies listed in the Full MovieLens Dataset. In it, we can retrieve some interesting information to cure as well as enrich our CMU concerning the movie runtimes, release years, production companies, as well as precious information regarding the movie's success, with some ratings and the revenue. In the dataset, 27 500~ movies are also part of our CMU Movie Corpus.
+The dataset is available on [Kaggle](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset?select=movies_metadata.csv). This dataset contains metadata for all 45,000 movies listed in the Full MovieLens Dataset. In it, we retrieve some interesting information to cure as well as enrich our CMU concerning the movie runtimes, release years, production companies, as well as precious information regarding the movie's success, with some ratings and the revenue. In the dataset, 27 500~ movies are also part of our CMU Movie Corpus.
 
-## Methods
+## Metrics
 
-### Success and popularity of a movie
-We measure the success of a movie by one or a combination of the IMDb ratings, the number of rates, the Box Office revenue, and possibly the awards and nominations of the movie. Will create a *success score* and a *popularity score* for each movie. We will decide on the exact definition of these scores based on their distribution and their representativeness of what we intend to measure.
+### Success through popularity of a movie
+In this study, we mainly study the success of a movie through the prism of its popularity. We integrate both popularity and quality of the movie by defining a success score,$S_{movie} = {Rating}_{movie} \times \log({Votes}_{movie})$. The effectiveness of this metric was assessed by the very good matching of movies with a high home-made success score with the number of awards won by the movie. In addition, this allows to not overcomplicate the operations and have a representative metric of a movie's success.
 
 ### Success and popularity of a director
-The most basic idea would be to calculate the average success and popularity scores of the movies of a director. A more elegant approach can be to count the number of successful or popular movies of the director, by applying a threshold on the scores. This way, we will take into account that for a director to be successful, only a couple of successful movies is enough. Taking Martin Scorsese for instance, movies like Casino, Goodfellas, and Taxi Driver are enough to make him a successful director, and for such directors, we should get a *success score* close to maximum, so why impinging his score with taking into account the success of movies like Made in Milan or The Family which nobody knows about?
+Taking Martin Scorsese for instance, movies like Casino, Goodfellas, and Taxi Driver are enough to make him a successful director, and for such directors, we should get a *success score* close to maximum, so why impinging his score with taking into account the success of movies like Made in Milan or The Family which nobody knows about? It is following this idea that we decided to use, for each director, the average of its most successful movies as a measure of a director's success. The main metric used is the 'avg-3' score, based on the 3 most successful movies of the director, which yielded good results. We also defined 'avg-5' and 'avg-10' scores, that were used in some of the analyzes depending on the aim of the latter.
+
+# Methods 
+
+## Data preprocessing
+
+A huge emphasis has been made on data preprocessing in order to make the data usable for our research questions. The main common step to all research question were made through the building of helper files (in `/helpers`) that 1) Loaded the data correctly from the different .csv and/or .tsv files from CMU, IMDb and other sources used, as well as 2) an extensive pre-cleaning of the data. This comports correct renamings of the various dataframes columns, extensive pre-cleaning of bad data types and overall the establishment of a suitable work environment.
+
+## Research Question 1 
+Research question 1 was focused on the impact of the crew of the movie on the director's and by extension the movie's success. Correlational analyses were mainly used throughout the question, including statistical t-tests as well as Tukey's HSD and dataset matching for potential cofounders, to look at the impact of the crew size and of the particular core members (using an overlap coefficient metric as well). Using a pre-built dictionnary containing all connections between directors and their crew members, bipartite graphs were built for both actors/actresses only & all crew members. The bipartite projections obtained from the latter on the director's nodes were then analyzed, to assess the amount with which 1) successful directors share actors/actresses-only collaborations and 2) successful directors plainly share all types or relations in order to compare both phenomenon. 
+
+
+## Research Question 2
+
+
+### Research Question 3
+Distributions were studied with regard to the director score, the character type & choice as well as the relationship between the movie score & the character type. To quantify diversity, the main metric used was the Shannon Diversity index, to efficiently assess the diversity of directors in terms of all the elements previously cited. A regression model was also established to quantify the director's succes with respect to its choices, and datasets were matched for potential cofounding factors accordingly.
 
 ### Natural Language Processing
 Following [*Learning Latent Personas of Film Characters*](https://www.cs.cmu.edu/~dbamman/pubs/pdf/bamman+oconnor+smith.acl13.pdf), from the NLP data of movie summaries, we extract characters. For each character, we find the associated dependency of type: agent, patient, attribute. Then, we generate bags of words and do LDA to get the latent personas.
 
-## Analysis
-
-### Research Question 3
-- Distribution of sirector scoer, chracter type, chracter choice and also movie score with chracter type
-- Quantify diversity: Shannon diversity index
-- Regression model for director sucess and movie sucess with diversity of chracter choice
-- Observational studies
-
-## Proposed timeline for P3
+## Timeline of the project
 
 
 | Deadline   | Question #1                                                                                                                           | Question #2                                                                              | Question #3                                                                              |
 |------------|---------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
-| 3.12.2023  | 1. Finish cleaning the datasets ;<br>2. Clean & unify the codes <br> 3.Decide on success and popularity metrics.                    | Same as Q1                                                                               | Same as Q1                                                                               |
-| 10.12.2023 | 1. Decide on the set of directors to study;<br>2. Decide on the definition of the "team" around the director;<br>3. Prepare the dataframes and preliminary visualizations. | 1. Prepare the Dataframes for vizsualizations <br> 2. Check the diversity of the genres per director | 1. Decide on how exactly to use the Persona's data with respect to directors<br> 2.  Prepare the dataframes and preliminary visualizations. |
-| 17.12.2023 | 1. Try to address the raised research questions in detail;<br>2. Enhance the visualizations.                                            | 1. Assess the link the director's style to success<br>2. Enhance the visualizations       <br>3. Explore director's activity consistency regarding genres           | 1. Assess the director's personas choices<br>2. Link it to the success of the movies/directors                 |
-| 22.12.2023 | 1. Finalize the visualizations;<br>2. Write the story and work on presentation (Github pages).                                          | Same as Q1                                                                               | Same as Q1                                                                               |
+| 3.12.2023  | 1. Finalizing the dataset cleaning ;<br>2. Cleaning & unifying the codes <br> General : decide on success and popularity metrics.                    | Same as Q1                                                                               | Same as Q1                                                                               |
+| 10.12.2023 | 1.Assessing the directors to study in the analysis;<br>2. Building different functions to make the analysis possible;<br>3. Starting to prepare the dataframes & objects for the visualizations. 4. Starting to work on the first sub-question of Q1 | 1. Prepare the Dataframes for vizsualizations <br> 2. Check the diversity of the genres per director | 1. Decide on how exactly to use the Persona's data with respect to directors<br> 2.  Prepare the dataframes and preliminary visualizations. |
+| 17.12.2023 | 1. Finishing all data-preprocessing ;<br>2. Tackling the actual research questions.;<br>3. Starting to work on the visualizations                                            | 1. Assess the link the director's style to success<br>2. Enhance the visualizations       <br>3. Explore director's activity consistency regarding genres           | 1. Assess the director's personas choices<br>2. Link it to the success of the movies/directors                 |
+| 22.12.2023 | 1. Finalize the visualizations;<br>2. Writing the data story for Q1. 3. Tidy the notebooks properly                                          | Same as Q1                                                                               | Same as Q1                                                                               |
 
 
 ## Organization within the team
@@ -82,11 +86,6 @@ Until 3.12.2023, we will focus on Homework 2 but we will also start cleaning our
 | 17.12.2023 | Q1      | Q3      | Q2-3       | Q1-2      | Q2-3      |
 | 22.12.2023 | General      | General     | General       | General      | General      |
 
-## Questions for TAs
-
-- Our plan is to try to answer as many of the raised research questions as possible, but for the moment we are not sure which ones will give us more interesting results. Is this a good approach in your opinion? Should we focus on one of them instead?
-
-- Are the methods clear enough ?  Or should we maybe define exact workflows for milestone P3 ?
 
 ## Authors
 
