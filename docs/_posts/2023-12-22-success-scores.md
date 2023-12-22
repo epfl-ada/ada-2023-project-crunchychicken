@@ -50,8 +50,6 @@ The above figures show the distribution of the score with different ranges of nu
 However, we should bear in mind that this method for quantifying the success of a movie favors the movies with larger audiences to a large extent. For seeing this, we can take a look at the overall distribution of the number of IMDb votes and the IMDb rating and compare this for movies produced in different countries or in different decades. In the following figures, we can observe that movies produced in some countries such as Argentina clearly have lower votes than the whole dataset, which will damage their final score. Likewise, the movies produced in the 10s have been watched by less people in the technological era, which is again, reflected by lower number of IMDb votes. This could lead us to favor modern-life directors over the older ones simply because they have had larger audiences. To address this, we should always compare the scores of movies or directors that are produced in the same country and in the same temporal period.
 
 <!-- TODO: Replace by interactive plots ? -->
-<!-- {% include xx.html %} -->
-<!-- {% include xx.html %} -->
 
 <!-- TODO: If not, make these one figure. -->
 ![votes-ratings-country](../assets/figs/scores/votes-ratings-country.png)
