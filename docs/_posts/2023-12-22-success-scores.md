@@ -85,7 +85,7 @@ Among the proposed scores, `avg-3` seems to be the most reliable one with the fe
 
 ### Successful directors in different countries
 
-You can see the top-5 directors of each country (with movies produced in the country) in the following table. Please select a country to narrow down the directors to the country of your choice.
+You can see the top-5 directors of each country $($with movies produced in the country$)$ in the following table. Please select a country to narrow down the directors to the country of your choice.
 
 {% include plotly_top_directors_by_country_include.html %}
 
