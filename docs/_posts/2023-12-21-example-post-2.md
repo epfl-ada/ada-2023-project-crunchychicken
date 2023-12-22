@@ -49,3 +49,5 @@ We note that, directors are less and less inclined to explore new genres as thei
 {% include plotly_demo_include.html %}
 
 {% include plotly_top_directors_by_country_include.html %}
+
+{% include plotly_directors_connections_include.html %}

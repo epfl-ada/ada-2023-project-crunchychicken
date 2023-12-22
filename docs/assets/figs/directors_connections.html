@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Director Connections</title>
+    <style>
+        .plot-container {
+            display: none;
+        }
+
+        .plot-container.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="slider-container">
+        <input type="range" min="0" max="number_of_steps" value="0" id="plotSlider">
+    </div>
+
+    <div id="plotContent" class="plot-container active"></div>
+
+    <script>
+        // Array of available plot numbers in descending order
+        var availablePlots = [3400, 3200, 2000, 1800, 1600, 1000, 600, 400, 200, 0];
+    
+        function loadPlot(index) {
+            var plotNumber = availablePlots[index];
+            var plotContainer = document.getElementById('plotContent');
+            fetch('assets/figs/Q1 interactive plots/interactive_plot_' + plotNumber + '.html')
+                .then(response => response.text())
+                .then(data => {
+                    plotContainer.innerHTML = data;
+                    plotContainer.className = 'plot-container active';
+                })
+                .catch(error => console.error('Error loading plot:', error));
+        }
+    
+        document.getElementById('plotSlider').addEventListener('input', function(e) {
+            loadPlot(e.target.value);
+        });
+    
+        // Set the max value of the slider to the length of availablePlots array minus 1
+        document.getElementById('plotSlider').max = availablePlots.length - 1;
+    
+        // Initial load
+        loadPlot(0);
+    </script>
+</body>
+</html>
