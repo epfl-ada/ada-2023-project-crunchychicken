@@ -470,9 +470,14 @@ html {
       margin-right: auto;
     }
 
-    img:not(.emoji), svg, iframe {
+    img:not(.emoji), svg {
       display: block;
       max-height: 50vh;
+    }
+
+    iframe {
+        display: block;
+        max-height: none;
     }
 
     h2, h3, h4, h5, h6 {
