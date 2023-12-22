@@ -95,7 +95,7 @@ Following [*Learning Latent Personas of Film Characters*](https://www.cs.cmu.edu
 
 ***CrunchyChicken* group - Advanced Data Science (CS-401) 2023**
 
-- [Chang Chun-Tzu](mailto:chun-tzu.chang@epfl.ch) (SCIPER 351986):
+- [Chang Chun-Tzu](mailto:chun-tzu.chang@epfl.ch) (SCIPER 351986)
 - [Arthur Lamour](mailto:arthur.lamour@epfl.ch) (SCIPER 300443)
 - [Clémence Mayaux](mailto:clemence.mayaux@epfl.ch) (SCIPER 300278)
 - [Sepehr Mousavi](mailto:sepehr.mousavi@epfl.ch) (SCIPER 338673)
