@@ -73,8 +73,6 @@ We propose the following aggregate scores for measuring the success of a directo
 - `hits-s`: Number of movies with scores higher than `s`
 - `rate-r`: Number of movies with IMDb ratings higher than `r` with at least 1000 votes
 
-TODO: ADD INTERACTIVE TABLE WITH DIFF SCORES (TOP 10)
-
 Note that `avg-n` can therefore only be calculated for directors with at least `n` movies, which does not interfere with the purpose of this study sicne we are focused on successful directors.
 
 Among the proposed scores, `avg-3` seems to be the most reliable one with the fewest missing values. Therefore, we pick this score as the main score along this study but we refer to the other scores as well. For instance, `hits-s` can be used to find very few legendary directors, and `rate-r` can be used to determine directors with at least a few highly rated movies, but not necessarily *"successful"*. The number of directors for whom the `avg-3` score can be calculated is 6500, about 20 percent of the total number of directors for whom we have data. The following figures show the correlation between the `avg-3` scores with `hits-40`, and the awards won or nominated by directors. The positive correlation confirms the validity of our chosen metric.
@@ -87,7 +85,7 @@ Among the proposed scores, `avg-3` seems to be the most reliable one with the fe
 
 ### Successful directors in different countries
 
-TODO: MOVE THE TABLES HERE
+{% include top_directors_by_country.html %}
 
 
 ## Final remark
