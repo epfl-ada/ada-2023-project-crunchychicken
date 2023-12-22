@@ -26,7 +26,7 @@
         function loadPlot(index) {
             var plotNumber = availablePlots[index];
             var plotContainer = document.getElementById('plotContent');
-            fetch('assets/figs/Q1 interactive plots/interactive_plot_' + plotNumber + '.html')
+            fetch('Q1_interactive_plots/interactive_plot_' + plotNumber + '.html')
                 .then(response => response.text())
                 .then(data => {
                     plotContainer.innerHTML = data;

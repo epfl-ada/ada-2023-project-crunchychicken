@@ -45,9 +45,3 @@ We note that, directors are less and less inclined to explore new genres as thei
 ![Temp Image](https://i.postimg.cc/sX52PNjZ/image-2023-12-11-214406269.png)
 <!-- Example of manual size change, if you use both width and height the original aspect ratio of the image will not be preserved (deformation) -->
 <img src="https://i.postimg.cc/sX52PNjZ/image-2023-12-11-214406269.png" alt="Temp Image" width="300"> <!-- height="50"> -->
-
-{% include plotly_demo_include.html %}
-
-{% include plotly_top_directors_by_country_include.html %}
-
-{% include plotly_directors_connections_include.html %}
