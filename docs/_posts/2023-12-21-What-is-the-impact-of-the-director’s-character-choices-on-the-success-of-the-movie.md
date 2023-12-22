@@ -95,7 +95,7 @@ In the above plot, we can see that the scores for different types of characters 
 
 [![Distribution-of-movie-score-and-chracter-type-for.png](https://i.postimg.cc/wvmySHnT/Distribution-of-movie-score-and-chracter-type-for.png)](https://postimg.cc/7GqZzvxp)
 
-Returning to the earlier question: does the diversity of character types among a director's works impact the director's success or the success of their movies? Let's do an analysis.
+Returning to the earlier question: does the diversity of character types among a director's works impact the success of their movies? Let's do an analysis.
 
 [![movie-linear-regression.png](https://i.postimg.cc/yNftwCc5/movie-linear-regression.png)](https://postimg.cc/7C2K2cBM)
 
