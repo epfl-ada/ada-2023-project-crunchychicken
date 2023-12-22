@@ -1,49 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Director Connections</title>
+    <title>Plotly Figures with Slider</title>
     <style>
         .plot-container {
             display: none;
+            width: 900px;      /* Full width of the container */
+            height: 700px; 
+            /*border: 2px solid black;*/
         }
-
-        .plot-container.active {
+        .active {
             display: block;
         }
     </style>
 </head>
 <body>
-    <div id="slider-container">
-        <input type="range" min="0" max="number_of_steps" value="0" id="plotSlider">
-    </div>
 
-    <div id="plotContent" class="plot-container active"></div>
+<div id="slider-container">
+    <!-- Adjust max to be NB_PLOTS - 1 -->
+    <input type="range" min="0" max="9" value="0" id="plotSlider" step="1">
+</div>
 
-    <script>
-        // Array of available plot numbers in descending order
-        var availablePlots = [3400, 3200, 2000, 1800, 1600, 1000, 600, 400, 200, 0];
-    
-        function loadPlot(index) {
-            var plotNumber = availablePlots[index];
-            var plotContainer = document.getElementById('plotContent');
-            fetch('Q1_interactive_plots/interactive_plot_' + plotNumber + '.html')
-                .then(response => response.text())
-                .then(data => {
-                    plotContainer.innerHTML = data;
-                    plotContainer.className = 'plot-container active';
-                })
-                .catch(error => console.error('Error loading plot:', error));
+<div id="plot-container">
+    <!-- MAKE SURE TO ADJUST "max" above to NB_PLOTS - 1 -->
+    <iframe id="plot0" class="plot-container" src="Q1_interactive_plots/interactive_plot_3400.html"></iframe>
+    <iframe id="plot1" class="plot-container" src="Q1_interactive_plots/interactive_plot_3200.html"></iframe>
+    <iframe id="plot2" class="plot-container" src="Q1_interactive_plots/interactive_plot_2000.html"></iframe>
+    <iframe id="plot3" class="plot-container" src="Q1_interactive_plots/interactive_plot_1800.html"></iframe>
+    <iframe id="plot4" class="plot-container" src="Q1_interactive_plots/interactive_plot_1600.html"></iframe>
+    <iframe id="plot5" class="plot-container" src="Q1_interactive_plots/interactive_plot_1000.html"></iframe>
+    <iframe id="plot6" class="plot-container" src="Q1_interactive_plots/interactive_plot_600.html"></iframe>
+    <iframe id="plot7" class="plot-container" src="Q1_interactive_plots/interactive_plot_400.html"></iframe>
+    <iframe id="plot8" class="plot-container" src="Q1_interactive_plots/interactive_plot_200.html"></iframe>
+    <iframe id="plot9" class="plot-container active" src="Q1_interactive_plots/interactive_plot_0.html"></iframe>
+</div>
+
+<script>
+    var slider = document.getElementById("plotSlider");
+    slider.oninput = function() {
+        var plotIndex = this.value;
+        var plots = document.getElementsByClassName("plot-container");
+        for (var i = 0; i < plots.length; i++) {
+            plots[i].style.display = "none";
         }
-    
-        document.getElementById('plotSlider').addEventListener('input', function(e) {
-            loadPlot(e.target.value);
-        });
-    
-        // Set the max value of the slider to the length of availablePlots array minus 1
-        document.getElementById('plotSlider').max = availablePlots.length - 1;
-    
-        // Initial load
-        loadPlot(0);
-    </script>
+        document.getElementById("plot" + plotIndex).style.display = "block";
+    }
+</script>
+
 </body>
 </html>
