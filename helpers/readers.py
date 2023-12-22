@@ -106,6 +106,9 @@ FILES_PARQUET = {
 
     'directors/metrics': GENERATED_PATH / 'director_metrics.parquet',
 
+    "q1/matched_imdb_people": GENERATED_PATH / 'q1_matched_imdb_people.parquet',
+    "q1/jobs_principal_people": GENERATED_PATH / 'q1_jobs_principal_people.parquet',
+
 }
 
 def read_dataframe(name: str, usecols: list[str] = None, preprocess=False, convert_downcast=True) -> pd.DataFrame:
