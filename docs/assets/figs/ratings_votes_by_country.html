@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Ratings and Votes by Country</title>
+    <style>
+        /* Your CSS styles here */
+    </style>
+</head>
+<body>
+
+<h2>Select a Country:</h2>
+<select id="countrySelector" onchange="loadImage()">
+    <option value="">Select a country</option>
+    <option value="Afghanistan">Afghanistan</option>
+    <option value="Albania">Albania</option>
+    <option value="Algeria">Algeria</option>
+    <option value="Argentina">Argentina</option>
+    <option value="Armenia">Armenia</option>
+    <option value="Aruba">Aruba</option>
+    <option value="Australia">Australia</option>
+    <option value="Austria">Austria</option>
+    <option value="Azerbaijan">Azerbaijan</option>
+    <option value="Bahamas">Bahamas</option>
+    <option value="Bahrain">Bahrain</option>
+    <option value="Bangladesh">Bangladesh</option>
+    <option value="Belgium">Belgium</option>
+    <option value="Bhutan">Bhutan</option>
+    <option value="Bolivia">Bolivia</option>
+    <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+    <option value="Brazil">Brazil</option>
+    <option value="Bulgaria">Bulgaria</option>
+    <option value="Burkina Faso">Burkina Faso</option>
+    <option value="Burma">Burma</option>
+    <option value="Cambodia">Cambodia</option>
+    <option value="Cameroon">Cameroon</option>
+    <option value="Canada">Canada</option>
+    <option value="Chile">Chile</option>
+    <option value="China">China</option>
+    <option value="Colombia">Colombia</option>
+    <option value="Congo">Congo</option>
+    <option value="Costa Rica">Costa Rica</option>
+    <option value="Croatia">Croatia</option>
+    <option value="Cuba">Cuba</option>
+    <option value="Cyprus">Cyprus</option>
+    <option value="Czech Republic">Czech Republic</option>
+    <option value="Czechoslovakia">Czechoslovakia</option>
+    <option value="Democratic Republic of the Congo">Democratic Republic of the Congo</option>
+    <option value="Denmark">Denmark</option>
+    <option value="Egypt">Egypt</option>
+    <option value="England">England</option>
+    <option value="Estonia">Estonia</option>
+    <option value="Ethiopia">Ethiopia</option>
+    <option value="Federal Republic of Yugoslavia">Federal Republic of Yugoslavia</option>
+    <option value="Finland">Finland</option>
+    <option value="France">France</option>
+    <option value="Georgia">Georgia</option>
+    <option value="Georgian SSR">Georgian SSR</option>
+    <option value="German Democratic Republic">German Democratic Republic</option>
+    <option value="Germany">Germany</option>
+    <option value="Greece">Greece</option>
+    <option value="Guinea">Guinea</option>
+    <option value="Guinea-Bissau">Guinea-Bissau</option>
+    <option value="Haiti">Haiti</option>
+    <option value="Hong Kong">Hong Kong</option>
+    <option value="Hungary">Hungary</option>
+    <option value="Iceland">Iceland</option>
+    <option value="India">India</option>
+    <option value="Indonesia">Indonesia</option>
+    <option value="Iran">Iran</option>
+    <option value="Iraq">Iraq</option>
+    <option value="Iraqi Kurdistan">Iraqi Kurdistan</option>
+    <option value="Ireland">Ireland</option>
+    <option value="Isle of Man">Isle of Man</option>
+    <option value="Israel">Israel</option>
+    <option value="Italy">Italy</option>
+    <option value="Jamaica">Jamaica</option>
+    <option value="Japan">Japan</option>
+    <option value="Jordan">Jordan</option>
+    <option value="Kenya">Kenya</option>
+    <option value="Kingdom of Great Britain">Kingdom of Great Britain</option>
+    <option value="Kingdom of Italy">Kingdom of Italy</option>
+    <option value="Korea">Korea</option>
+    <option value="Kuwait">Kuwait</option>
+    <option value="Lebanon">Lebanon</option>
+    <option value="Libya">Libya</option>
+    <option value="Lithuania">Lithuania</option>
+    <option value="Luxembourg">Luxembourg</option>
+    <option value="Macau">Macau</option>
+    <option value="Malaysia">Malaysia</option>
+    <option value="Mali">Mali</option>
+    <option value="Malta">Malta</option>
+    <option value="Mandatory Palestine">Mandatory Palestine</option>
+    <option value="Mexico">Mexico</option>
+    <option value="Monaco">Monaco</option>
+    <option value="Mongolia">Mongolia</option>
+    <option value="Montenegro">Montenegro</option>
+    <option value="Morocco">Morocco</option>
+    <option value="Nazi Germany">Nazi Germany</option>
+    <option value="Nepal">Nepal</option>
+    <option value="Netherlands">Netherlands</option>
+    <option value="New Zealand">New Zealand</option>
+    <option value="Nigeria">Nigeria</option>
+    <option value="Northern Ireland">Northern Ireland</option>
+    <option value="Norway">Norway</option>
+    <option value="Pakistan">Pakistan</option>
+    <option value="Palestinian territories">Palestinian territories</option>
+    <option value="Panama">Panama</option>
+    <option value="Peru">Peru</option>
+    <option value="Philippines">Philippines</option>
+    <option value="Poland">Poland</option>
+    <option value="Portugal">Portugal</option>
+    <option value="Puerto Rico">Puerto Rico</option>
+    <option value="Qatar">Qatar</option>
+    <option value="Republic of China">Republic of China</option>
+    <option value="Republic of Macedonia">Republic of Macedonia</option>
+    <option value="Romania">Romania</option>
+    <option value="Russia">Russia</option>
+    <option value="Scotland">Scotland</option>
+    <option value="Senegal">Senegal</option>
+    <option value="Serbia">Serbia</option>
+    <option value="Serbia and Montenegro">Serbia and Montenegro</option>
+    <option value="Singapore">Singapore</option>
+    <option value="Slovak Republic">Slovak Republic</option>
+    <option value="Slovakia">Slovakia</option>
+    <option value="Slovenia">Slovenia</option>
+    <option value="Socialist Federal Republic of Yugoslavia">Socialist Federal Republic of Yugoslavia</option>
+    <option value="South Africa">South Africa</option>
+    <option value="South Korea">South Korea</option>
+    <option value="Soviet Union">Soviet Union</option>
+    <option value="Soviet occupation zone">Soviet occupation zone</option>
+    <option value="Spain">Spain</option>
+    <option value="Sri Lanka">Sri Lanka</option>
+    <option value="Sweden">Sweden</option>
+    <option value="Switzerland">Switzerland</option>
+    <option value="Taiwan">Taiwan</option>
+    <option value="Thailand">Thailand</option>
+    <option value="Tunisia">Tunisia</option>
+    <option value="Turkey">Turkey</option>
+    <option value="Turkmenistan">Turkmenistan</option>
+    <option value="Ukraine">Ukraine</option>
+    <option value="Ukrainian SSR">Ukrainian SSR</option>
+    <option value="United Arab Emirates">United Arab Emirates</option>
+    <option value="United Kingdom">United Kingdom</option>
+    <option value="United States of America" selected>United States of America</option>
+    <option value="Uruguay">Uruguay</option>
+    <option value="Uzbek SSR">Uzbek SSR</option>
+    <option value="Uzbekistan">Uzbekistan</option>
+    <option value="Venezuela">Venezuela</option>
+    <option value="Vietnam">Vietnam</option>
+    <option value="Wales">Wales</option>
+    <option value="Weimar Republic">Weimar Republic</option>
+    <option value="West Germany">West Germany</option>
+    <option value="Yugoslavia">Yugoslavia</option>
+    <option value="Zambia">Zambia</option>
+    <option value="Zimbabwe">Zimbabwe</option>
+</select>
+
+<div id="plotContainer">
+    <img id="plotImage" src="" alt="Select a country to view the plot">
+</div>
+
+<script>
+    function loadImage() {
+        var selectedCountry = document.getElementById('countrySelector').value;
+        var img = document.getElementById('plotImage');
+        if (selectedCountry) {
+            img.src = `rating_votes_plots/${selectedCountry}.png`;
+            img.alt = `Plot for ${selectedCountry}`;
+        } else {
+            img.src = "rating_votes_plots/United-States.png"; // Default image
+            img.alt = "Plot for United States"; // Default alt text
+        }
+    }
+
+    // Call loadImage on page load to display the default country's image
+    window.onload = loadImage;
+</script>
+
+</body>
+</html>
