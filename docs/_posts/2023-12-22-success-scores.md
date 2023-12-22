@@ -4,7 +4,7 @@ title: Success Measures
 subtitle: How we quantify measures for success of a movie or a director
 categories: General
 banner:
-  image: https://i.postimg.cc/L8ZnDTVR/image-2023-12-11-214623541.png
+  image: https://i.postimg.cc/BbJJ5gyP/standingovation-fnl.png
 sidebar: []
 ---
 
