@@ -38,22 +38,19 @@ which reflects both the popularity and the quality of the movie.
 
 In the following, we show that the suggested score represents the success of a movie well by validating it against the revenue and the awards of the movie.
 
-![votes-ratings-country](../assets/figs/scores/corr-score-revenue.png)
+![votes-ratings-country](/assets/figs/scores/corr-score-revenue.png)
 
 The above figure shows the distribution of the score with different revenue ranges of the movie. We can see that overall, there is a positive correlation between our score and the logarithm of the revenue of the movie, although this correlation is stronger for higher scores.
 
-![votes-ratings-country](../assets/figs/scores/corr-score-awardsWon.png)
-![votes-ratings-country](../assets/figs/scores/corr-score-awardsNominated.png)
+![votes-ratings-country](/assets/figs/scores/corr-score-awardsWon.png)
+![votes-ratings-country](/assets/figs/scores/corr-score-awardsNominated.png)
 
 The above figures show the distribution of the score with different ranges of number of awards won and nominated. The positive correlation shows that our metric is able to capture well the features which define the success of the movie in terms of its chances for winning awards.
 
 However, we should bear in mind that this method for quantifying the success of a movie favors the movies with larger audiences to a large extent. For seeing this, we can take a look at the overall distribution of the number of IMDb votes and the IMDb rating and compare this for movies produced in different countries or in different decades. In the following figures, we can observe that movies produced in some countries such as Argentina clearly have lower votes than the whole dataset, which will damage their final score. Likewise, the movies produced in the 10s have been watched by less people in the technological era, which is again, reflected by lower number of IMDb votes. This could lead us to favor modern-life directors over the older ones simply because they have had larger audiences. To address this, we should always compare the scores of movies or directors that are produced in the same country and in the same temporal period.
 
-<!-- TODO: Replace by interactive plots ? -->
 
-<!-- TODO: If not, make these one figure. -->
-![votes-ratings-country](../assets/figs/scores/votes-ratings-country.png)
-![votes-ratings-decade](../assets/figs/scores/votes-ratings-decades.png)
+{% include ratings_votes_by_country_include.html %}
 
 
 ## Success of a director

@@ -8,12 +8,13 @@
 </head>
 <body>
 
-<h2>Select a Country:</h2>
-<select id="countrySelector" onchange="loadImage()">
+<h4 align="left">Votes and Ratings by Country or Decade</h4>
+
+<select id="countrySelector" onchange="loadImageCountry()">
     <option value="">Select a country</option>
     <option value="Albania">Albania</option>
     <option value="Algeria">Algeria</option>
-    <option value="Argentina" selected>Argentina</option>
+    <option value="Argentina">Argentina</option>
     <option value="Armenia">Armenia</option>
     <option value="Australia">Australia</option>
     <option value="Austria">Austria</option>
@@ -136,26 +137,74 @@
     <option value="Zimbabwe">Zimbabwe</option>
 </select>
 
-<div id="plotContainer">
-    <img id="plotImage" src="" alt="Select a country to view the plot">
+<select id="decadeSelector" onchange="loadImageDecade()">
+    <option value="">Select a decade</option>
+    <option value="1800-1900">1800-1900</option>
+    <option value="1900-1910">1900-1910</option>
+    <option value="1910-1920">1910-1920</option>
+    <option value="1920-1930">1920-1930</option>
+    <option value="1930-1940">1930-1940</option>
+    <option value="1940-1950">1940-1950</option>
+    <option value="1950-1960" selected>1950-1960</option>
+    <option value="1960-1970">1960-1970</option>
+    <option value="1970-1980">1970-1980</option>
+    <option value="1980-1990">1980-1990</option>
+    <option value="1990-2000">1990-2000</option>
+    <option value="2000-2010">2000-2010</option>
+    <option value="2010-2020">2010-2020</option>
+</select>
+
+
+<div id="plotContainer"  align="center">
+    <img id="plotImage" src="rating_votes_plots/1950-1960.png" alt="Select a country or a decade to view the distributions">
 </div>
 
 <script>
-    function loadImage() {
+    function loadImageCountry() {
+        var selectedDecade = document.getElementById('decadeSelector').value;
         var selectedCountry = document.getElementById('countrySelector').value;
         var img = document.getElementById('plotImage');
         if (selectedCountry) {
             img.src = `rating_votes_plots/${selectedCountry}.png`;
             img.alt = `Plot for ${selectedCountry}`;
-        } else {
-            img.src = "rating_votes_plots/United-States.png"; // Default image
-            img.alt = "Plot for United States"; // Default alt text
+        }
+        else if (selectedDecade) {
+            img.src = `rating_votes_plots/${selectedDecade}.png`;
+            img.alt = `Plot for ${selectedDecade}`;
+        }
+        else {
+            img.src = "rating_votes_plots/base.png"; // Default image
+            img.alt = "Plot for base"; // Default alt text
         }
     }
 
     // Call loadImage on page load to display the default country's image
     window.onload = loadImage;
 </script>
+
+<script>
+    function loadImageDecade() {
+        var selectedDecade = document.getElementById('decadeSelector').value;
+        var selectedCountry = document.getElementById('countrySelector').value;
+        var img = document.getElementById('plotImage');
+        if (selectedDecade) {
+            img.src = `rating_votes_plots/${selectedDecade}.png`;
+            img.alt = `Plot for ${selectedDecade}`;
+        }
+        else if (selectedCountry) {
+            img.src = `rating_votes_plots/${selectedCountry}.png`;
+            img.alt = `Plot for ${selectedCountry}`;
+        }
+        else {
+            img.src = "rating_votes_plots/base.png"; // Default image
+            img.alt = "Plot for base"; // Default alt text
+        }
+    }
+
+    // Call loadImage on page load to display the default country's image
+    window.onload = loadImage;
+</script>
+
 
 </body>
 </html>
