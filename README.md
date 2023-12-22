@@ -50,6 +50,14 @@ The most basic idea would be to calculate the average success and popularity sco
 ### Natural Language Processing
 Following [*Learning Latent Personas of Film Characters*](https://www.cs.cmu.edu/~dbamman/pubs/pdf/bamman+oconnor+smith.acl13.pdf), from the NLP data of movie summaries, we extract characters. For each character, we find the associated dependency of type: agent, patient, attribute. Then, we generate bags of words and do LDA to get the latent personas.
 
+## Analysis
+
+### Research Question 3
+- Distribution of sirector scoer, chracter type, chracter choice and also movie score with chracter type
+- Quantify diversity: Shannon diversity index
+- Regression model for director sucess and movie sucess with diversity of chracter choice
+- Observational studies
+
 ## Proposed timeline for P3
 
 
@@ -83,6 +91,7 @@ Until 3.12.2023, we will focus on Homework 2 but we will also start cleaning our
 ***CrunchyChicken* group - Advanced Data Science (CS-401) 2023**
 
 - [Chang Chun-Tzu](mailto:chun-tzu.chang@epfl.ch) (SCIPER 351986)
+    Research question 3 and data story about research question 3
 - [Arthur Lamour](mailto:arthur.lamour@epfl.ch) (SCIPER 300443)
 - [Clémence Mayaux](mailto:clemence.mayaux@epfl.ch) (SCIPER 300278)
 - [Sepehr Mousavi](mailto:sepehr.mousavi@epfl.ch) (SCIPER 338673)
