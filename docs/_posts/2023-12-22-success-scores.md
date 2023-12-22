@@ -38,12 +38,12 @@ which reflects both the popularity and the quality of the movie.
 
 In the following, we show that the suggested score represents the success of a movie well by validating it against the revenue and the awards of the movie.
 
-![votes-ratings-country](/assets/figs/scores/corr-score-revenue.png)
+![votes-ratings-country](../assets/figs/scores/corr-score-revenue.png)
 
 The above figure shows the distribution of the score with different revenue ranges of the movie. We can see that overall, there is a positive correlation between our score and the logarithm of the revenue of the movie, although this correlation is stronger for higher scores.
 
-![votes-ratings-country](/assets/figs/scores/corr-score-awardsWon.png)
-![votes-ratings-country](/assets/figs/scores/corr-score-awardsNominated.png)
+![votes-ratings-country](../assets/figs/scores/corr-score-awardsWon.png)
+![votes-ratings-country](../assets/figs/scores/corr-score-awardsNominated.png)
 
 The above figures show the distribution of the score with different ranges of number of awards won and nominated. The positive correlation shows that our metric is able to capture well the features which define the success of the movie in terms of its chances for winning awards.
 
