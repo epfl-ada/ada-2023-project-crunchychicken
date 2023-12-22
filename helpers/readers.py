@@ -147,6 +147,8 @@ FILES_PARQUET = {
     "q2/movies": GENERATED_PATH / 'q2_movies.parquet',
     "q2/directors_pre": GENERATED_PATH / 'q2_directors_pre_score.parquet',
     "q2/directors": GENERATED_PATH / 'q2_directors_score.parquet',
+    "q2/directors_genres": GENERATED_PATH / 'q2_directors_genres.parquet',
+    "q2/movies_cor_balanced_newgenre": GENERATED_PATH / 'q2_movies_cor_balanced_newgenre.parquet',
 
     "q3/matched_df": GENERATED_PATH / 'q3_matched_df.parquet',
 
