@@ -40,7 +40,7 @@ The dataset is available on [Kaggle](https://www.kaggle.com/datasets/rounakbanik
 ## Metrics
 
 ### Success through popularity of a movie
-In this study, we mainly study the success of a movie through the prism of its popularity. We integrate both popularity and quality of the movie by defining a success score,$S_{movie} = {Rating}_{movie} \times \log({Votes}_{movie})$. The effectiveness of this metric was assessed by the very good matching of movies with a high home-made success score with the number of awards won by the movie. In addition, this allows to not overcomplicate the operations and have a representative metric of a movie's success.
+In this study, we mainly study the success of a movie through the prism of its popularity. We integrate both popularity and quality of the movie by defining a success score, $$S_{movie} = {Rating}_{movie} \times \log({Votes}_{movie})$$. The effectiveness of this metric was assessed by the very good matching of movies with a high home-made success score with the number of awards won by the movie. In addition, this allows to not overcomplicate the operations and have a representative metric of a movie's success.
 
 ### Success and popularity of a director
 Taking Martin Scorsese for instance, movies like Casino, Goodfellas, and Taxi Driver are enough to make him a successful director, and for such directors, we should get a *success score* close to maximum, so why impinging his score with taking into account the success of movies like Made in Milan or The Family which nobody knows about? It is following this idea that we decided to use, for each director, the average of its most successful movies as a measure of a director's success. The main metric used is the 'avg-3' score, based on the 3 most successful movies of the director, which yielded good results. We also defined 'avg-5' and 'avg-10' scores, that were used in some of the analyzes depending on the aim of the latter.
@@ -77,14 +77,15 @@ Following [*Learning Latent Personas of Film Characters*](https://www.cs.cmu.edu
 
 ## Organization within the team
 
-Until 3.12.2023, we will focus on Homework 2 but we will also start cleaning our datasets and trying retrieve more data, as explained in the notebook.
+**Arthur** : working on an NLP original analysis for characters persona extraction. Helping on data pre-processing + web-crawling, extensive cleaning the various datasets for general use, and unifying the codes. Website maintenance & updates.
 
-| Deadline   | Chang   | Arthur  | Clemence | Sepehr  | Romain  |
-|------------|---------|---------|----------|---------|---------|
-| 3.12.2023  | General | General | General  | General | General |
-| 10.12.2023 | Q1      | Q3      | Q1       | Q2      | Q2      |
-| 17.12.2023 | Q1      | Q3      | Q2-3       | Q1-2      | Q2-3      |
-| 22.12.2023 | General      | General     | General       | General      | General      |
+**Clémence** : Helped on the data pre-processing for general uses, working on Q2 research questions (Correlational Analyses + Visualizations)
+
+**Chang** : Helped for the NLP original analysis for characters persona extraction & general data pre-processing. Handling the resolution of our third research question + writing data story for Q3.
+
+**Sepehr** : Matching IMDb & CMU, additional pre-processing, helping on setting up the website, working/investigating on success metrics, working on the overall Q2 + Writing the data story for Q2 + introduction.
+
+**Romain** : General data pre-processing + web-crawling, helping on the success metrics work, handling the Q1 research question + writing the data story for Q1 + conclusion.
 
 
 ## Authors
