@@ -64,7 +64,7 @@ The following figure shows the distribution of movie scores for different time p
 
 ## Success of a director
 
-The success of directors can simply be defined in the success of their movies. However, one can aggregate multiple movie scores differently. 
+The success of directors can simply be defined in the success of their movies. However, one can aggregate multiple movie scores differently.
 The most basic idea would be to calculate the average success score of the movies of a director. In this study, we follow the logic that only a few successful movies is enough to make a director successful. Taking Martin Scorsese for instance, movies like Casino, Goodfellas, and Taxi Driver are enough to make him a successful director, and for such directors, we should get a success score close to maximum, so why impinging his score with taking into account the success of movies like Made in Milan or The Family which nobody knows about?
 
 We propose the following aggregate scores for measuring the success of a director:
@@ -85,7 +85,9 @@ Among the proposed scores, `avg-3` seems to be the most reliable one with the fe
 
 ### Successful directors in different countries
 
+You can see the top-5 directors of each country (with movies produced in the country) in the following table. Please select a country to narrow down the directors to the country of your choice.
 
+{% include plotly_top_directors_by_country_include.html %}
 
 ## Final remark
 
