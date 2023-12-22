@@ -184,3 +184,28 @@ TODO: FINISH
 
 ### Style clusters among successful directors
 
+From the technique in the previous part, we can get a fully-connected weighted similarity graph among a group of directors. In this part, we use the adjacency matrix of such a graph and cluster the nodes (directors) using the Louvain clustering algorithm. We consider 900 directors with more than 20 awards won and analyze 6353 movies portrayed by them. Doing so, we are able to extract four major clusters.
+
+#### Cluster \#1
+
+This cluster is comprised of movies in ...
+
+[![clusters-1.png](https://i.postimg.cc/T3k3wL26/clusters-1.png)](https://postimg.cc/gxZWt06S)
+
+#### Cluster \#2
+
+This cluster is comprised of movies in ...
+
+[![clusters-2.png](https://i.postimg.cc/43q46Dh2/clusters-2.png)](https://postimg.cc/wt5dHb2D)
+
+#### Cluster \#3
+
+This cluster is comprised of movies in ...
+
+[![clusters-3.png](https://i.postimg.cc/d1Cs452s/clusters-3.png)](https://postimg.cc/jwsYjQ3m)
+
+#### Cluster \#4
+
+This cluster is comprised of movies in ...
+
+[![clusters-4.png](https://i.postimg.cc/nrtH5q2v/clusters-4.png)](https://postimg.cc/BLM9PLd6)
