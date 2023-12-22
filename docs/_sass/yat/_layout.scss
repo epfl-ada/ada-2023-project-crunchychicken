@@ -480,6 +480,16 @@ html {
         max-height: none;
     }
 
+    .plot-container {
+      display: none;
+      width: 900px;      /* Full width of the container */
+      height: 700px; 
+      /*border: 2px solid black;*/
+    }
+    .active {
+        display: block;
+    }
+
     h2, h3, h4, h5, h6 {
       margin: 60px 0 19px;
     }
