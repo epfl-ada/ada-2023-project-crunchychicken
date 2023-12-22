@@ -79,7 +79,9 @@ TODO: Add temporal plot for director genres (interactive)
 
 To answer this question, we need to study not only the existence of single genres in the movies of directors, but also the co-existenec of one or more genres in their movies. Take, for instance, three comedy-romance movies, one romance-drama movie, and three drama-crime movies in a portfolio. The presense of romance genre is the same as drama (4), and close to the presence of comedy (3) and crime (3), but these numbers alone do not represent the style of this portfolio. What is significant here, is the co-existence of comedy-romance and drama-crime movies.
 
-In order to get the co-existence of genres, we define a undirected bipartite graph of the movies and their genres, and draw an edge between each movie and its genres. Projection of this bipartite graph on the movies will give us a multigraph of co-existence of genres in a group of movies. The multiplicity of each edge can then be reduced to a weight to get an ordinary undirected weight graph of the co-existence of genres in a group of movies.
+In order to get the co-existence of genres, we define a undirected bipartite graph of the movies and their genres, and draw an edge between each movie and its genres. Projection of this bipartite graph on the movies will give us a multigraph of co-existence of genres in a group of movies. The multiplicity of each edge can then be reduced to a weight to get an ordinary undirected weight graph of the co-existence of genres in a group of movies. The following graphs are visualized in the plot below. You can select a country or a decade to see the corresponding graph of the selected item.
+
+TODO: Explore these graphs and draw a few interesting facts.
 
 {% include genre_coexistence_include.html %}
 
