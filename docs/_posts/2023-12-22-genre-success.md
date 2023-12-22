@@ -44,7 +44,7 @@ To see this further, we have fitted linear regression models for predicting the 
 
 ## Are directors who tend to work on more diverse projects less or more successful?
 
-Similar to the previous question, we can compare the success score of the directors and check the correlation with a measure of *tendency for more diverse projects*. We do this for two measures: 1. the average number of genres per move of the director; and 2. the total number of explored genres. The dependent variable here is, the `avg-3` score of the director and the number of awards of the director (note, director, not movie). The following table summarizes the results of linear regression models for predicting the dependent variable from each of the two dependent variables. Note that contrary to the previous question, here the features are not standardized. The first row shows that there is a small correlation between the average number of genres per movie and the success score. The second and the third rows show that although the positive correlations with the average number of genres per movie are insignificant with a significance level of 5%, there is a very small significant positive correlation with the total number of genres explored. The low R-squared in all the models shows that very little part of the distributions can be explained by the independent variables linearly.
+Similar to the previous question, we can compare the success score of the directors and check the correlation with a measure of *tendency for more diverse projects*. We do this for two measures: 1. the average number of genres per move of the director; and 2. the total number of explored genres. The dependent variable here is, the `avg-3` score of the director and the number of awards of the director. The following table summarizes the results of linear regression models for predicting the dependent variable from each of the two dependent variables. Note that contrary to the previous question, here the features are not standardized. The first row shows that there is a small correlation between the average number of genres per movie and the success score. The second and the third rows show that although the positive correlations with the average number of genres per movie are insignificant with a significance level of 5%, there is a very small significant positive correlation with the total number of genres explored. The low R-squared in all the models shows that very little part of the distributions can be explained by the independent variables linearly.
 
 | Metric           | Intercept $($p-value$)$ | genresPerMovie $($p-value$)$ | genresExplored $($p-value$)$ | R-squared |
 |------------------|-------------------------|------------------------------|------------------------------|-----------|
@@ -96,7 +96,7 @@ $$
 w_{(i,j)} = \frac{\# \{\text{Common genres}\}}{\# \{\text{Maximum common genres}\}} < 1.
 $$
 
-In order to get an overal similarity measure for the whole graph (all movies present), we calculate the density of the weighted graph. Since the graph is complete and $0 < w_{(i,j)} < 1$, this is equivalent to summing up the weights and dividing them by the maximum possible sum of weights:
+In order to get an overal similarity measure for the whole graph $($all movies present$)$, we calculate the density of the weighted graph. Since the graph is complete and $0 < w_{(i,j)} < 1$, this is equivalent to summing up the weights and dividing them by the maximum possible sum of weights:
 
 $$
 \text{Similarity}_{G} = \frac{2 \sum_{(i, j)} w_{(i, j)}}{N(N-1)},
@@ -172,40 +172,32 @@ To measure how similar their work is compared to the other members of the group,
 
 [![top-dirs-similarity-ranked.png](https://i.postimg.cc/0NLDHHwr/top-dirs-similarity-ranked.png)](https://postimg.cc/gwHxxs4P)
 
-We repeat the same technique to get the ranked directors in terms of the uniqueness of their styles among the directors with at least 50 awards. The results are illustrated in the following figure. Among these directors, the ones with the most unique styles are: . The ones with the most similar styles to the others are: .
-TODO: FINISH
+We repeat the same technique to get the ranked directors in terms of the uniqueness of their styles among the directors with at least 50 awards. The results are illustrated in the following figure. Among these directors, the ones with the most unique styles are: George Lucas, David Fincher, James Cameron, and Steven Spielberg. The ones with the most similar styles to the others are: Gary Oldman, Greg Chwerchak, Charlie Kaufman, and Andrew Kotatko.
 
 [![awards50-dirs-similarity-ranked.png](https://i.postimg.cc/1tvP3br3/awards50-dirs-similarity-ranked.png)](https://postimg.cc/WFqx9WyB)
 
-The following figure shows the same graph for directors who have at least one movie with more than 500 thousand votes on IMDb. Here we expect more similar styles because we target popular movies.
-TODO: FINISH
+The following figure shows the same graph for directors who have at least one movie with more than 500 thousand votes on IMDb. Here we expect more similar styles because we target popular movies. We see the same names for the most unique styles as in the previous plot, and the most similar styles to the others belong to Eric Bress, J. Mackye Gruber, Olivier Nakache, and Seth MacFarlane.
 
 [![pop-dirs-similarity-ranked.png](https://i.postimg.cc/52QwqVXD/pop-dirs-similarity-ranked.png)](https://postimg.cc/JsmDMScQ)
 
 ### Style clusters among successful directors
 
-From the technique in the previous part, we can get a fully-connected weighted similarity graph among a group of directors. In this part, we use the adjacency matrix of such a graph and cluster the nodes (directors) using the Louvain clustering algorithm. We consider 900 directors with more than 20 awards won and analyze 6353 movies portrayed by them. Doing so, we are able to extract four major clusters.
+From the technique in the previous part, we can get a fully-connected weighted similarity graph among a group of directors. In this part, we use the adjacency matrix of such a graph and cluster the nodes $($directors$)$ using the Louvain clustering algorithm. We consider 900 directors with more than 20 awards won and analyze 6353 movies portrayed by them. Doing so, we are able to extract three major clusters.
 
 #### Cluster \#1
 
-This cluster is comprised of movies in ...
+This cluster is comprised of movies in Drama, Comedy, Romance, and Crime genres and is relied on the co-existence of Drama-Romance, Drama-Crime, and Drama-Comedy. Some familiar names in this group are Joel Coen, Peter Jackson, Yimou Zhang, Martin Scorsese, and Steven Spielberg, and Christopher Nolan.
 
 [![clusters-1.png](https://i.postimg.cc/T3k3wL26/clusters-1.png)](https://postimg.cc/gxZWt06S)
 
 #### Cluster \#2
 
-This cluster is comprised of movies in ...
-
-[![clusters-2.png](https://i.postimg.cc/43q46Dh2/clusters-2.png)](https://postimg.cc/wt5dHb2D)
-
-#### Cluster \#3
-
-This cluster is comprised of movies in ...
+This cluster is comprised of Drama, Documentary, and Short movies and is relied on the co-existence of Documentary-Biography movies, along with Crime, Histoy, and Music flavors. Directors who examplify this cluster are Lupita Nyong'o, Joe Berlinger, Bill Cosby, and James Cameron.
 
 [![clusters-3.png](https://i.postimg.cc/d1Cs452s/clusters-3.png)](https://postimg.cc/jwsYjQ3m)
 
-#### Cluster \#4
+#### Cluster \#3
 
-This cluster is comprised of movies in ...
+This cluster relies on the co-existence of Comedy-Drama-Romance with an emphesis on the Comedy genre. Some familiar names in this genre are Quentin Tarantino, Don Hertzfeldt, Pedro Almodóvar, and Woody Allen.
 
 [![clusters-4.png](https://i.postimg.cc/nrtH5q2v/clusters-4.png)](https://postimg.cc/BLM9PLd6)
