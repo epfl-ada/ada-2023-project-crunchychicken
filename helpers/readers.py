@@ -144,6 +144,9 @@ FILES_PARQUET = {
     "q1/matched_test" : GENERATED_PATH / 'q1_matched_test.parquet',
     "q1/result_df" : GENERATED_PATH / 'q1_result_df.parquet',
 
+    "q2/movies": GENERATED_PATH / 'q2_movies.parquet',
+    "q2/directors": GENERATED_PATH / 'q2_directors.parquet',
+
     "q3/matched_df": GENERATED_PATH / 'q3_matched_df.parquet',
 
 }
