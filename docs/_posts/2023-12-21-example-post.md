@@ -8,7 +8,7 @@ banner:
 sidebar: []
 ---
 
-Regardless of the epoch when it has been produced or its genre, a film is before anything the product of the complex and intertwined contribtuions of the crew members that worked on the latter. Directors can be seen as the central knot that ties the ensemble of the crew together : from helping in casting choices to artistic directions on set, the director's role is to guide the team towards the best outcome possible
+Regardless of the epoch when it has been produced or its genre, a film is before anything the product of the complex and intertwined contributions of the crew members that worked on the latter. Directors can be seen as the central knot that ties the ensemble of the crew together : from helping in casting choices to artistic directions on set, the director's role is to guide the team towards the best outcome possible
 
 In this first part, we will therefore try to assess the impact of different aspects of the crew surrounding a director his or her success and, by extension, trying to analyse underlying keys to movie success.
 
