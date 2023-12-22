@@ -2,9 +2,9 @@
 layout: post
 title: How impactful is the team surrounding the director on the film's success ?
 subtitle: A study of the relationship of a director's entourage and success.
-categories: Genre
+categories: Team
 banner:
-  image: https://i.postimg.cc/brX52r7r/Film-Crew-1.jpg 
+  image: https://i.postimg.cc/brX52r7r/Film-Crew-1.jpg
 sidebar: []
 ---
 
