@@ -37,11 +37,3 @@ Performing an Ordinary Least Squares (OLS) analysis between movie score and runt
 We note that, directors are less and less inclined to explore new genres as their careers progress.
 
 ![directors-success.png](https://i.postimg.cc/N0tvN4yW/directors-success.png)
-
-**Is it less likely or more likely for a movie to succeed when the director tries a new genre?**
-
-
-
-![Temp Image](https://i.postimg.cc/sX52PNjZ/image-2023-12-11-214406269.png)
-<!-- Example of manual size change, if you use both width and height the original aspect ratio of the image will not be preserved (deformation) -->
-<img src="https://i.postimg.cc/sX52PNjZ/image-2023-12-11-214406269.png" alt="Temp Image" width="300"> <!-- height="50"> -->
