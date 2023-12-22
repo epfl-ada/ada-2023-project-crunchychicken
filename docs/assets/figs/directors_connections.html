@@ -3,15 +3,18 @@
 <head>
     <title>Plotly Figures with Slider</title>
     <style>
-        .plot-container {
-            display: none;
-            width: 900px;      /* Full width of the container */
-            height: 700px; 
-            /*border: 2px solid black;*/
-        }
-        .active {
-            display: block;
-        }
+    .plot-container {
+        visibility: hidden;  /* Hide but don't remove from layout */
+        position: absolute;  /* Take out of normal document flow */
+        width: 900px;
+        height: 700px;
+        /* ... other styles ... */
+    }
+
+    .active {
+        visibility: visible;  /* Make visible */
+        position: static;     /* Put back into normal document flow */
+    }
     </style>
 </head>
 <body>
@@ -23,16 +26,16 @@
 
 <div id="plot-container">
     <!-- MAKE SURE TO ADJUST "max" above to NB_PLOTS - 1 -->
-    <iframe id="plot0" class="plot-container" src="Q1_interactive_plots/interactive_plot_3400.html"></iframe>
-    <iframe id="plot1" class="plot-container" src="Q1_interactive_plots/interactive_plot_3200.html"></iframe>
-    <iframe id="plot2" class="plot-container" src="Q1_interactive_plots/interactive_plot_2000.html"></iframe>
-    <iframe id="plot3" class="plot-container" src="Q1_interactive_plots/interactive_plot_1800.html"></iframe>
-    <iframe id="plot4" class="plot-container" src="Q1_interactive_plots/interactive_plot_1600.html"></iframe>
-    <iframe id="plot5" class="plot-container" src="Q1_interactive_plots/interactive_plot_1000.html"></iframe>
-    <iframe id="plot6" class="plot-container" src="Q1_interactive_plots/interactive_plot_600.html"></iframe>
-    <iframe id="plot7" class="plot-container" src="Q1_interactive_plots/interactive_plot_400.html"></iframe>
-    <iframe id="plot8" class="plot-container" src="Q1_interactive_plots/interactive_plot_200.html"></iframe>
-    <iframe id="plot9" class="plot-container active" src="Q1_interactive_plots/interactive_plot_0.html"></iframe>
+    <iframe id="plot9" class="plot-container" src="Q1_interactive_plots/interactive_plot_3400.html"></iframe>
+    <iframe id="plot8" class="plot-container" src="Q1_interactive_plots/interactive_plot_3200.html"></iframe>
+    <iframe id="plot7" class="plot-container" src="Q1_interactive_plots/interactive_plot_2000.html"></iframe>
+    <iframe id="plot6" class="plot-container" src="Q1_interactive_plots/interactive_plot_1800.html"></iframe>
+    <iframe id="plot5" class="plot-container" src="Q1_interactive_plots/interactive_plot_1600.html"></iframe>
+    <iframe id="plot4" class="plot-container" src="Q1_interactive_plots/interactive_plot_1000.html"></iframe>
+    <iframe id="plot3" class="plot-container" src="Q1_interactive_plots/interactive_plot_600.html"></iframe>
+    <iframe id="plot2" class="plot-container" src="Q1_interactive_plots/interactive_plot_400.html"></iframe>
+    <iframe id="plot1" class="plot-container" src="Q1_interactive_plots/interactive_plot_200.html"></iframe>
+    <iframe id="plot0" class="plot-container active" src="Q1_interactive_plots/interactive_plot_0.html"></iframe>
 </div>
 
 <script>
@@ -41,9 +44,9 @@
         var plotIndex = this.value;
         var plots = document.getElementsByClassName("plot-container");
         for (var i = 0; i < plots.length; i++) {
-            plots[i].style.display = "none";
+            plots[i].classList.remove("active");
         }
-        document.getElementById("plot" + plotIndex).style.display = "block";
+        document.getElementById("plot" + plotIndex).classList.add("active");
     }
 </script>
 
